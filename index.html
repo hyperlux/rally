@@ -738,6 +738,22 @@
                 </div>
             </div>
         </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="md:hidden" id="mobile-menu" style="display: none;">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-amber-500 to-amber-600">Accueil</a>
+                <a href="#event" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">L'Événement</a>
+                <a href="#register" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">S'inscrire</a>
+            </div>
+            <div class="pt-4 pb-3 border-t border-gray-700">
+                <div class="flex items-center px-5">
+                    <a href="#register" class="w-full text-center bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-4 py-2 rounded-md text-base font-medium">
+                        <i class="fas fa-ticket-alt mr-2"></i> Réserver Votre Place
+                    </a>
+                </div>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -1120,6 +1136,27 @@
             carouselSlides[currentCarouselSlide].classList.add('active');
             startCarouselInterval();
         }
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.querySelector('nav button[aria-controls="mobile-menu"]');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = mobileMenuButton.querySelector('i');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.style.display = isExpanded ? 'none' : 'block';
+
+            // Toggle icon (optional: change between bars and times)
+            if (!isExpanded) {
+                mobileMenuIcon.classList.remove('fa-bars');
+                mobileMenuIcon.classList.add('fa-times');
+            } else {
+                mobileMenuIcon.classList.remove('fa-times');
+                mobileMenuIcon.classList.add('fa-bars');
+            }
+        });
+
     </script>
 </body>
 </html>
