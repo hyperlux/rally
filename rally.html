@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrera Rallye - Expérience Porsche</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Racing+Sans+One&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            background-color: #0a0a0a;
+            color: #e5e7eb;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        nav a {
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        #hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 5rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(17, 24, 39, 0.8), rgba(31, 41, 55, 0.8)), url('poster.jpeg') no-repeat center center/cover;
+            background-attachment: fixed;
+        }
+
+        #hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero-content .logo {
+            width: 60px;
+            margin-bottom: 1rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-family: 'Racing Sans One', sans-serif;
+            font-size: 5rem;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.5);
+            animation: slideIn 1s ease-out;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #d1d5db;
+            animation: fadeIn 1.4s ease-out;
+        }
+
+        /* Countdown Timer */
+        .countdown-container {
+            margin: 2rem 0;
+            animation: fadeIn 1.6s ease-out;
+        }
+
+        .countdown-container p {
+            font-size: 1.8rem; /* Increased font size */
+            color: #fbbf24; /* Brighter yellow */
+            margin-bottom: 1.5rem; /* Increased margin */
+            font-family: 'Racing Sans One', sans-serif;
+            text-transform: uppercase; /* Uppercase for emphasis */
+            letter-spacing: 1px; /* Slight letter spacing */
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4); /* Subtle text shadow */
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .countdown div {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .countdown div:hover {
+            transform: scale(1.05);
+        }
+
+        /* Style for the 'Days' container */
+        .countdown div[data-label="Jours"] {
+            transform: scale(1.1); /* Make it slightly larger */
+            border-color: #f59e0b; /* Highlight border */
+            background: rgba(245, 158, 11, 0.1); /* Subtle background tint */
+        }
+
+        .countdown span {
+            font-size: 2rem;
+            color: #f59e0b;
+            display: block;
+            font-weight: 500; /* Medium weight for default */
+            /* animation: pulse 2s infinite; */ /* Removing default pulse for clarity */
+        }
+
+        /* Style for the 'Days' number */
+        .countdown div[data-label="Jours"] span {
+            font-size: 2.5rem; /* Larger font size for days */
+            font-weight: 700; /* Bolder */
+            color: #fbbf24; /* Slightly brighter yellow */
+            animation: pulse 2s infinite; /* Keep pulse only for days */
+        }
+
+        .countdown div::after {
+            content: attr(data-label);
+            font-size: 1rem;
+            color: #d1d5db;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        /* Buttons */
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            animation: fadeIn 1.8s ease-out;
+        }
+
+        .hero-buttons a {
+            padding: 0.8rem 2rem; /* Adjusted padding */
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex; /* Use flex for alignment */
+            flex-direction: column; /* Stack text vertically */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+            text-align: center; /* Center text */
+            line-height: 1.4; /* Adjust line height */
+        }
+
+        .hero-buttons .reserve-btn {
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+            color: white;
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+            padding: 1rem 2rem; /* Slightly more vertical padding for this specific button */
+        }
+
+        .hero-buttons .reserve-btn .button-text-main {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem; /* Space between icon and text */
+        }
+
+        .hero-buttons .reserve-btn .button-text-secondary {
+            font-size: 0.85rem; /* Smaller font size for secondary text */
+            font-weight: 400; /* Lighter weight */
+            opacity: 0.9;
+            margin-top: 0.25rem; /* Space above secondary text */
+        }
+
+
+        .hero-buttons .reserve-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.6);
+        }
+
+        .hero-buttons .info-btn {
+            background: transparent;
+            border: 2px solid #f59e0b;
+            color: #f59e0b;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-buttons .info-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #f59e0b;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .hero-buttons .info-btn:hover::before {
+            left: 0;
+        }
+
+        .hero-buttons .info-btn:hover {
+            color: #000;
+            transform: scale(1.05);
+        }
+
+        /* Scroll Down Arrow */
+        .scroll-down {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #f59e0b;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Image Carousel Section */
+        #image-carousel-section {
+            position: relative;
+            overflow: hidden;
+            height: 70vh;
+            background-color: #0a0a0a;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+            transform: scale(1.1);
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 1;
+        }
+
+        .carousel-slide::after {
+            content: attr(data-caption);
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            z-index: 2;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 3;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: #f59e0b;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 3;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            transition: background 0.3s ease;
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-arrow.left {
+            left: 1rem;
+        }
+
+        .carousel-arrow.right {
+            right: 1rem;
+        }
+
+        /* Event Details Section */
+        #event {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        #event::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('pic7.jpg') no-repeat center center/cover; /* Changed background image */
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        #event > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        #event h2 {
+            font-family: 'Racing Sans One', sans-serif;
+            font-size: 3rem;
+            color: #ffffff;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 3rem;
+        }
+
+        .event-details-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .event-details-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .event-details-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(245, 158, 11, 0.3);
+        }
+
+        .event-details-card h3 {
+            font-family: 'Racing Sans One', sans-serif;
+            font-size: 1.8rem;
+            color: #f59e0b;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .event-details-card h3 i {
+            margin-right: 1rem;
+            animation: iconBounce 2s infinite;
+        }
+
+        .event-details-card p {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            margin-bottom: 1rem;
+        }
+
+        .event-details-card ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .event-details-card ul li {
+            position: relative;
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            color: #d1d5db;
+        }
+
+        .event-details-card ul li::before {
+            content: '•';
+            color: #f59e0b;
+            font-size: 1.5rem;
+            position: absolute;
+            left: -1.5rem;
+            top: 0;
+        }
+
+        /* Pricing Card Specific Styles */
+        .event-details-card.price-card {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.1));
+            border: 2px solid #f59e0b;
+        }
+
+        .event-details-card.price-card p.price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #f59e0b;
+            text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .event-details-card.price-card a {
+            display: block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .event-details-card.price-card a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.6);
+        }
+
+        /* Final CTA Button */
+        .final-cta {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .final-cta a {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(90deg, #f59e0b, #d97706);
+            color: white;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .final-cta a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.6);
+        }
+
+        /* Registration Section */
+        #register {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            position: relative;
+        }
+
+        #register::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('pic3.jpg') no-repeat center center/cover; /* Changed background image */
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        #register > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-input {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-input input,
+        .form-input textarea {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #4b5563;
+            transition: all 0.3s ease;
+            padding: 0.75rem 1rem;
+            color: white;
+            width: 100%;
+            border-radius: 0;
+        }
+
+        .form-input input:focus,
+        .form-input textarea:focus {
+            border-bottom: 2px solid #f59e0b;
+            outline: none;
+        }
+
+        .form-input label {
+            position: absolute;
+            top: 0.75rem;
+            left: 1rem;
+            transition: all 0.3s ease;
+            color: #9ca3af;
+            pointer-events: none;
+        }
+
+        .form-input input:focus + label,
+        .form-input input:not(:placeholder-shown) + label,
+        .form-input textarea:focus + label,
+        .form-input textarea:not(:placeholder-shown) + label {
+            top: -1rem;
+            left: 0.5rem;
+            font-size: 0.75rem;
+            color: #f59e0b;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+        }
+
+        footer a {
+            transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #f59e0b !important;
+            transform: translateY(-2px);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            display: none;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1);
+            background: linear-gradient(135deg, #d97706, #f59e0b);
+        }
+
+        /* Pop-up Animation on Scroll */
+        .pop-up {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Faster transition */
+        }
+
+        .pop-up.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #f59e0b;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d97706;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1024px) {
+            #hero-section {
+                background-attachment: scroll;
+                padding-top: 6rem;
+            }
+            .hero-content h1 { font-size: 4rem; }
+            .hero-content h2 { font-size: 2rem; }
+            .hero-content p { font-size: 1.2rem; }
+            #image-carousel-section { height: 50vh; }
+            #event h2 { font-size: 2.5rem; }
+            .event-details-card { padding: 1.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            #hero-section {
+                padding: 4rem 1rem;
+            }
+            .hero-content h1 { font-size: 3rem; }
+            .hero-content h2 { font-size: 1.5rem; }
+            .hero-content p { font-size: 1rem; }
+            .countdown div {
+                padding: 0.75rem 1rem;
+            }
+            .countdown span {
+                font-size: 1.5rem;
+            }
+            .countdown div::after {
+                font-size: 0.8rem;
+            }
+            .hero-buttons a {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+            #image-carousel-section { height: 40vh; }
+            .carousel-slide::after {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.6rem;
+            }
+            #event h2 { font-size: 2rem; }
+            .event-details-card h3 { font-size: 1.5rem; }
+            .event-details-card p { font-size: 1rem; }
+            .event-details-card.price-card p.price { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black bg-opacity-80 backdrop-filter backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20"> <!-- Medium height -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <img class="h-24" src="car.png" alt="Porsche"> <!-- Increased logo size -->
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="ml-10 flex items-baseline space-x-4">
+                            <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gradient-to-r from-amber-500 to-amber-600">Accueil</a>
+                            <a href="#event" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">L'Événement</a>
+                            <a href="#register" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">S'inscrire</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-4 flex items-center md:ml-6">
+                        <a href="#register" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-4 py-2 rounded-md text-sm font-medium">
+                            <i class="fas fa-ticket-alt mr-2"></i> Réserver Votre Place
+                        </a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Ouvrir le menu principal</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero-section" class="relative">
+        <div class="hero-content">
+            <h1 class="whitespace-nowrap">LE CARRERA RALLYE</h1>
+            <h2>27 - 28 Septembre 2025</h2>
+            <p>Une expérience exclusive pour les passionnés de Porsche classiques. Places limitées !</p>
+            <div class="countdown-container">
+                <p>On demarre dans</p>
+                <div class="countdown">
+                    <div data-label="Jours"><span id="days">00</span></div>
+                    <div data-label="Heures"><span id="hours">00</span></div>
+                    <div data-label="Minutes"><span id="minutes">00</span></div>
+                    <div data-label="Secondes"><span id="seconds">00</span></div>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#register" class="reserve-btn">
+                    <span class="button-text-main">
+                        <i class="fas fa-flag-checkered"></i> Réservez Votre Place
+                    </span>
+                    <span class="button-text-secondary">(40 Équipages Max)</span>
+                </a>
+                <a href="#event" class="info-btn">
+                    <span class="button-text-main">
+                        <i class="fas fa-info-circle"></i> En Savoir Plus
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <a href="#image-carousel-section"><i class="fas fa-chevron-down"></i></a>
+        </div>
+    </section>
+
+    <!-- Image Carousel Section -->
+    <section id="image-carousel-section" class="pop-up">
+        <div class="carousel-slide active" data-caption="Porsche 911 in Action">
+            <img src="pic1.jpg" alt="Porsche Rallye Image 1">
+        </div>
+        <div class="carousel-slide" data-caption="Scenic Coastal Drive">
+            <img src="pic2.jpg" alt="Porsche Rallye Image 2">
+        </div>
+        <div class="carousel-slide" data-caption="Classic Porsche Lineup">
+            <img src="pic3.jpg" alt="Porsche Rallye Image 3">
+        </div>
+        <div class="carousel-slide" data-caption="Rallye Starting Line">
+            <img src="pic4.jpg" alt="Porsche Rallye Image 4">
+        </div>
+        <div class="carousel-slide" data-caption="Porsche 356 on the Road">
+            <img src="pic5.jpg" alt="Porsche Rallye Image 5">
+        </div>
+        <div class="carousel-slide" data-caption="Sunset Drive">
+            <img src="pic6.jpg" alt="Porsche Rallye Image 6">
+        </div>
+        <div class="carousel-slide" data-caption="Porsche 904 in Motion">
+            <img src="pic7.jpg" alt="Porsche Rallye Image 7">
+        </div>
+        <div class="carousel-slide" data-caption="Rallye Finish Celebration">
+            <img src="pic8.jpg" alt="Porsche Rallye Image 8">
+        </div>
+        <div class="carousel-nav">
+            <!-- Dots will be generated dynamically -->
+        </div>
+        <div class="carousel-arrow left"><i class="fas fa-chevron-left"></i></div>
+        <div class="carousel-arrow right"><i class="fas fa-chevron-right"></i></div>
+    </section>
+
+    <!-- Event Details Section -->
+    <section id="event" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 pop-up">DÉTAILS DU CARRERA RALLYE</h2>
+            <div class="event-details-container">
+                <!-- Dates & Lieu -->
+                <div class="event-details-card pop-up">
+                    <h3><i class="fas fa-calendar-alt"></i> Dates & Lieu</h3>
+                    <p><span class="font-semibold">Dates :</span> 27 et 28 Septembre 2025</p>
+                    <p><span class="font-semibold">Réservation :</span> via Porsche Collection</p>
+                    <p><span class="font-semibold">Capacité :</span> Strictement limitée à 40 voitures.</p>
+                </div>
+                <!-- Voitures Admissibles -->
+                <div class="event-details-card pop-up">
+                    <h3><i class="fas fa-car"></i> Voitures Admissibles</h3>
+                    <p>Toutes les Porsche fabriquées entre 1950 et 1989 :</p>
+                    <ul>
+                        <li>356 (Pré A, A, B, C, SC)</li>
+                        <li>904 (4 ou 6 cylindres)</li>
+                        <li>906, 910</li>
+                        <li>911, 912</li>
+                    </ul>
+                    <p class="mt-4 font-semibold">Conditions :</p>
+                    <ul>
+                        <li>Voiture assurée</li>
+                        <li>Conducteur avec permis de conduire valide</li>
+                    </ul>
+                </div>
+                <!-- Prestations Incluses -->
+                <div class="event-details-card pop-up">
+                    <h3><i class="fas fa-gift"></i> Prestations Incluses</h3>
+                    <ul>
+                        <li>Numéros de concurrents</li>
+                        <li>Tenues pour pilote et copilote</li>
+                        <li>Road book détaillé</li>
+                        <li>Goodies exclusifs</li>
+                        <li>Restauration dans des établissements du Guide Michelin</li>
+                        <li>Hébergement en hôtel 5 étoiles</li>
+                        <li>Remise des prix avec cocktail à l'arrivée</li>
+                    </ul>
+                </div>
+                <!-- Tarif & Paiement (Last) -->
+                <div class="event-details-card price-card pop-up">
+                    <h3><i class="fas fa-euro-sign"></i> Tarif & Paiement</h3>
+                    <p class="price">2449 € <span class="text-base font-normal text-gray-400">par équipage (2 personnes)</span></p>
+                    <p><span class="font-semibold">Acompte :</span> 1449 € demandé pour l'engagement.</p>
+                    <p><span class="font-semibold">Solde :</span> À régler au maximum 30 jours avant le départ.</p>
+                    <a href="#register">S'inscrire Maintenant</a>
+                </div>
+            </div>
+            <!-- Final CTA -->
+            <div class="final-cta pop-up">
+                <a href="#register">
+                    <i class="fas fa-flag-checkered mr-2"></i> Prêt à Participer ? Inscrivez-vous Maintenant !
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="py-20 bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 font-['Racing_Sans_One'] pop-up">INSCRIPTION AU CARRERA RALLYE</h2>
+            <p class="text-xl text-center text-gray-300 mb-16 pop-up">Remplissez le formulaire pour soumettre votre demande d'engagement. Places limitées à 40 équipages.</p>
+            <form class="bg-gray-800 rounded-lg shadow-xl p-8 pop-up">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="form-input">
+                        <input type="text" id="first-name" name="pilote_prenom" required placeholder=" " class="w-full">
+                        <label for="first-name">Prénom (Pilote)</label>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" id="last-name" name="pilote_nom" required placeholder=" " class="w-full">
+                        <label for="last-name">Nom (Pilote)</label>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" id="copilote-first-name" name="copilote_prenom" required placeholder=" " class="w-full">
+                        <label for="copilote-first-name">Prénom (Copilote)</label>
+                    </div>
+                    <div class="form-input">
+                        <input type="text" id="copilote-last-name" name="copilote_nom" required placeholder=" " class="w-full">
+                        <label for="copilote-last-name">Nom (Copilote)</label>
+                    </div>
+                    <div class="form-input">
+                        <input type="email" id="email" name="email" required placeholder=" " class="w-full">
+                        <label for="email">Adresse E-mail</label>
+                    </div>
+                    <div class="form-input">
+                        <input type="tel" id="phone" name="telephone" required placeholder=" " class="w-full">
+                        <label for="phone">Numéro de Téléphone</label>
+                    </div>
+                </div>
+                <div class="mb-8 form-input">
+                    <input type="text" id="car-model-year" name="voiture_modele_annee" required placeholder=" " class="w-full">
+                    <label for="car-model-year">Modèle et Année de votre Porsche (1950-1989)</label>
+                </div>
+                <div class="mb-8 form-input">
+                    <textarea id="message" name="message" rows="4" placeholder=" " class="w-full"></textarea>
+                    <label for="message">Demandes Spéciales / Commentaires</label>
+                </div>
+                <div class="mb-8 bg-amber-900 bg-opacity-30 border border-amber-700 p-4 rounded-md text-amber-200">
+                    <p class="font-semibold mb-2"><i class="fas fa-exclamation-triangle mr-2"></i> Information Importante</p>
+                    <p>Un acompte de 1449 € est requis pour confirmer votre engagement. Notre équipe vous contactera après soumission de ce formulaire avec les détails de paiement. Le solde de 1000 € sera dû 30 jours avant l'événement.</p>
+                </div>
+                <div class="flex items-center mb-8">
+                    <input id="terms" name="accepte_conditions" type="checkbox" required class="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-600 rounded">
+                    <label for="terms" class="ml-2 block text-sm text-gray-300">
+                        Je confirme avoir lu les détails de l'événement et j'accepte les <a href="#" class="text-amber-500 hover:underline">termes et conditions</a> et la <a href="#" class="text-amber-500 hover:underline">politique de confidentialité</a>.
+                    </label>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white py-4 rounded-md text-lg font-semibold transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-paper-plane mr-2"></i> Soumettre ma Demande d'Engagement
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 pop-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Carrera Rallye</h3>
+                    <p class="text-gray-400">Une expérience inoubliable pour les propriétaires de Porsche classiques.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Navigation</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Accueil</a></li>
+                        <li><a href="#event" class="text-gray-400 hover:text-white">L'Événement</a></li>
+                        <li><a href="#register" class="text-gray-400 hover:text-white">S'inscrire</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Contactez-Nous</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Porsche Collection</li>
+                        <li class="flex items-center"><i class="fas fa-phone-alt mr-2"></i> +XX XXX XXX XX (À Remplacer)</li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-2"></i> carrera.rallye@porschecollection.fr (Exemple)</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-4">Suivez Porsche</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2025 Carrera Rallye - Porsche Collection. Tous droits réservés.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Politique de Confidentialité</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm">Conditions d'Utilisation</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if (targetElement) {
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+
+        // Countdown Timer
+        const eventDate = new Date("September 27, 2025 00:00:00").getTime();
+        const countdown = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = days.toString().padStart(2, '0');
+            document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.querySelector(".countdown").innerHTML = "Événement Terminé !";
+            }
+        }, 1000);
+
+        // Pop-up Animation on Scroll
+        const popUpElements = document.querySelectorAll('.pop-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: Unobserve after triggering to improve performance
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0 }); // Set threshold to 0 for immediate trigger
+
+        popUpElements.forEach(element => observer.observe(element));
+
+        // Back to Top Button
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        // Form submission simulation
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const termsCheckbox = document.getElementById('terms');
+                if (!termsCheckbox.checked) {
+                    alert("Veuillez accepter les termes et conditions.");
+                    return;
+                }
+
+                console.log('Form data submitted (simulation):');
+                const formData = new FormData(form);
+                for (let [key, value] of formData.entries()) {
+                    console.log(`${key}: ${value}`);
+                }
+
+                alert('Merci pour votre demande d\'engagement ! Notre équipe vous contactera sous peu concernant le paiement de l\'acompte.');
+                form.reset();
+            });
+        }
+
+        // Image Carousel Logic
+        const carouselSlides = document.querySelectorAll('#image-carousel-section .carousel-slide');
+        const carouselNav = document.querySelector('.carousel-nav');
+        const carouselArrowLeft = document.querySelector('.carousel-arrow.left');
+        const carouselArrowRight = document.querySelector('.carousel-arrow.right');
+        let currentCarouselSlide = 0;
+        const carouselInterval = 4000;
+
+        // Generate navigation dots
+        carouselSlides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+            carouselNav.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.carousel-dot');
+
+        function goToSlide(index) {
+            carouselSlides[currentCarouselSlide].classList.remove('active');
+            dots[currentCarouselSlide].classList.remove('active');
+            currentCarouselSlide = index;
+            carouselSlides[currentCarouselSlide].classList.add('active');
+            dots[currentCarouselSlide].classList.add('active');
+        }
+
+        function nextCarouselSlide() {
+            goToSlide((currentCarouselSlide + 1) % carouselSlides.length);
+        }
+
+        function prevCarouselSlide() {
+            goToSlide((currentCarouselSlide - 1 + carouselSlides.length) % carouselSlides.length);
+        }
+
+        // Event listeners for arrows
+        carouselArrowLeft.addEventListener('click', () => {
+            prevCarouselSlide();
+            resetCarouselInterval();
+        });
+
+        carouselArrowRight.addEventListener('click', () => {
+            nextCarouselSlide();
+            resetCarouselInterval();
+        });
+
+        // Start the image carousel
+        let carouselTimer;
+        function startCarouselInterval() {
+            carouselTimer = setInterval(nextCarouselSlide, carouselInterval);
+        }
+
+        function resetCarouselInterval() {
+            clearInterval(carouselTimer);
+            startCarouselInterval();
+        }
+
+        if (carouselSlides.length > 0) {
+            carouselSlides[currentCarouselSlide].classList.add('active');
+            startCarouselInterval();
+        }
+    </script>
+</body>
+</html>
