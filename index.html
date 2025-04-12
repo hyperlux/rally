@@ -681,8 +681,11 @@
             .hero-content h1 { font-size: 3rem; }
             .hero-content h2 { font-size: 1.5rem; }
             .hero-content p { font-size: 1rem; }
+            .countdown {
+                gap: 0.5rem; /* Reduced gap */
+            }
             .countdown div {
-                padding: 0.75rem 1rem;
+                padding: 0.5rem 0.75rem; /* Reduced padding */
             }
             .countdown span {
                 font-size: 1.5rem;
@@ -690,9 +693,15 @@
             .countdown div::after {
                 font-size: 0.8rem;
             }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
             .hero-buttons a {
                 padding: 0.75rem 1.5rem;
                 font-size: 1rem;
+                width: 80%; /* Optional: Make buttons take more width */
+                max-width: 300px; /* Optional: Prevent buttons from becoming too wide */
             }
             #image-carousel-section { height: 40vh; }
             .carousel-slide::after {
@@ -703,6 +712,32 @@
             .event-details-card h3 { font-size: 1.5rem; }
             .event-details-card p { font-size: 1rem; }
             .event-details-card.price-card p.price { font-size: 2rem; }
+        }
+
+        /* Even smaller screens adjustments */
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 2.5rem; } /* Further reduce title size */
+            .hero-content h2 { font-size: 1.2rem; }
+            .countdown {
+                gap: 0.3rem; /* Even smaller gap */
+            }
+            .countdown div {
+                padding: 0.4rem 0.5rem; /* Even smaller padding */
+                border-radius: 10px; /* Slightly smaller radius */
+            }
+            .countdown span {
+                font-size: 1.2rem; /* Smaller number font */
+            }
+             .countdown div[data-label="Jours"] span {
+                 font-size: 1.5rem; /* Slightly larger for days */
+             }
+            .countdown div::after {
+                font-size: 0.6rem; /* Smaller label font */
+                margin-top: 0.25rem;
+            }
+            .hero-buttons a {
+                width: 90%; /* Make buttons slightly wider */
+            }
         }
     </style>
 </head>
@@ -759,7 +794,7 @@
     <!-- Hero Section -->
     <section id="hero-section" class="relative">
         <div class="hero-content">
-            <h1 class="whitespace-nowrap">LE CARRERA RALLYE</h1>
+            <h1>LE CARRERA RALLYE</h1>
             <h2>27 - 28 Septembre 2025</h2>
             <p>Une expérience exclusive pour les passionnés de Porsche classiques. Places limitées !</p>
             <div class="countdown-container">
