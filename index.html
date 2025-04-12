@@ -402,7 +402,7 @@
             width: 100%;
             height: 100%;
             background: url('pic7.jpg') no-repeat center center/cover; /* Changed background image */
-            opacity: 0.05;
+            opacity: 0.05; /* Set background image opacity */
             z-index: 0;
         }
 
@@ -428,9 +428,9 @@
         }
 
         .event-details-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05); /* Reverted to original */
+            backdrop-filter: blur(15px); /* Reverted to original */
+            border: 1px solid rgba(255, 255, 255, 0.2); /* Reverted to original */
             border-radius: 20px;
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -550,13 +550,22 @@
             width: 100%;
             height: 100%;
             background: url('pic3.jpg') no-repeat center center/cover; /* Changed background image */
-            opacity: 0.05;
+            opacity: 0.05; /* Set background image opacity */
             z-index: 0;
         }
 
         #register > * {
             position: relative;
             z-index: 1;
+        }
+
+        #register form { /* Style to match event-details-card */
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px; /* Match card radius */
+            padding: 2rem; /* Match card padding */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Match card shadow */
         }
 
         .form-input {
@@ -833,29 +842,53 @@
 
     <!-- Image Carousel Section -->
     <section id="image-carousel-section" class="pop-up">
-        <div class="carousel-slide active" data-caption="Porsche 911 in Action">
+        <div class="carousel-slide active">
             <img src="pic1.jpg" alt="Porsche Rallye Image 1">
         </div>
-        <div class="carousel-slide" data-caption="Scenic Coastal Drive">
+        <div class="carousel-slide">
             <img src="pic2.jpg" alt="Porsche Rallye Image 2">
         </div>
-        <div class="carousel-slide" data-caption="Classic Porsche Lineup">
+        <div class="carousel-slide">
             <img src="pic3.jpg" alt="Porsche Rallye Image 3">
         </div>
-        <div class="carousel-slide" data-caption="Rallye Starting Line">
+        <div class="carousel-slide">
             <img src="pic4.jpg" alt="Porsche Rallye Image 4">
         </div>
-        <div class="carousel-slide" data-caption="Porsche 356 on the Road">
+        <div class="carousel-slide">
             <img src="pic5.jpg" alt="Porsche Rallye Image 5">
         </div>
-        <div class="carousel-slide" data-caption="Sunset Drive">
+        <div class="carousel-slide">
             <img src="pic6.jpg" alt="Porsche Rallye Image 6">
         </div>
-        <div class="carousel-slide" data-caption="Porsche 904 in Motion">
+        <div class="carousel-slide">
             <img src="pic7.jpg" alt="Porsche Rallye Image 7">
         </div>
-        <div class="carousel-slide" data-caption="Rallye Finish Celebration">
+        <div class="carousel-slide">
             <img src="pic8.jpg" alt="Porsche Rallye Image 8">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic9.jpg" alt="Porsche Rallye Image 9">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic10.jpg" alt="Porsche Rallye Image 10">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic11.jpg" alt="Porsche Rallye Image 11">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic12.jpg" alt="Porsche Rallye Image 12">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic13.jpg" alt="Porsche Rallye Image 13">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic14.jpg" alt="Porsche Rallye Image 14">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic15.jpg" alt="Porsche Rallye Image 15">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic16.jpg" alt="Porsche Rallye Image 16">
         </div>
         <div class="carousel-nav">
             <!-- Dots will be generated dynamically -->
@@ -928,7 +961,7 @@
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 font-['Racing_Sans_One'] pop-up">INSCRIPTION AU CARRERA RALLYE</h2>
             <p class="text-xl text-center text-gray-300 mb-16 pop-up">Remplissez le formulaire pour soumettre votre demande d'engagement. Places limitées à 40 équipages.</p>
-            <form class="bg-gray-800 rounded-lg shadow-xl p-8 pop-up">
+            <form class="pop-up"> <!-- Removed Tailwind classes, styles applied via CSS -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     <div class="form-input">
                         <input type="text" id="first-name" name="pilote_prenom" required placeholder=" " class="w-full">
