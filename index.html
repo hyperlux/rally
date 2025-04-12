@@ -41,7 +41,7 @@
             overflow: hidden;
             /* Restored background image */
             background: linear-gradient(135deg, rgba(17, 24, 39, 0.75), rgba(31, 41, 55, 0.75)), url('posterwithouttext.png') no-repeat center center/cover;
-            background-attachment: fixed; /* Restore fixed attachment */
+            background-attachment: fixed;
         }
 
         #hero-section::before {
@@ -51,43 +51,46 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)); /* Lighter overlay */
             z-index: 0;
         }
 
         /* New container for the image */
         .hero-image-container {
-            flex: 1 1 40%; /* Adjust flex basis as needed */
-            padding: 2rem; /* Add padding if needed */
+            flex: 1 1 45%; /* Slightly larger to give the poster more space */
+            padding: 2rem;
             display: flex;
-            justify-content: center;
+            justify-content: center; /* Already centered */
             align-items: center;
-            position: relative; /* Ensure it's above the ::before pseudo-element */
+            position: relative;
             z-index: 1;
         }
 
         .hero-poster-image {
-            max-width: 100%;
+            max-width: 90%; /* Slightly reduce max-width to avoid stretching */
             height: auto;
-            border-radius: 10px; /* Optional styling */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Optional styling */
+            border-radius: 15px; /* Slightly larger radius for a softer look */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); /* Stronger shadow for depth */
+            transition: transform 0.3s ease; /* Add hover effect */
+        }
+
+        .hero-poster-image:hover {
+            transform: scale(1.05); /* Subtle zoom on hover */
         }
 
         /* New container for the content */
         .hero-content-container {
-            flex: 1 1 60%; /* Adjust flex basis */
+            flex: 1 1 55%; /* Slightly smaller to balance the layout */
             position: relative; /* Keep for z-index */
             z-index: 1;
-            padding: 2rem;
+            padding: 3rem; /* More padding for breathing room */
         }
 
         .hero-content {
-            /* position: relative; Already handled by container */
-            /* z-index: 1; Already handled by container */
-            text-align: left; /* Changed from center */
-            max-width: 600px; /* Adjust max-width if needed */
-            /* padding: 2rem; Moved to container */
-            margin: 0 auto; /* Center content within its container */
+            text-align: left;
+            max-width: 700px; /* Slightly wider for better readability */
+            margin: 0 auto;
+            padding: 2rem;
         }
 
         .hero-content .logo {
@@ -107,51 +110,55 @@
         }
 
         .hero-content h2 {
-            font-size: 2.7rem; /* Increased size */
-            margin-bottom: 1.5rem;
-            color: #d97706; /* Base color (darker orange) */
-            /* Removed gradient properties */
+            font-size: 3.5rem; /* Larger for emphasis */
+            font-weight: 700; /* Bolder */
+            color: #ffffff; /* White for better contrast */
+            margin-bottom: 1rem;
+            line-height: 1.1; /* Tighter line height for impact */
             animation: fadeIn 1.2s ease-out;
         }
 
         .hero-content h2 span {
-            color: #f59e0b; /* Lighter orange for numbers */
+            color: #f59e0b; /* Keep the orange for numbers */
+            font-weight: 800; /* Extra bold for numbers */
         }
 
         .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 1rem; /* Reduced margin */
-            color: #d1d5db;
+            font-size: 1.3rem; /* Slightly smaller for better proportion */
+            font-weight: 400; /* Lighter weight for the tagline */
+            color: #e5e7eb;
+            margin-bottom: 1.5rem; /* More space below */
+            letter-spacing: 0.5px; /* Subtle letter spacing for elegance */
             animation: fadeIn 1.4s ease-out;
         }
 
         /* Countdown Timer */
         .countdown-container {
-            margin: 1rem 0; /* Reduced top margin */
+            margin: 2rem 0; /* More space around the countdown */
             animation: fadeIn 1.6s ease-out;
         }
 
         .countdown-container p {
-            font-size: 1.8rem; /* Increased font size */
-            color: #fbbf24; /* Brighter yellow */
-            margin-bottom: 1.5rem; /* Increased margin */
+            font-size: 2rem; /* Larger for emphasis */
+            color: #f59e0b; /* Match the theme color */
+            margin-bottom: 2rem;
+            letter-spacing: 2px; /* More spacing for a premium feel */
             font-family: 'Racing Sans One', sans-serif;
-            text-transform: uppercase; /* Uppercase for emphasis */
-            letter-spacing: 1px; /* Slight letter spacing */
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4); /* Subtle text shadow */
+            text-transform: uppercase;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
         }
 
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 2rem; /* More space between blocks */
         }
 
         .countdown div {
-            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 2rem; /* Larger blocks */
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.15); /* Slightly lighter background */
             backdrop-filter: blur(10px);
-            padding: 1rem 1.5rem;
-            border-radius: 15px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -164,31 +171,30 @@
 
         /* Style for the 'Days' container */
         .countdown div[data-label="Jours"] {
-            transform: scale(1.1); /* Make it slightly larger */
-            border-color: #f59e0b; /* Highlight border */
-            background: rgba(245, 158, 11, 0.1); /* Subtle background tint */
+            transform: scale(1.2); /* Make "Jours" even larger */
+            background: rgba(245, 158, 11, 0.2);
+            border-color: #f59e0b; /* Keep highlight border */
         }
 
         .countdown span {
-            font-size: 2rem;
+            font-size: 2.5rem; /* Larger numbers */
             color: #f59e0b;
             display: block;
-            font-weight: 500; /* Medium weight for default */
-            /* animation: pulse 2s infinite; */ /* Removing default pulse for clarity */
+            font-weight: 500;
         }
 
         /* Style for the 'Days' number */
         .countdown div[data-label="Jours"] span {
-            font-size: 2.5rem; /* Larger font size for days */
-            font-weight: 700; /* Bolder */
-            color: #fbbf24; /* Slightly brighter yellow */
-            animation: pulse 2s infinite; /* Keep pulse only for days */
+            font-size: 3rem; /* Even larger for "Jours" */
+            font-weight: 700;
+            color: #fbbf24;
+            animation: pulse 2s infinite;
         }
 
         .countdown div::after {
             content: attr(data-label);
-            font-size: 1rem;
-            color: #d1d5db;
+            font-size: 1.2rem; /* Larger labels */
+            color: #e5e7eb; /* Lighter color for better contrast */
             margin-top: 0.5rem;
             display: block;
         }
@@ -197,45 +203,45 @@
         .hero-buttons {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem; /* Added margin */
+            gap: 2rem; /* More space between buttons */
+            margin-top: 2.5rem; /* More space above */
             animation: fadeIn 1.8s ease-out;
         }
 
         .hero-buttons a {
-            padding: 0.8rem 2rem; /* Adjusted padding */
+            padding: 1rem 2.5rem; /* Larger padding for better click area */
             border-radius: 10px;
-            font-size: 1.2rem;
+            font-size: 1.3rem; /* Slightly larger text */
             font-weight: 600;
             transition: all 0.3s ease;
-            display: inline-flex; /* Use flex for alignment */
-            flex-direction: column; /* Stack text vertically */
-            align-items: center; /* Center items horizontally */
-            justify-content: center; /* Center items vertically */
-            text-align: center; /* Center text */
-            line-height: 1.4; /* Adjust line height */
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1.4;
         }
 
         .hero-buttons .reserve-btn {
             background: linear-gradient(90deg, #f59e0b, #d97706);
             color: white;
             box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
-            padding: 1rem 2rem; /* Slightly more vertical padding for this specific button */
+            padding: 1.2rem 2.5rem; /* Slightly larger for the primary button */
         }
 
         .hero-buttons .reserve-btn .button-text-main {
             display: flex;
             align-items: center;
-            gap: 0.5rem; /* Space between icon and text */
+            gap: 0.5rem;
         }
 
         .hero-buttons .reserve-btn .button-text-secondary {
-            font-size: 0.85rem; /* Smaller font size for secondary text */
-            font-weight: 400; /* Lighter weight */
-            opacity: 0.9;
-            margin-top: 0.25rem; /* Space above secondary text */
+            font-size: 0.9rem; /* Slightly larger for readability */
+            font-weight: 400;
+            opacity: 1; /* Full opacity for better contrast */
+            color: #e5e7eb; /* Lighter color for contrast */
+            margin-top: 0.25rem;
         }
-
 
         .hero-buttons .reserve-btn:hover {
             transform: scale(1.05);
@@ -248,6 +254,8 @@
             color: #f59e0b;
             position: relative;
             overflow: hidden;
+            padding: 1rem 2.5rem; /* Match padding */
+            font-size: 1.3rem; /* Match font size */
         }
 
         .hero-buttons .info-btn::before {
@@ -755,41 +763,44 @@
         /* Responsive Adjustments */
         @media (max-width: 1024px) {
             #hero-section {
-                flex-direction: column; /* Stack image and content */
-                padding-top: 6rem;
-                align-items: center; /* Center items when stacked */
-                text-align: center; /* Center text when stacked */
-                /* background-attachment: scroll; Remove this override */
+                flex-direction: column;
+                padding-top: 7rem; /* Adjusted padding */
+                align-items: center;
+                text-align: center;
             }
             .hero-image-container {
-                flex-basis: auto; /* Reset flex basis */
-                width: 80%; /* Control width */
-                max-width: 400px; /* Max width for image */
-                padding: 1rem 0; /* Adjust padding */
-                order: 1; /* Image first */
+                flex-basis: auto;
+                width: 70%; /* Slightly smaller on tablets */
+                max-width: 400px; /* Adjusted max-width */
+                padding: 1rem 0;
+                order: 1;
             }
             .hero-content-container {
-                flex-basis: auto; /* Reset flex basis */
+                flex-basis: auto;
                 width: 100%;
-                padding: 1rem;
-                order: 2; /* Content second */
+                padding: 2rem; /* Adjusted padding */
+                order: 2;
             }
             .hero-content {
-                text-align: center; /* Center text again */
-                max-width: 800px; /* Restore or adjust max-width */
+                text-align: center; /* Center text on smaller screens */
+                max-width: 800px;
                 margin: 0 auto;
             }
             .hero-content h1 { font-size: 4rem; }
-            .hero-content h2 { font-size: 2rem; }
-            .hero-content p { font-size: 1.2rem; }
+            .hero-content h2 {
+                font-size: 2.8rem; /* Adjusted font size */
+            }
+            .hero-content p {
+                font-size: 1.1rem; /* Adjusted font size */
+            }
             .countdown-container {
-                margin: 1rem auto; /* Center countdown */
+                margin: 1rem auto;
             }
             .countdown {
-                justify-content: center; /* Center countdown items */
+                justify-content: center;
             }
             .hero-buttons {
-                justify-content: center; /* Center buttons */
+                justify-content: center; /* Center buttons on smaller screens */
             }
             #image-carousel-section { height: 50vh; }
             #event h2 { font-size: 2.5rem; }
@@ -801,32 +812,41 @@
                 padding: 4rem 1rem;
             }
             .hero-image-container {
-                width: 90%;
+                width: 80%; /* Adjust for smaller screens */
+                max-width: 300px; /* Adjusted max-width */
             }
             .hero-content h1 { font-size: 3rem; }
-            .hero-content h2 { font-size: 1.5rem; }
-            .hero-content p { font-size: 1rem; }
+            .hero-content h2 {
+                font-size: 2.2rem; /* Adjusted font size */
+            }
+            .hero-content p {
+                font-size: 1rem; /* Adjusted font size */
+            }
              .countdown {
-                gap: 0.5rem; /* Reduced gap */
+                gap: 1rem; /* Adjusted gap */
             }
             .countdown div {
-                padding: 0.5rem 0.75rem; /* Reduced padding */
+                padding: 1rem 1.5rem; /* Adjusted padding */
             }
             .countdown span {
-                font-size: 1.5rem;
+                font-size: 1.8rem; /* Adjusted font size */
+            }
+            .countdown div[data-label="Jours"] span {
+                font-size: 2.2rem; /* Adjusted font size */
             }
             .countdown div::after {
-                font-size: 0.8rem;
+                font-size: 1rem; /* Adjusted font size */
             }
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 1.5rem; /* Adjusted gap */
             }
              .hero-buttons a {
                 padding: 0.75rem 1.5rem;
-                font-size: 1rem;
-                width: 80%; /* Optional: Make buttons take more width */
-                max-width: 300px; /* Optional: Prevent buttons from becoming too wide */
+                font-size: 1.1rem; /* Adjusted font size */
+                width: 90%; /* Wider buttons on small screens */
+                max-width: 350px; /* Adjusted max-width */
             }
             #image-carousel-section { height: 40vh; }
              .carousel-slide::after {
