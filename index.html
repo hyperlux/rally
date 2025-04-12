@@ -402,7 +402,7 @@
             width: 100%;
             height: 100%;
             background: url('pic7.jpg') no-repeat center center/cover; /* Changed background image */
-            opacity: 0.05; /* Set background image opacity */
+            opacity: 0.08; /* Set background image opacity */
             z-index: 0;
         }
 
@@ -463,25 +463,20 @@
         }
 
         .event-details-card ul {
-            list-style: none;
-            padding-left: 1.5rem;
+            list-style: disc; /* Use standard disc bullets */
+            padding-left: 2.5rem; /* Adjust padding for bullet spacing */
+            margin-left: 0; /* Ensure no extra margin */
         }
 
         .event-details-card ul li {
-            position: relative;
+            /* position: relative; */ /* Removed relative positioning */
             margin-bottom: 0.75rem;
             font-size: 1rem;
             color: #d1d5db;
+            padding-left: 0.5rem; /* Add some padding between bullet and text */
         }
 
-        .event-details-card ul li::before {
-            content: '•';
-            color: #f59e0b;
-            font-size: 1.5rem;
-            position: absolute;
-            left: -1.5rem;
-            top: 0;
-        }
+        /* Removed the ::before rule for custom bullets */
 
         /* Pricing Card Specific Styles */
         .event-details-card.price-card {
@@ -549,8 +544,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('pic3.jpg') no-repeat center center/cover; /* Changed background image */
-            opacity: 0.05; /* Set background image opacity */
+            background: url('pic12.jpg') no-repeat center center/cover; /* Changed background image */
+            opacity: 0.08; /* Set background image opacity */
             z-index: 0;
         }
 
@@ -570,7 +565,8 @@
 
         .form-input {
             position: relative;
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.9rem;
+            /* Removed min-height */
         }
 
         .form-input input,
@@ -579,7 +575,7 @@
             border: none;
             border-bottom: 2px solid #4b5563;
             transition: all 0.3s ease;
-            padding: 0.75rem 1rem;
+            padding: 0.75rem 1rem 1.2rem 1rem; /* Keep top padding standard, increase bottom padding */
             color: white;
             width: 100%;
             border-radius: 0;
@@ -593,7 +589,7 @@
 
         .form-input label {
             position: absolute;
-            top: 0.75rem;
+            top: 0.75rem; /* Adjust label top position for the new container height */
             left: 1rem;
             transition: all 0.3s ease;
             color: #9ca3af;
@@ -765,9 +761,8 @@
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
-                            <a href="#" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gradient-to-r from-amber-500 to-amber-600">Accueil</a>
-                            <a href="#event" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">L'Événement</a>
-                            <a href="#register" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">S'inscrire</a>
+                            <a href="#event" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gradient-to-r from-amber-500 to-amber-600">L'Événement</a>
+                            <a href="#event" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">Info</a>
                         </div>
                     </div>
                 </div>
@@ -790,9 +785,8 @@
         <!-- Mobile menu, show/hide based on menu state. -->
         <div class="md:hidden" id="mobile-menu" style="display: none;">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-amber-500 to-amber-600">Accueil</a>
-                <a href="#event" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">L'Événement</a>
-                <a href="#register" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">S'inscrire</a>
+                <a href="#event" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-amber-500 to-amber-600">L'Événement</a>
+                <a href="#event" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Info</a>
             </div>
             <div class="pt-4 pb-3 border-t border-gray-700">
                 <div class="flex items-center px-5">
@@ -843,52 +837,52 @@
     <!-- Image Carousel Section -->
     <section id="image-carousel-section" class="pop-up">
         <div class="carousel-slide active">
-            <img src="pic1.jpg" alt="Porsche Rallye Image 1">
-        </div>
-        <div class="carousel-slide">
-            <img src="pic2.jpg" alt="Porsche Rallye Image 2">
-        </div>
-        <div class="carousel-slide">
-            <img src="pic3.jpg" alt="Porsche Rallye Image 3">
-        </div>
-        <div class="carousel-slide">
-            <img src="pic4.jpg" alt="Porsche Rallye Image 4">
-        </div>
-        <div class="carousel-slide">
-            <img src="pic5.jpg" alt="Porsche Rallye Image 5">
-        </div>
-        <div class="carousel-slide">
-            <img src="pic6.jpg" alt="Porsche Rallye Image 6">
-        </div>
-        <div class="carousel-slide">
-            <img src="pic7.jpg" alt="Porsche Rallye Image 7">
-        </div>
-        <div class="carousel-slide">
-            <img src="pic8.jpg" alt="Porsche Rallye Image 8">
-        </div>
-        <div class="carousel-slide">
-            <img src="pic9.jpg" alt="Porsche Rallye Image 9">
-        </div>
-        <div class="carousel-slide">
-            <img src="pic10.jpg" alt="Porsche Rallye Image 10">
-        </div>
-        <div class="carousel-slide">
-            <img src="pic11.jpg" alt="Porsche Rallye Image 11">
-        </div>
-        <div class="carousel-slide">
-            <img src="pic12.jpg" alt="Porsche Rallye Image 12">
-        </div>
-        <div class="carousel-slide">
-            <img src="pic13.jpg" alt="Porsche Rallye Image 13">
-        </div>
-        <div class="carousel-slide">
-            <img src="pic14.jpg" alt="Porsche Rallye Image 14">
+            <img src="pic16.jpg" alt="Porsche Rallye Image 16">
         </div>
         <div class="carousel-slide">
             <img src="pic15.jpg" alt="Porsche Rallye Image 15">
         </div>
         <div class="carousel-slide">
-            <img src="pic16.jpg" alt="Porsche Rallye Image 16">
+            <img src="pic14.jpg" alt="Porsche Rallye Image 14">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic13.jpg" alt="Porsche Rallye Image 13">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic12.jpg" alt="Porsche Rallye Image 12">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic11.jpg" alt="Porsche Rallye Image 11">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic10.jpg" alt="Porsche Rallye Image 10">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic9.jpg" alt="Porsche Rallye Image 9">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic8.jpg" alt="Porsche Rallye Image 8">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic7.jpg" alt="Porsche Rallye Image 7">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic6.jpg" alt="Porsche Rallye Image 6">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic5.jpg" alt="Porsche Rallye Image 5">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic4.jpg" alt="Porsche Rallye Image 4">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic3.jpg" alt="Porsche Rallye Image 3">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic2.jpg" alt="Porsche Rallye Image 2">
+        </div>
+        <div class="carousel-slide">
+            <img src="pic1.jpg" alt="Porsche Rallye Image 1">
         </div>
         <div class="carousel-nav">
             <!-- Dots will be generated dynamically -->
@@ -990,7 +984,7 @@
                 </div>
                 <div class="mb-8 form-input">
                     <input type="text" id="car-model-year" name="voiture_modele_annee" required placeholder=" " class="w-full">
-                    <label for="car-model-year">Modèle et Année de votre Porsche (1950-1989)</label>
+                    <label for="car-model-year">Modèle et Année de votre Porsche</label>
                 </div>
                 <div class="mb-8 form-input">
                     <textarea id="message" name="message" rows="4" placeholder=" " class="w-full"></textarea>
