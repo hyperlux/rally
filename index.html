@@ -33,14 +33,15 @@
         /* Hero Section */
         #hero-section {
             min-height: 100vh;
-            display: flex;
-            align-items: flex-start; /* Align content to the top */
-            justify-content: center;
-            padding-top: 5rem; /* Reverted padding-top */
+            display: flex; /* Changed to flex */
+            align-items: center; /* Center items vertically */
+            /* justify-content: center; Removed */
+            padding-top: 5rem; /* Keep padding or adjust */
             position: relative;
             overflow: hidden;
+            /* Restored background image */
             background: linear-gradient(135deg, rgba(17, 24, 39, 0.75), rgba(31, 41, 55, 0.75)), url('posterwithouttext.png') no-repeat center center/cover;
-            background-attachment: fixed;
+            background-attachment: fixed; /* Restore fixed attachment */
         }
 
         #hero-section::before {
@@ -54,12 +55,39 @@
             z-index: 0;
         }
 
-        .hero-content {
-            position: relative;
+        /* New container for the image */
+        .hero-image-container {
+            flex: 1 1 40%; /* Adjust flex basis as needed */
+            padding: 2rem; /* Add padding if needed */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* Ensure it's above the ::before pseudo-element */
             z-index: 1;
-            text-align: center;
-            max-width: 800px; /* Restoring max-width */
+        }
+
+        .hero-poster-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px; /* Optional styling */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Optional styling */
+        }
+
+        /* New container for the content */
+        .hero-content-container {
+            flex: 1 1 60%; /* Adjust flex basis */
+            position: relative; /* Keep for z-index */
+            z-index: 1;
             padding: 2rem;
+        }
+
+        .hero-content {
+            /* position: relative; Already handled by container */
+            /* z-index: 1; Already handled by container */
+            text-align: left; /* Changed from center */
+            max-width: 600px; /* Adjust max-width if needed */
+            /* padding: 2rem; Moved to container */
+            margin: 0 auto; /* Center content within its container */
         }
 
         .hero-content .logo {
@@ -563,36 +591,42 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Match card shadow */
         }
 
+        #register h3 { /* Style for new subheadings */
+            font-family: 'Racing Sans One', sans-serif;
+            color: #f59e0b;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
         .form-input {
             position: relative;
-            margin-bottom: 0.9rem;
-            /* Removed min-height */
+            margin-bottom: 1.5rem; /* Increased from 0.9rem for better spacing */
         }
 
         .form-input input,
         .form-input textarea {
-            background: transparent;
-            border: none;
-            border-bottom: 2px solid #4b5563;
+            background: rgba(255, 255, 255, 0.05); /* Subtle background for better visibility */
+            border: 1px solid #4b5563; /* Full border instead of just bottom */
+            border-radius: 8px; /* Rounded corners for a modern look */
+            padding: 1rem; /* Standardize padding */
             transition: all 0.3s ease;
-            padding: 0.75rem 1rem 1.2rem 1rem; /* Keep top padding standard, increase bottom padding */
             color: white;
             width: 100%;
-            border-radius: 0;
         }
 
         .form-input input:focus,
         .form-input textarea:focus {
-            border-bottom: 2px solid #f59e0b;
+            border: 1px solid #f59e0b; /* Full border on focus */
+            background: rgba(255, 255, 255, 0.1); /* Slightly lighter background on focus */
             outline: none;
         }
 
         .form-input label {
             position: absolute;
-            top: 0.75rem; /* Adjust label top position for the new container height */
+            top: 0.75rem;
             left: 1rem;
+            font-size: 1rem; /* Ensure label size is readable */
             transition: all 0.3s ease;
-            color: #9ca3af;
+            color: #d1d5db; /* Lighter color for better contrast */
             pointer-events: none;
         }
 
@@ -600,10 +634,28 @@
         .form-input input:not(:placeholder-shown) + label,
         .form-input textarea:focus + label,
         .form-input textarea:not(:placeholder-shown) + label {
-            top: -1rem;
-            left: 0.5rem;
-            font-size: 0.75rem;
+            top: -1.2rem; /* Adjust label position for better visibility */
+            left: 0.5rem; /* Keep consistent */
+            font-size: 0.85rem; /* Slightly larger for readability */
             color: #f59e0b;
+        }
+
+        /* Error Styling */
+        .form-input input:invalid:focus,
+        .form-input textarea:invalid:focus {
+            border-color: #ef4444; /* Red border for invalid fields */
+        }
+
+        .form-input .error-message {
+            display: none;
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        .form-input input:invalid:focus ~ .error-message,
+        .form-input textarea:invalid:focus ~ .error-message {
+            display: block;
         }
 
         /* Footer */
@@ -618,6 +670,37 @@
         footer a:hover {
             color: #f59e0b !important;
             transform: translateY(-2px);
+        }
+
+        /* Enhanced "Information Importante" Section */
+        .mb-8.bg-amber-900 {
+            background: rgba(245, 158, 11, 0.1); /* Softer background */
+            border: 1px solid #f59e0b; /* Match theme color */
+            padding: 1.5rem; /* More padding for better readability */
+            border-radius: 10px;
+            margin-bottom: 2rem; /* More space below */
+        }
+
+        .mb-8.bg-amber-900 p {
+            font-size: 1rem; /* Larger text for readability */
+            color: #f5f5f5; /* Lighter text color */
+        }
+
+        .mb-8.bg-amber-900 .font-semibold {
+            color: #f59e0b; /* Highlight important text */
+        }
+
+        .mb-8.bg-amber-900 i {
+            animation: iconBounce 2s infinite; /* Add subtle animation to the warning icon */
+        }
+
+        /* Improved Submit Button */
+        button[type="submit"] {
+            padding: 1rem 2rem; /* Adjust padding */
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4); /* Add shadow for prominence */
+            max-width: 400px; /* Limit width on larger screens */
+            margin: 0 auto; /* Center the button */
+            display: block; /* Ensure margin auto works */
         }
 
         /* Back to Top Button */
@@ -672,25 +755,58 @@
         /* Responsive Adjustments */
         @media (max-width: 1024px) {
             #hero-section {
-                background-attachment: scroll;
+                flex-direction: column; /* Stack image and content */
                 padding-top: 6rem;
+                align-items: center; /* Center items when stacked */
+                text-align: center; /* Center text when stacked */
+                /* background-attachment: scroll; Remove this override */
+            }
+            .hero-image-container {
+                flex-basis: auto; /* Reset flex basis */
+                width: 80%; /* Control width */
+                max-width: 400px; /* Max width for image */
+                padding: 1rem 0; /* Adjust padding */
+                order: 1; /* Image first */
+            }
+            .hero-content-container {
+                flex-basis: auto; /* Reset flex basis */
+                width: 100%;
+                padding: 1rem;
+                order: 2; /* Content second */
+            }
+            .hero-content {
+                text-align: center; /* Center text again */
+                max-width: 800px; /* Restore or adjust max-width */
+                margin: 0 auto;
             }
             .hero-content h1 { font-size: 4rem; }
             .hero-content h2 { font-size: 2rem; }
             .hero-content p { font-size: 1.2rem; }
+            .countdown-container {
+                margin: 1rem auto; /* Center countdown */
+            }
+            .countdown {
+                justify-content: center; /* Center countdown items */
+            }
+            .hero-buttons {
+                justify-content: center; /* Center buttons */
+            }
             #image-carousel-section { height: 50vh; }
             #event h2 { font-size: 2.5rem; }
             .event-details-card { padding: 1.5rem; }
         }
 
         @media (max-width: 768px) {
-            #hero-section {
+             #hero-section {
                 padding: 4rem 1rem;
+            }
+            .hero-image-container {
+                width: 90%;
             }
             .hero-content h1 { font-size: 3rem; }
             .hero-content h2 { font-size: 1.5rem; }
             .hero-content p { font-size: 1rem; }
-            .countdown {
+             .countdown {
                 gap: 0.5rem; /* Reduced gap */
             }
             .countdown div {
@@ -706,14 +822,14 @@
                 flex-direction: column;
                 align-items: center;
             }
-            .hero-buttons a {
+             .hero-buttons a {
                 padding: 0.75rem 1.5rem;
                 font-size: 1rem;
                 width: 80%; /* Optional: Make buttons take more width */
                 max-width: 300px; /* Optional: Prevent buttons from becoming too wide */
             }
             #image-carousel-section { height: 40vh; }
-            .carousel-slide::after {
+             .carousel-slide::after {
                 font-size: 0.8rem;
                 padding: 0.3rem 0.6rem;
             }
@@ -721,6 +837,25 @@
             .event-details-card h3 { font-size: 1.5rem; }
             .event-details-card p { font-size: 1rem; }
             .event-details-card.price-card p.price { font-size: 2rem; }
+
+            /* Registration Form Responsive */
+            #register form {
+                padding: 1.5rem; /* Reduce padding on smaller screens */
+            }
+
+            .grid {
+                gap: 1rem; /* Reduce gap between fields on smaller screens */
+            }
+
+            .form-input input,
+            .form-input textarea {
+                padding: 0.75rem; /* Slightly smaller padding for smaller screens */
+            }
+
+            button[type="submit"] {
+                max-width: 100%; /* Full width on smaller screens */
+                padding: 0.75rem 1.5rem;
+            }
         }
 
         /* Even smaller screens adjustments */
@@ -747,6 +882,19 @@
             .hero-buttons a {
                 width: 90%; /* Make buttons slightly wider */
             }
+
+            /* Registration Form Responsive */
+            #register form {
+                padding: 1rem;
+            }
+
+            .grid {
+                gap: 0.75rem;
+            }
+
+            .form-input {
+                margin-bottom: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -757,12 +905,13 @@
             <div class="flex items-center justify-between h-20"> <!-- Medium height -->
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <img class="h-24" src="car.png" alt="Porsche"> <!-- Increased logo size -->
+                        <a href="#" class="text-2xl font-bold text-white hover:text-gray-300" style="font-family: 'Racing Sans One', sans-serif;">LE CARRERA RALLYE</a>
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
-                            <a href="#event" class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gradient-to-r from-amber-500 to-amber-600">L'Événement</a>
+                            <a href="#event" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">L'Événement</a>
                             <a href="#event" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">Info</a>
+                            <a href="#partenaires" class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">Nos Partenaires</a>
                         </div>
                     </div>
                 </div>
@@ -785,8 +934,9 @@
         <!-- Mobile menu, show/hide based on menu state. -->
         <div class="md:hidden" id="mobile-menu" style="display: none;">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#event" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gradient-to-r from-amber-500 to-amber-600">L'Événement</a>
+                <a href="#event" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">L'Événement</a>
                 <a href="#event" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Info</a>
+                <a href="#partenaires" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Nos Partenaires</a>
             </div>
             <div class="pt-4 pb-3 border-t border-gray-700">
                 <div class="flex items-center px-5">
@@ -800,33 +950,38 @@
 
     <!-- Hero Section -->
     <section id="hero-section" class="relative">
-        <div class="hero-content">
-            <h1 class="md:whitespace-nowrap">LE CARRERA RALLYE</h1>
-            <div class="flex justify-center mb-4">
-                <p><strong>Une expérience exclusive pour les passionnés de Porsche classiques.</strong></p>
-            </div>
-            <h2 class="font-bold">Le <span>27</span> et <span>28</span> Septembre 2025</h2>
-            <div class="countdown-container">
-                <p>On demarre dans</p>
-                <div class="countdown">
-                    <div data-label="Jours"><span id="days">00</span></div>
-                    <div data-label="Heures"><span id="hours">00</span></div>
-                    <div data-label="Minutes"><span id="minutes">00</span></div>
-                    <div data-label="Secondes"><span id="seconds">00</span></div>
+        <div class="hero-image-container"> <!-- New container for the image -->
+            <img src="poster.jpeg" alt="Carrera Rallye Poster" class="hero-poster-image">
+        </div>
+        <div class="hero-content-container"> <!-- New container for the content -->
+            <div class="hero-content">
+                <!-- Existing content goes here -->
+                <div class="flex justify-center mb-4 md:justify-start"> <!-- Adjusted alignment for larger screens -->
+                    <p><strong>Une expérience exclusive pour les passionnés de Porsche classiques.</strong></p>
                 </div>
-            </div>
-            <div class="hero-buttons">
-                <a href="#register" class="reserve-btn">
-                    <span class="button-text-main">
-                        <i class="fas fa-flag-checkered"></i> Réservez Votre Place
-                    </span>
-                    <span class="button-text-secondary">(40 Équipages Max)</span>
-                </a>
-                <a href="#event" class="info-btn">
-                    <span class="button-text-main">
-                        <i class="fas fa-info-circle"></i> En Savoir Plus
-                    </span>
-                </a>
+                <h2 class="font-bold">Le <span>27</span> et <span>28</span> Septembre 2025</h2>
+                <div class="countdown-container">
+                    <p>On demarre dans</p>
+                    <div class="countdown md:justify-start"> <!-- Adjusted alignment for larger screens -->
+                        <div data-label="Jours"><span id="days">00</span></div>
+                        <div data-label="Heures"><span id="hours">00</span></div>
+                        <div data-label="Minutes"><span id="minutes">00</span></div>
+                        <div data-label="Secondes"><span id="seconds">00</span></div>
+                    </div>
+                </div>
+                <div class="hero-buttons md:justify-start"> <!-- Adjusted alignment for larger screens -->
+                    <a href="#register" class="reserve-btn">
+                        <span class="button-text-main">
+                            <i class="fas fa-flag-checkered"></i> Réservez Votre Place
+                        </span>
+                        <span class="button-text-secondary">(40 Équipages Max)</span>
+                    </a>
+                    <a href="#event" class="info-btn">
+                        <span class="button-text-main">
+                            <i class="fas fa-info-circle"></i> En Savoir Plus
+                        </span>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="scroll-down">
@@ -894,7 +1049,10 @@
     <!-- Event Details Section -->
     <section id="event" class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 pop-up">DÉTAILS DU CARRERA RALLYE</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 pop-up">DÉTAILS DU CARRERA RALLYE</h2> <!-- Reduced bottom margin -->
+            <p class="text-lg text-center text-gray-300 mb-16 pop-up">
+                Cette manifestation n'est pas une compétition ni un rallye de régularité. Il s'agit d'un rallye promenade qui vous permettra à l'aide du roadbook de valider des checkpoints.
+            </p>
             <div class="event-details-container">
                 <!-- Dates & Lieu -->
                 <div class="event-details-card pop-up">
@@ -911,8 +1069,8 @@
                         <li>356 (Pré A, A, B, C, SC)</li>
                         <li>904 (4 ou 6 cylindres)</li>
                         <li>906, 910</li>
-                        <li>911, 912</li>
-                    </ul>
+                        <li>911 (tout model), 912</li>
+                        <li>914 (4 ou 6 cylindres)</li>
                     <p class="mt-4 font-semibold">Conditions :</p>
                     <ul>
                         <li>Voiture assurée</li>
@@ -956,54 +1114,91 @@
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 font-['Racing_Sans_One'] pop-up">INSCRIPTION AU CARRERA RALLYE</h2>
             <p class="text-xl text-center text-gray-300 mb-16 pop-up">Remplissez le formulaire pour soumettre votre demande d'engagement. Places limitées à 40 équipages.</p>
             <form class="pop-up"> <!-- Removed Tailwind classes, styles applied via CSS -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <h3 class="text-xl font-semibold text-white mb-6">Informations des Participants</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 px-2 sm:px-4">
                     <div class="form-input">
                         <input type="text" id="first-name" name="pilote_prenom" required placeholder=" " class="w-full">
                         <label for="first-name">Prénom (Pilote)</label>
+                        <span class="error-message">Ce champ est requis.</span>
                     </div>
                     <div class="form-input">
                         <input type="text" id="last-name" name="pilote_nom" required placeholder=" " class="w-full">
                         <label for="last-name">Nom (Pilote)</label>
+                        <span class="error-message">Ce champ est requis.</span>
                     </div>
                     <div class="form-input">
                         <input type="text" id="copilote-first-name" name="copilote_prenom" required placeholder=" " class="w-full">
                         <label for="copilote-first-name">Prénom (Copilote)</label>
+                        <span class="error-message">Ce champ est requis.</span>
                     </div>
                     <div class="form-input">
                         <input type="text" id="copilote-last-name" name="copilote_nom" required placeholder=" " class="w-full">
                         <label for="copilote-last-name">Nom (Copilote)</label>
+                        <span class="error-message">Ce champ est requis.</span>
                     </div>
                     <div class="form-input">
                         <input type="email" id="email" name="email" required placeholder=" " class="w-full">
                         <label for="email">Adresse E-mail</label>
+                        <span class="error-message">Veuillez entrer une adresse e-mail valide.</span>
                     </div>
                     <div class="form-input">
                         <input type="tel" id="phone" name="telephone" required placeholder=" " class="w-full">
                         <label for="phone">Numéro de Téléphone</label>
+                        <span class="error-message">Ce champ est requis.</span>
                     </div>
                 </div>
+
+                <h3 class="text-xl font-semibold text-white mb-6">Détails du Véhicule</h3>
                 <div class="mb-8 form-input">
                     <input type="text" id="car-model-year" name="voiture_modele_annee" required placeholder=" " class="w-full">
                     <label for="car-model-year">Modèle et Année de votre Porsche</label>
+                    <span class="error-message">Ce champ est requis.</span>
                 </div>
+
+                <h3 class="text-xl font-semibold text-white mb-6">Commentaires</h3>
                 <div class="mb-8 form-input">
                     <textarea id="message" name="message" rows="4" placeholder=" " class="w-full"></textarea>
                     <label for="message">Demandes Spéciales / Commentaires</label>
+                    <!-- No error message needed for optional field -->
                 </div>
+
                 <div class="mb-8 bg-amber-900 bg-opacity-30 border border-amber-700 p-4 rounded-md text-amber-200">
                     <p class="font-semibold mb-2"><i class="fas fa-exclamation-triangle mr-2"></i> Information Importante</p>
                     <p>Un acompte de 1449 € est requis pour confirmer votre engagement. Notre équipe vous contactera après soumission de ce formulaire avec les détails de paiement. Le solde de 1000 € sera dû 30 jours avant l'événement.</p>
                 </div>
+
                 <div class="flex items-center mb-8">
                     <input id="terms" name="accepte_conditions" type="checkbox" required class="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-600 rounded">
                     <label for="terms" class="ml-2 block text-sm text-gray-300">
                         Je confirme avoir lu les détails de l'événement et j'accepte les <a href="#" class="text-amber-500 hover:underline">termes et conditions</a> et la <a href="#" class="text-amber-500 hover:underline">politique de confidentialité</a>.
                     </label>
                 </div>
+
                 <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white py-4 rounded-md text-lg font-semibold transition duration-300 transform hover:scale-105">
                     <i class="fas fa-paper-plane mr-2"></i> Soumettre ma Demande d'Engagement
                 </button>
             </form>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section id="partenaires" class="py-20 bg-gray-800 pop-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-white font-['Racing_Sans_One']">Nos Partenaires</h2>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                <!-- Partner Logo -->
+                <div class="flex justify-center items-center h-48 w-80 rounded-lg opacity-80 hover:opacity-100 transition duration-300">
+                    <img src="superu.png" alt="Super U Logo" class="max-h-full max-w-full object-contain">
+                </div>
+                <!-- Example Logo (replace with actual logos)
+                <div class="flex justify-center items-center h-24 w-40 bg-white p-4 rounded-lg opacity-80 hover:opacity-100 transition duration-300">
+                    <img src="path/to/partner-logo1.png" alt="Partner 1 Logo" class="max-h-full max-w-full object-contain">
+                </div>
+                <div class="flex justify-center items-center h-24 w-40 bg-white p-4 rounded-lg opacity-80 hover:opacity-100 transition duration-300">
+                    <img src="path/to/partner-logo2.png" alt="Partner 2 Logo" class="max-h-full max-w-full object-contain">
+                </div>
+                 -->
+            </div>
         </div>
     </section>
 
@@ -1026,8 +1221,7 @@
                 <div>
                     <h3 class="text-white font-semibold mb-4">Contactez-Nous</h3>
                     <ul class="space-y-2 text-gray-400">
-                        <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> Porsche Collection</li>
-                        <li class="flex items-center"><i class="fas fa-phone-alt mr-2"></i> +XX XXX XXX XX (À Remplacer)</li>
+                        <li class="flex items-center"><i class="fas fa-phone-alt mr-2"></i> 06 11 23 19 48</li>
                         <li class="flex items-center"><i class="fas fa-envelope mr-2"></i> carrera.rallye@porschecollection.fr (Exemple)</li>
                     </ul>
                 </div>
@@ -1119,17 +1313,53 @@
             }
         });
 
-        // Form submission simulation
-        const form = document.querySelector('form');
+        // Form submission simulation & Basic Validation
+        const form = document.querySelector('#register form'); // More specific selector
         if (form) {
             form.addEventListener('submit', function(e) {
-                e.preventDefault();
+                // Basic client-side validation
+                const inputs = form.querySelectorAll('input[required], textarea[required]');
+                let isValid = true;
+
+                inputs.forEach(input => {
+                    // Reset custom validity
+                    input.setCustomValidity('');
+                    // Check validity
+                    if (!input.checkValidity()) {
+                        // For email type, provide a specific message if it's a type mismatch
+                        if (input.type === 'email' && input.validity.typeMismatch) {
+                            input.setCustomValidity('Veuillez entrer une adresse e-mail valide.');
+                        } else if (input.validity.valueMissing) {
+                            input.setCustomValidity('Ce champ est requis.');
+                        }
+                        // Trigger browser's default invalid style/message temporarily
+                        // input.reportValidity(); // Can be annoying, let CSS handle visual state
+                        isValid = false;
+                    }
+                });
+
                 const termsCheckbox = document.getElementById('terms');
                 if (!termsCheckbox.checked) {
-                    alert("Veuillez accepter les termes et conditions.");
-                    return;
+                    termsCheckbox.setCustomValidity('Veuillez accepter les termes et conditions.');
+                    // termsCheckbox.reportValidity(); // Optional: show browser message
+                    isValid = false;
+                } else {
+                    termsCheckbox.setCustomValidity('');
                 }
 
+                if (!isValid) {
+                    e.preventDefault(); // Prevent submission if form is invalid
+                    console.log('Form validation failed.');
+                    // Optionally, scroll to the first invalid field
+                    const firstInvalid = form.querySelector(':invalid');
+                    if (firstInvalid) {
+                        firstInvalid.focus();
+                    }
+                    return; // Stop further processing
+                }
+
+                // If valid, proceed with submission simulation
+                e.preventDefault(); // Keep preventing default for simulation
                 console.log('Form data submitted (simulation):');
                 const formData = new FormData(form);
                 for (let [key, value] of formData.entries()) {
@@ -1138,6 +1368,13 @@
 
                 alert('Merci pour votre demande d\'engagement ! Notre équipe vous contactera sous peu concernant le paiement de l\'acompte.');
                 form.reset();
+            });
+
+            // Optional: Clear custom validity on input
+            form.querySelectorAll('input[required], textarea[required], input[type="checkbox"]').forEach(input => {
+                input.addEventListener('input', () => {
+                    input.setCustomValidity('');
+                });
             });
         }
 
