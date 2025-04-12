@@ -73,7 +73,7 @@
             font-size: 5rem;
             letter-spacing: 2px;
             color: #ffffff;
-            margin-bottom: 1rem;
+            margin-bottom: 0; /* Removed margin */
             text-shadow: 4px 4px 15px rgba(0, 0, 0, 0.5);
             animation: slideIn 1s ease-out;
         }
@@ -170,6 +170,7 @@
             display: flex;
             justify-content: center;
             gap: 1.5rem;
+            margin-top: 2rem; /* Added margin */
             animation: fadeIn 1.8s ease-out;
         }
 
@@ -798,10 +799,10 @@
     <section id="hero-section" class="relative">
         <div class="hero-content">
             <h1 class="md:whitespace-nowrap">LE CARRERA RALLYE</h1>
-            <h2 class="font-bold">Le <span>27</span> et <span>28</span> Septembre 2025</h2>
             <div class="flex justify-center mb-4">
-                <p class="whitespace-nowrap"><strong>Une expérience exclusive pour les passionnés de Porsche classiques.</strong></p>
+                <p><strong>Une expérience exclusive pour les passionnés de Porsche classiques.</strong></p>
             </div>
+            <h2 class="font-bold">Le <span>27</span> et <span>28</span> Septembre 2025</h2>
             <div class="countdown-container">
                 <p>On demarre dans</p>
                 <div class="countdown">
