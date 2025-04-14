@@ -4,10 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrera Rallye - Expérience Porsche</title>
+    <link rel="icon" type="image/png" href="car.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="car.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="car.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="car.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="car.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Racing+Sans+One&display=swap');
+        
+        /* Match "Une expérience exclusive..." to h2 style */
+        .hero-content .hero-headline {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            animation: fadeIn 1.2s ease-out;
+        }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -110,11 +125,11 @@
         }
 
         .hero-content h2 {
-            font-size: 3.5rem; /* Larger for emphasis */
-            font-weight: 700; /* Bolder */
-            color: #ffffff; /* White for better contrast */
+            font-size: 1.3rem; /* Smaller for secondary detail */
+            font-weight: 400; /* Lighter */
+            color: #e5e7eb; /* Subtitle color */
             margin-bottom: 1rem;
-            line-height: 1.1; /* Tighter line height for impact */
+            line-height: 1.1;
             animation: fadeIn 1.2s ease-out;
         }
 
@@ -925,7 +940,6 @@
             <div class="flex items-center justify-between h-20"> <!-- Medium height -->
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <a href="#" class="text-2xl font-bold text-white hover:text-gray-300" style="font-family: 'Racing Sans One', sans-serif;">LE CARRERA RALLYE</a>
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
@@ -977,9 +991,9 @@
             <div class="hero-content">
                 <!-- Existing content goes here -->
                 <div class="flex justify-center mb-4 md:justify-start"> <!-- Adjusted alignment for larger screens -->
-                    <p><strong>Une expérience exclusive pour les passionnés de Porsche classiques.</strong></p>
+                    <p class="hero-headline"><strong>Une expérience exclusive pour les passionnés de Porsche classiques.</strong></p>
                 </div>
-                <h2 class="font-bold">Le <span>27</span> et <span>28</span> Septembre 2025</h2>
+                <h2 class="font-bold">Le <span style="color: #fff;">27</span> et <span style="color: #fff;">28</span> Septembre 2025</h2>
                 <div class="countdown-container">
                     <p>On demarre dans</p>
                     <div class="countdown md:justify-start"> <!-- Adjusted alignment for larger screens -->
@@ -1070,10 +1084,20 @@
     <section id="event" class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 pop-up">DÉTAILS DU CARRERA RALLYE</h2> <!-- Reduced bottom margin -->
-            <p class="text-lg text-center text-gray-300 mb-16 pop-up">
-                Cette manifestation n'est pas une compétition ni un rallye de régularité. Il s'agit d'un rallye promenade qui vous permettra à l'aide du roadbook de valider des checkpoints.
-            </p>
             <div class="event-details-container">
+                <!-- Itinéraire & Hébergement (New Card) -->
+                <div class="event-details-card pop-up">
+                    <h3><i class="fas fa-road"></i> Itinéraire & Hébergement</h3>
+                    <p>Départ le samedi matin du Château de Drudas. Niché aux confins du département de la Haute-Garonne et à la porte de la Gascogne, ce grand domaine nous accueille pour un petit-déjeuner avant de prendre le départ de cette édition.</p>
+                    <p>À l’aide du Road Book, vous cheminerez sur les plus belles routes du Gers. Le déjeuner de midi aura lieu à la Ferme aux Grives, célèbre établissement de Michel Guérard dans le village thermal d’Eugénie-les-Bains.</p>
+                    <p>Le parcours de l’après-midi vous mènera au pied des Pyrénées, dans la douce ville de Pau. L’Hôtel 5 étoiles Parc Beaumont nous accueillera pour le dîner et la nuitée.</p>
+                    <p>Le dimanche matin, vous cheminerez sur les routes du Béarn, en direction de l’Espagne et de quelques cols renommés. Le déjeuner dominical est assuré par la fameuse Maison Ithurria à Ainhoa.</p>
+                    <p>L’étape de l’après-midi dans les Pyrénées Basques vous amènera au bord de la mer, dans le majestueux Hôtel du Palais à Biarritz. La remise des prix et un cocktail clôtureront l’édition 2025.</p>
+                    <p class="mt-4 font-semibold">Options d'hébergement supplémentaires :</p>
+                    <ul>
+                        <li>Les concurrents qui désirent arriver le vendredi soir ou rester le dimanche soir bénéficieront de tarifs négociés au Château de Drudas et à l’Hôtel du Palais pour cette manifestation.</li>
+                    </ul>
+                </div>
                 <!-- Dates & Lieu -->
                 <div class="event-details-card pop-up">
                     <h3><i class="fas fa-calendar-alt"></i> Dates & Lieu</h3>
@@ -1110,6 +1134,7 @@
                         <li>Remise des prix avec cocktail à l'arrivée</li>
                     </ul>
                 </div>
+                <!-- Itinéraire & Hébergement (New Card) -->
                 <!-- Tarif & Paiement (Last) -->
                 <div class="event-details-card price-card pop-up">
                     <h3><i class="fas fa-euro-sign"></i> Tarif & Paiement</h3>
