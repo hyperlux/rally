@@ -50,7 +50,7 @@
             min-height: 100vh;
             display: flex; /* Changed to flex */
             align-items: center; /* Center items vertically */
-            /* justify-content: center; Removed */
+            justify-content: center;
             padding-top: 5rem; /* Keep padding or adjust */
             position: relative;
             overflow: hidden;
@@ -72,7 +72,8 @@
 
         /* New container for the image */
         .hero-image-container {
-            flex: 1 1 45%; /* Slightly larger to give the poster more space */
+            flex: 1 1 45%; /* Restore original width */
+            margin-left: 5%; /* Shift image a little to the right */
             padding: 2rem;
             display: flex;
             justify-content: center; /* Already centered */
@@ -95,7 +96,7 @@
 
         /* New container for the content */
         .hero-content-container {
-            flex: 1 1 55%; /* Slightly smaller to balance the layout */
+            flex: 1 1 55%; /* Restore original width */
             position: relative; /* Keep for z-index */
             z-index: 1;
             padding: 3rem; /* More padding for breathing room */
@@ -149,7 +150,8 @@
 
         /* Countdown Timer */
         .countdown-container {
-            margin: 2rem 0; /* More space around the countdown */
+            margin: 2rem 0;
+            text-align: left;
             animation: fadeIn 1.6s ease-out;
         }
 
@@ -165,12 +167,13 @@
 
         .countdown {
             display: flex;
-            justify-content: center;
-            gap: 2rem; /* More space between blocks */
+            justify-content: flex-start;
+            width: 100%;
+            gap: 1.2rem; /* Slightly smaller space between blocks */
         }
 
         .countdown div {
-            padding: 1.5rem 2rem; /* Larger blocks */
+            padding: 1rem 1.2rem; /* Slightly smaller blocks */
             border-radius: 20px;
             background: rgba(255, 255, 255, 0.15); /* Slightly lighter background */
             backdrop-filter: blur(10px);
@@ -187,12 +190,13 @@
         /* Style for the 'Days' container */
         .countdown div[data-label="Jours"] {
             transform: scale(1.2); /* Make "Jours" even larger */
+            margin-right: 0.6rem; /* Compensate for scale to keep spacing even */
             background: rgba(245, 158, 11, 0.2);
             border-color: #f59e0b; /* Keep highlight border */
         }
 
         .countdown span {
-            font-size: 2.5rem; /* Larger numbers */
+            font-size: 1.8rem; /* Slightly smaller numbers */
             color: #f59e0b;
             display: block;
             font-weight: 500;
@@ -200,7 +204,7 @@
 
         /* Style for the 'Days' number */
         .countdown div[data-label="Jours"] span {
-            font-size: 3rem; /* Even larger for "Jours" */
+            font-size: 2.2rem; /* Slightly smaller for "Jours" */
             font-weight: 700;
             color: #fbbf24;
             animation: pulse 2s infinite;
@@ -208,7 +212,7 @@
 
         .countdown div::after {
             content: attr(data-label);
-            font-size: 1.2rem; /* Larger labels */
+            font-size: 1rem; /* Slightly smaller labels */
             color: #e5e7eb; /* Lighter color for better contrast */
             margin-top: 0.5rem;
             display: block;
@@ -217,16 +221,16 @@
         /* Buttons */
         .hero-buttons {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 2rem; /* More space between buttons */
             margin-top: 2.5rem; /* More space above */
             animation: fadeIn 1.8s ease-out;
         }
 
         .hero-buttons a {
-            padding: 1rem 2.5rem; /* Larger padding for better click area */
+            padding: 0.75rem 1.5rem; /* Slightly smaller padding */
             border-radius: 10px;
-            font-size: 1.3rem; /* Slightly larger text */
+            font-size: 1.1rem; /* Slightly smaller text */
             font-weight: 600;
             transition: all 0.3s ease;
             display: inline-flex;
@@ -241,7 +245,7 @@
             background: linear-gradient(90deg, #f59e0b, #d97706);
             color: white;
             box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
-            padding: 1.2rem 2.5rem; /* Slightly larger for the primary button */
+            padding: 0.9rem 1.5rem; /* Slightly smaller for the primary button */
         }
 
         .hero-buttons .reserve-btn .button-text-main {
@@ -269,8 +273,8 @@
             color: #f59e0b;
             position: relative;
             overflow: hidden;
-            padding: 1rem 2.5rem; /* Match padding */
-            font-size: 1.3rem; /* Match font size */
+            padding: 0.75rem 1.5rem; /* Slightly smaller padding */
+            font-size: 1.1rem; /* Slightly smaller font size */
         }
 
         .hero-buttons .info-btn::before {
