@@ -14,6 +14,98 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Racing+Sans+One&display=swap');
         
+        /* --- Global Scroll Snap Styles --- */
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        /* --- Event Details Scroll Snap Styles --- */
+        #event-details-scroll {
+            /* scroll-snap-type removed, handled by html */
+            scroll-behavior: smooth; /* Keep smooth scroll for internal links if needed */
+        }
+        section, footer { /* Apply snap alignment to all top-level sections and footer */
+             scroll-snap-align: start;
+             min-height: 100vh; /* Make sections full height */
+             display: flex; /* Needed for vertical alignment often */
+             flex-direction: column; /* Stack content vertically */
+             justify-content: center; /* Center content vertically */
+        }
+        /* Override min-height for sections that shouldn't be full viewport */
+        #partenaires, footer {
+            min-height: auto; /* Let content define height */
+        }
+        #event { /* Event section might need specific adjustments */
+             min-height: auto; /* Let its content define height initially */
+             /* We might need to adjust this if event-details-scroll needs 100vh */
+        }
+
+        .event-detail-section {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: start;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .event-detail-section:nth-child(1) {
+            background-image: url('chat.jpeg'); /* This is already set, ensuring it stays */
+        }
+        .event-detail-section:nth-child(2) {
+            background-image: url('ferme.jpg');
+        }
+        .event-detail-section:nth-child(3) {
+            background-image: url('pic7.jpg');
+        }
+        .event-detail-section:nth-child(4) {
+            background-image: url('pic10-.jpg');
+        }
+        .event-detail-section:nth-child(5) {
+            background-image: url('pic9-.jpg');
+        }
+        .event-detail-content {
+            /* background: rgba(0, 0, 0, 0.55); */ /* Removed background */
+            /* border-radius: 20px; */ /* Removed border-radius */
+            padding: 3rem 2rem; /* Added vertical/horizontal padding */
+            /* max-width: 700px; */ /* Removed max-width */
+            /* margin: 3rem auto; */ /* Removed auto margin */
+            margin-top: 3rem; /* Keep top margin */
+            margin-bottom: 3rem; /* Keep bottom margin */
+            text-align: center;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Added text shadow for readability */
+        }
+        .event-detail-content h2 {
+            font-family: 'Racing Sans One', sans-serif;
+            font-size: 2.5rem;
+            color: #f59e0b;
+            margin-bottom: 1.5rem;
+        }
+        .event-detail-content p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        @media (max-width: 768px) {
+            .event-detail-content {
+                padding: 2rem 1rem; /* Added vertical/horizontal padding */
+                /* margin: 2rem auto; */ /* Removed auto margin */
+                margin-top: 2rem; /* Keep top margin */
+                margin-bottom: 2rem; /* Keep bottom margin */
+            }
+            .event-detail-content h2 {
+                font-size: 2rem;
+            }
+            .event-detail-content p {
+                font-size: 1rem;
+            }
+        }
+        /* --- End Event Details Scroll Snap Styles --- */
+
         /* Navigation font */
         .nav-item {
             font-family: 'Racing Sans One', sans-serif;
@@ -53,9 +145,9 @@
 
         /* Hero Section */
         #hero-section {
-            min-height: 100vh;
+            /* min-height: 100vh; */ /* Handled by global section style */
             /* display: flex;  Moved to .hero-inner */
-            align-items: center; /* Center items vertically */
+            /* align-items: center; */ /* Handled by global section style */
             justify-content: center;
             padding-top: 5rem; /* Keep padding or adjust */
             position: relative;
@@ -374,7 +466,7 @@
         #image-carousel-section {
             position: relative;
             overflow: hidden;
-            height: 70vh;
+            /* height: 70vh; */ /* Use min-height: 100vh from global */
             background-color: #0a0a0a;
         }
 
@@ -468,22 +560,11 @@
         /* Event Details Section */
         #event {
             background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-            padding: 5rem 0;
+            padding: 5rem 0; /* Keep padding */
             position: relative;
+            /* min-height: auto; */ /* Let content define height, set above */
+            /* justify-content: flex-start; */ /* Override global center if needed */
         }
-
-        #event::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('pic7.jpg') no-repeat center center/cover; /* Changed background image */
-            opacity: 0.08; /* Set background image opacity */
-            z-index: 0;
-        }
-
         #event > * {
             position: relative;
             z-index: 1;
@@ -493,6 +574,8 @@
             display: flex;
             flex-direction: column;
             gap: 2rem;
+            align-items: center;
+            text-align: center;
         }
 
         .event-details-grid {
@@ -500,6 +583,8 @@
             grid-template-columns: 1fr;
             gap: 2rem;
             margin-bottom: 2rem;
+            justify-items: center;
+            text-align: center;
         }
 
         @media (min-width: 900px) {
@@ -519,6 +604,9 @@
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: transform 0.5s ease, box-shadow 0.5s ease;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .event-details-card:hover {
@@ -531,8 +619,7 @@
             font-size: 1.8rem;
             color: #f59e0b;
             margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
+            text-align: center;
         }
 
         .event-details-card h3 i {
@@ -547,9 +634,14 @@
         }
 
         .event-details-card ul {
-            list-style: disc; /* Use standard disc bullets */
-            padding-left: 2.5rem; /* Adjust padding for bullet spacing */
-            margin-left: 0; /* Ensure no extra margin */
+            list-style: disc;
+            padding-left: 0;
+            list-style-position: inside;
+            width: 100%;
+            display: block;
+            text-align: left;
+            margin-left: 0;
+            margin: 0 auto;
         }
 
         .event-details-card ul li {
@@ -619,6 +711,8 @@
         #register {
             background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
             position: relative;
+            text-align: center;
+            /* min-height: 100vh; */ /* Handled by global section style */
         }
 
         #register::before {
@@ -645,6 +739,8 @@
             border-radius: 20px; /* Match card radius */
             padding: 2rem; /* Match card padding */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Match card shadow */
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         #register h3 { /* Style for new subheadings */
@@ -717,6 +813,8 @@
         /* Footer */
         footer {
             background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            /* min-height: auto; */ /* Handled by global section style override */
+            /* justify-content: flex-start; */ /* Align content top */
         }
 
         footer a {
@@ -976,6 +1074,7 @@
         opacity: 0;
         transform: translateX(-50px) scale(0.95); /* Initial state: shifted left and slightly scaled down */
         transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+        text-align: center;
     }
 
     .event-slide.visible {
@@ -992,6 +1091,9 @@
         padding: 2rem;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         transition: transform 0.5s ease, box-shadow 0.5s ease;
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto;
     }
 
     .slide-content:hover {
@@ -1005,8 +1107,7 @@
         font-size: 1.8rem;
         color: #f59e0b;
         margin-bottom: 1.5rem;
-        display: flex;
-        align-items: center;
+        text-align: center;
     }
 
     /* Slide Paragraphs and Lists */
@@ -1020,7 +1121,12 @@
 
     .slide-content ul {
         list-style: disc;
-        padding-left: 2.5rem;
+        padding-left: 0;
+        list-style-position: inside;
+        width: 100%;
+        display: block;
+        text-align: left;
+        margin: 0 auto;
     }
 
     .slide-content li {
@@ -1114,6 +1220,205 @@
             font-size: 1rem;
         }
     }
+/* Timeline Styles */
+.timeline-container {
+    position: relative;
+    margin: 4rem auto;
+    max-width: 1200px;
+    padding: 2rem 0;
+    z-index: 1;
+    overflow-x: auto;
+}
+
+.timeline-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.timeline-header h3 {
+    font-family: 'Racing Sans One', sans-serif;
+    font-size: 2.5rem;
+    color: #f59e0b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.timeline-items {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 1200px; /* Ensure enough width for all items */
+    padding: 0 1rem;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #f59e0b 0%, rgba(245, 158, 11, 0.3) 100%);
+    z-index: 0;
+    transform: translateY(-50%);
+}
+
+.timeline-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    padding: 0 1rem;
+}
+
+.timeline-dot {
+    width: 24px;
+    height: 24px;
+    background: #f59e0b;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 0 5px rgba(245, 158, 11, 0.2);
+    transition: transform 0.3s ease;
+    margin: 1rem 0;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.2);
+}
+
+.timeline-text {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    width: 300px; /* Increased width for better readability */
+    min-height: 200px; /* Increased height to fit text */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.timeline-text h3 {
+    font-family: 'Racing Sans One', sans-serif;
+    font-size: 1.5rem; /* Slightly larger for readability */
+    color: #f59e0b;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.timeline-text p {
+    font-size: 1rem; /* Increased font size for readability */
+    color: #d1d5db;
+    line-height: 1.6;
+}
+
+.timeline-img {
+    width: 300px; /* Match the width of the text box */
+    height: 200px; /* Match the height of the text box */
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    margin-top: 1rem;
+}
+
+.timeline-img-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #e5e7eb;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .timeline-container {
+        padding: 1rem;
+    }
+
+    .timeline-items {
+        min-width: auto;
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .timeline-line {
+        top: 0;
+        left: 50%;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(to bottom, #f59e0b 0%, rgba(245, 158, 11, 0.3) 100%);
+        transform: translateX(-50%);
+    }
+
+    .timeline-item {
+        flex-direction: row;
+        gap: 2rem;
+        padding: 0;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .timeline-dot {
+        position: absolute;
+        left: -12px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .timeline-text {
+        width: 100%; /* Full width on smaller screens */
+        min-height: 150px; /* Adjusted height */
+        margin-bottom: 0;
+    }
+
+    .timeline-img {
+        width: 150px; /* Adjusted for smaller screens */
+        height: 100px;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .timeline-dot {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .timeline-text {
+        padding: 1rem;
+    }
+
+    .timeline-text h3 {
+        font-size: 1.3rem;
+    }
+
+    .timeline-text p {
+        font-size: 0.9rem;
+    }
+
+    .timeline-img {
+        width: 120px;
+        height: 80px;
+    }
+}
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -1256,6 +1561,41 @@
 
     <!-- Event Details Section -->
     <section id="event" class="py-20">
+        <!-- Scrollable Full-Page Event Details (Moved outside max-width container) -->
+        <div id="event-details-scroll">
+            <section class="event-detail-section">
+                <div class="event-detail-content">
+                    <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Matin</h2>
+                    <p class="text-lg text-white text-center">Niché aux confins du département de la Haute-Garonne et à la porte de la Gascogne, le <span class="font-semibold text-amber-300">Château de Drudas</span> nous accueille pour un petit-déjeuner avant de prendre le départ de cette édition.</p>
+                </div>
+            </section>
+            <section class="event-detail-section">
+                <div class="event-detail-content">
+                    <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Midi</h2>
+                    <p class="text-lg text-white text-center">À l’aide du Road Book, vous cheminerez sur les plus belles routes du Gers. Le déjeuner de midi aura lieu à la <span class="font-semibold text-amber-300">Ferme aux Grives</span>, célèbre établissement de Michel Guérard dans le village thermal d’Eugénie-les-Bains.</p>
+                </div>
+            </section>
+            <section class="event-detail-section">
+                <div class="event-detail-content">
+                    <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Soir</h2>
+                    <p class="text-lg text-white text-center">Le parcours de l’après-midi vous mènera au pied des Pyrénées, dans la douce ville de <span class="font-semibold text-amber-300">Pau</span>. L’Hôtel 5 étoiles Parc Beaumont nous accueillera pour le dîner et la nuitée.</p>
+                </div>
+            </section>
+            <section class="event-detail-section">
+                <div class="event-detail-content">
+                    <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Dimanche Matin</h2>
+                    <p class="text-lg text-white text-center">Le dimanche matin, vous cheminerez sur les routes du Béarn, en direction de l’Espagne et de quelques cols renommés. Le déjeuner dominical est assuré par la fameuse <span class="font-semibold text-amber-300">Maison Ithurria</span> à Ainhoa.</p>
+                </div>
+            </section>
+            <section class="event-detail-section">
+                <div class="event-detail-content">
+                    <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Dimanche Après-midi</h2>
+                    <p class="text-lg text-white text-center">L’étape de l’après-midi dans les Pyrénées Basques vous amènera au bord de la mer, dans le majestueux <span class="font-semibold text-amber-300">Hôtel du Palais</span> à Biarritz. La remise des prix et un cocktail clôtureront l’édition 2025.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Other Event Content (Constrained Width) -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="event-slides">
                 <!-- Slide: Main Heading -->
@@ -1263,37 +1603,8 @@
                     <h2 class="text-3xl md:text-4xl font-bold text-center">DÉTAILS DU CARRERA RALLYE</h2>
                 </div>
 
-                <!-- Itinéraire & Hébergement Slides -->
-                <div class="event-slide">
-                    <div class="slide-content">
-                        <h3><i class="fas fa-road text-amber-500 mr-3"></i> Itinéraire - Samedi Matin</h3>
-                        <p>Niché aux confins du département de la Haute-Garonne et à la porte de la Gascogne, le <span class="font-semibold">Château de Drudas</span> nous accueille pour un petit-déjeuner avant de prendre le départ de cette édition.</p>
-                    </div>
-                </div>
-                <div class="event-slide">
-                    <div class="slide-content">
-                        <h3><i class="fas fa-utensils text-amber-500 mr-3"></i> Itinéraire - Samedi Midi</h3>
-                        <p>À l’aide du Road Book, vous cheminerez sur les plus belles routes du Gers. Le déjeuner de midi aura lieu à la <span class="font-semibold">Ferme aux Grives</span>, célèbre établissement de Michel Guérard dans le village thermal d’Eugénie-les-Bains.</p>
-                    </div>
-                </div>
-                <div class="event-slide">
-                    <div class="slide-content">
-                        <h3><i class="fas fa-hotel text-amber-500 mr-3"></i> Itinéraire - Samedi Soir</h3>
-                        <p>Le parcours de l’après-midi vous mènera au pied des Pyrénées, dans la douce ville de <span class="font-semibold">Pau</span>. L’Hôtel 5 étoiles Parc Beaumont nous accueillera pour le dîner et la nuitée.</p>
-                    </div>
-                </div>
-                <div class="event-slide">
-                    <div class="slide-content">
-                        <h3><i class="fas fa-mountain text-amber-500 mr-3"></i> Itinéraire - Dimanche Matin</h3>
-                        <p>Le dimanche matin, vous cheminerez sur les routes du Béarn, en direction de l’Espagne et de quelques cols renommés. Le déjeuner dominical est assuré par la fameuse <span class="font-semibold">Maison Ithurria</span> à Ainhoa.</p>
-                    </div>
-                </div>
-                <div class="event-slide">
-                    <div class="slide-content">
-                        <h3><i class="fas fa-water text-amber-500 mr-3"></i> Itinéraire - Dimanche Après-midi</h3>
-                        <p>L’étape de l’après-midi dans les Pyrénées Basques vous amènera au bord de la mer, dans le majestueux <span class="font-semibold">Hôtel du Palais</span> à Biarritz. La remise des prix et un cocktail clôtureront l’édition 2025.</p>
-                    </div>
-                </div>
+                <!-- NOTE: event-details-scroll div was here -->
+
                 <div class="event-slide">
                     <div class="slide-content">
                         <h3><i class="fas fa-bed text-amber-500 mr-3"></i> Options d'Hébergement</h3>
