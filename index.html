@@ -964,6 +964,156 @@
                 margin-bottom: 1.2rem;
             }
         }
+    /* Event Slides Container */
+    .event-slides {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem; /* Space between slides */
+    }
+
+    /* Individual Slide */
+    .event-slide {
+        opacity: 0;
+        transform: translateX(-50px) scale(0.95); /* Initial state: shifted left and slightly scaled down */
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+    }
+
+    .event-slide.visible {
+        opacity: 1;
+        transform: translateX(0) scale(1); /* Animated state */
+    }
+
+    /* Slide Content */
+    .slide-content {
+        background: rgba(255, 255, 255, 0.05); /* Match original card background */
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .slide-content:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(245, 158, 11, 0.3);
+    }
+
+    /* Slide Headings */
+    .slide-content h3 {
+        font-family: 'Racing Sans One', sans-serif;
+        font-size: 1.8rem;
+        color: #f59e0b;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+    }
+
+    /* Slide Paragraphs and Lists */
+    .slide-content p,
+    .slide-content li {
+        font-size: 1.15rem; /* Slightly larger for readability */
+        color: #e5e7eb; /* Lighter gray for contrast */
+        line-height: 1.7; /* Improved readability */
+        margin-bottom: 1rem;
+    }
+
+    .slide-content ul {
+        list-style: disc;
+        padding-left: 2.5rem;
+    }
+
+    .slide-content li {
+        margin-bottom: 0.75rem;
+        padding-left: 0.5rem;
+    }
+
+    /* Price Card Specific Styles */
+    .slide-content.price-card {
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.1));
+        border: 2px solid #f59e0b;
+    }
+
+    .slide-content.price-card p.price {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #f59e0b;
+        text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        margin-bottom: 1rem;
+    }
+
+    .slide-content.price-card a {
+        display: block;
+        margin-top: 2rem;
+        padding: 1rem 2rem;
+        background: linear-gradient(90deg, #f59e0b, #d97706);
+        color: white;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .slide-content.price-card a:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(245, 158, 11, 0.6);
+    }
+
+    /* Final CTA Slide */
+    .slide-content.final-cta a {
+        display: inline-block;
+        padding: 1.2rem 3rem;
+        background: linear-gradient(90deg, #f59e0b, #d97706);
+        color: white;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .slide-content.final-cta a:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(245, 158, 11, 0.6);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 1024px) {
+        .event-slide {
+            transform: translateX(-30px) scale(0.95); /* Adjust initial position for smaller screens */
+        }
+        .slide-content {
+            padding: 1.5rem;
+        }
+        .slide-content h3 {
+            font-size: 1.5rem;
+        }
+        .slide-content p,
+        .slide-content li {
+            font-size: 1.1rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .event-slides {
+            gap: 1.5rem;
+        }
+        .slide-content {
+            padding: 1.2rem;
+        }
+        .slide-content.price-card p.price {
+            font-size: 2rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .slide-content h3 {
+            font-size: 1.3rem;
+        }
+        .slide-content p,
+        .slide-content li {
+            font-size: 1rem;
+        }
+    }
     </style>
 </head>
 <body class="bg-gray-900 text-white">
@@ -1107,31 +1257,66 @@
     <!-- Event Details Section -->
     <section id="event" class="py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 pop-up">DÉTAILS DU CARRERA RALLYE</h2> <!-- Reduced bottom margin -->
-            <div class="event-details-container">
-                <!-- Itinéraire & Hébergement (New Card) -->
-                <div class="event-details-card pop-up">
-                    <h3><i class="fas fa-road"></i> Itinéraire & Hébergement</h3>
-                    <p>Départ le samedi matin du Château de Drudas. Niché aux confins du département de la Haute-Garonne et à la porte de la Gascogne, ce grand domaine nous accueille pour un petit-déjeuner avant de prendre le départ de cette édition.</p>
-                    <p>À l’aide du Road Book, vous cheminerez sur les plus belles routes du Gers. Le déjeuner de midi aura lieu à la Ferme aux Grives, célèbre établissement de Michel Guérard dans le village thermal d’Eugénie-les-Bains.</p>
-                    <p>Le parcours de l’après-midi vous mènera au pied des Pyrénées, dans la douce ville de Pau. L’Hôtel 5 étoiles Parc Beaumont nous accueillera pour le dîner et la nuitée.</p>
-                    <p>Le dimanche matin, vous cheminerez sur les routes du Béarn, en direction de l’Espagne et de quelques cols renommés. Le déjeuner dominical est assuré par la fameuse Maison Ithurria à Ainhoa.</p>
-                    <p>L’étape de l’après-midi dans les Pyrénées Basques vous amènera au bord de la mer, dans le majestueux Hôtel du Palais à Biarritz. La remise des prix et un cocktail clôtureront l’édition 2025.</p>
-                    <p class="mt-4 font-semibold">Options d'hébergement supplémentaires :</p>
-                    <ul>
-                        <li>Les concurrents qui désirent arriver le vendredi soir ou rester le dimanche soir bénéficieront de tarifs négociés au Château de Drudas et à l’Hôtel du Palais pour cette manifestation.</li>
-                    </ul>
+            <div class="event-slides">
+                <!-- Slide: Main Heading -->
+                <div class="event-slide">
+                    <h2 class="text-3xl md:text-4xl font-bold text-center">DÉTAILS DU CARRERA RALLYE</h2>
                 </div>
-                <!-- START: Group the 4 cards in a grid -->
-                <div class="event-details-grid">
-                    <div class="event-details-card pop-up">
-                        <h3><i class="fas fa-calendar-alt"></i> Dates & Lieu</h3>
+
+                <!-- Itinéraire & Hébergement Slides -->
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-road text-amber-500 mr-3"></i> Itinéraire - Samedi Matin</h3>
+                        <p>Niché aux confins du département de la Haute-Garonne et à la porte de la Gascogne, le <span class="font-semibold">Château de Drudas</span> nous accueille pour un petit-déjeuner avant de prendre le départ de cette édition.</p>
+                    </div>
+                </div>
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-utensils text-amber-500 mr-3"></i> Itinéraire - Samedi Midi</h3>
+                        <p>À l’aide du Road Book, vous cheminerez sur les plus belles routes du Gers. Le déjeuner de midi aura lieu à la <span class="font-semibold">Ferme aux Grives</span>, célèbre établissement de Michel Guérard dans le village thermal d’Eugénie-les-Bains.</p>
+                    </div>
+                </div>
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-hotel text-amber-500 mr-3"></i> Itinéraire - Samedi Soir</h3>
+                        <p>Le parcours de l’après-midi vous mènera au pied des Pyrénées, dans la douce ville de <span class="font-semibold">Pau</span>. L’Hôtel 5 étoiles Parc Beaumont nous accueillera pour le dîner et la nuitée.</p>
+                    </div>
+                </div>
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-mountain text-amber-500 mr-3"></i> Itinéraire - Dimanche Matin</h3>
+                        <p>Le dimanche matin, vous cheminerez sur les routes du Béarn, en direction de l’Espagne et de quelques cols renommés. Le déjeuner dominical est assuré par la fameuse <span class="font-semibold">Maison Ithurria</span> à Ainhoa.</p>
+                    </div>
+                </div>
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-water text-amber-500 mr-3"></i> Itinéraire - Dimanche Après-midi</h3>
+                        <p>L’étape de l’après-midi dans les Pyrénées Basques vous amènera au bord de la mer, dans le majestueux <span class="font-semibold">Hôtel du Palais</span> à Biarritz. La remise des prix et un cocktail clôtureront l’édition 2025.</p>
+                    </div>
+                </div>
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-bed text-amber-500 mr-3"></i> Options d'Hébergement</h3>
+                        <ul>
+                            <li>Les concurrents qui désirent arriver le vendredi soir ou rester le dimanche soir bénéficieront de tarifs négociés au Château de Drudas et à l’Hôtel du Palais pour cette manifestation.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Dates & Lieu Slide -->
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-calendar-alt text-amber-500 mr-3"></i> Dates & Lieu</h3>
                         <p><span class="font-semibold">Dates :</span> 27 et 28 Septembre 2025</p>
                         <p><span class="font-semibold">Réservation :</span> via Porsche Collection</p>
                         <p><span class="font-semibold">Capacité :</span> Strictement limitée à 40 voitures.</p>
                     </div>
-                    <div class="event-details-card pop-up">
-                        <h3><i class="fas fa-car"></i> Voitures Admissibles</h3>
+                </div>
+
+                <!-- Voitures Admissibles Slide -->
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-car text-amber-500 mr-3"></i> Voitures Admissibles</h3>
                         <p>Toutes les Porsche fabriquées entre 1950 et 1989 :</p>
                         <ul>
                             <li>356 (Pré A, A, B, C, SC)</li>
@@ -1146,8 +1331,12 @@
                             <li>Conducteur avec permis de conduire valide</li>
                         </ul>
                     </div>
-                    <div class="event-details-card pop-up">
-                        <h3><i class="fas fa-gift"></i> Prestations Incluses</h3>
+                </div>
+
+                <!-- Prestations Incluses Slide -->
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-gift text-amber-500 mr-3"></i> Prestations Incluses</h3>
                         <ul>
                             <li>Numéros de concurrents</li>
                             <li>Tenues pour pilote et copilote</li>
@@ -1158,49 +1347,65 @@
                             <li>Remise des prix avec cocktail à l'arrivée</li>
                         </ul>
                     </div>
-                    <div class="event-details-card price-card pop-up">
-                        <h3><i class="fas fa-euro-sign"></i> Tarif & Paiement</h3>
+                </div>
+
+                <!-- Tarif & Paiement Slide -->
+                <div class="event-slide">
+                    <div class="slide-content price-card">
+                        <h3><i class="fas fa-euro-sign text-amber-500 mr-3"></i> Tarif & Paiement</h3>
                         <p class="price">2449 € <span class="text-base font-normal text-gray-400">par équipage (2 personnes)</span></p>
                         <p><span class="font-semibold">Acompte :</span> 1449 € demandé pour l'engagement.</p>
                         <p><span class="font-semibold">Solde :</span> À régler au maximum 30 jours avant le départ.</p>
-                        <a href="#register">S'inscrire Maintenant</a>
+                        <a href="#register" aria-label="S'inscrire maintenant pour le Carrera Rallye">S'inscrire Maintenant</a>
                     </div>
                 </div>
-                <!-- END: event-details-grid -->
-                <!-- New Règlement et Consignes du Rallye Card -->
-                <div class="event-details-card pop-up">
-                    <h3><i class="fas fa-clipboard-check"></i> Règlement et Consignes du Rallye</h3>
-                    <div class="subsection-box">
-                        <p class="font-semibold">Comportement sur la Route</p>
+
+                <!-- Règlement et Consignes du Rallye Slides -->
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-clipboard-check text-amber-500 mr-3"></i> Règlement - Comportement sur la Route</h3>
                         <p>Un comportement irréprochable sur la route est exigé de tous les participants. Le rallye se déroulant sur des routes publiques ouvertes à la circulation, le respect scrupuleux du Code de la Route est impératif. Les participants doivent faire preuve d’une attitude exemplaire envers les autres usagers de la route et leurs collègues compétiteurs. Ceux qui ne partagent pas cet esprit de convivialité et de responsabilité ne sont pas les bienvenus et s’exposent à une exclusion de cet événement réservé aux passionnés.</p>
                     </div>
-                    <div class="subsection-box">
-                        <p class="font-semibold mt-4">Exigences pour les Véhicules</p>
+                </div>
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-car-side text-amber-500 mr-3"></i> Règlement - Exigences pour les Véhicules</h3>
                         <p>Tous les véhicules doivent être entièrement conformes au Code de la Route. Les participants doivent s’assurer que leur voiture est en parfait état, en vérifiant particulièrement l’état des pneumatiques, de l’éclairage, de la fixation de la batterie et des ceintures de sécurité (si celles-ci sont requises par la loi). Il est également recommandé de disposer d’un extincteur et d’un triangle de signalisation à bord. Aucun changement de véhicule inscrit ne sera autorisé sans l’accord préalable des organisateurs.</p>
                     </div>
-                    <div class="subsection-box">
-                        <p class="font-semibold mt-4">Déroulement du Rallye</p>
+                </div>
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-route text-amber-500 mr-3"></i> Règlement - Déroulement du Rallye</h3>
                         <p>Les participants doivent suivre l’itinéraire détaillé dans le road book, sans contrainte de vitesse ni de moyenne imposée. Pour valider leur passage, ils devront faire viser leur feuille de pointage aux différents contrôles de passage (CP), dont les emplacements restent confidentiels. Nous rappelons que l’épreuve se déroule sur des routes ouvertes non neutralisées, ce qui implique une conformité stricte au Code de la Route. Les consignes de sécurité détaillées seront fournies dans le road book remis aux participants.</p>
                     </div>
-                    <div class="subsection-box">
-                        <p class="font-semibold mt-4">Esprit Non Compétitif</p>
+                </div>
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-handshake text-amber-500 mr-3"></i> Règlement - Esprit Non Compétitif</h3>
                         <p>Ce rallye ne comporte pas de classement basé sur la performance. La remise des prix se veut conviviale et repose sur des critères non compétitifs, tels que l’élégance, l’esprit d’équipe ou l’authenticité des véhicules. À aucun moment, des notions de vitesse moyenne ou de temps imposé n’interviennent dans l’évaluation.</p>
                     </div>
-                    <div class="subsection-box">
-                        <p class="font-semibold mt-4">Parcours</p>
+                </div>
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-map text-amber-500 mr-3"></i> Règlement - Parcours</h3>
                         <p>Le rallye comprend six étapes, couvrant un total de 1 415 km d’itinéraires sur des routes 100 % asphaltées, soigneusement sélectionnées pour leur beauté et leur plaisir de conduite.</p>
                     </div>
-                    <div class="subsection-box">
-                        <p class="font-semibold mt-4">Inscription et Conditions</p>
+                </div>
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-file-signature text-amber-500 mr-3"></i> Règlement - Inscription et Conditions</h3>
                         <p>Aucun engagement ne sera confirmé sans le versement d’un acompte. En cas d’annulation de votre part après le 27 août 2025, l’acompte ne sera pas remboursé.</p>
                     </div>
                 </div>
-            </div>
-            <!-- Final CTA -->
-            <div class="final-cta pop-up">
-                <a href="#register">
-                    <i class="fas fa-flag-checkered mr-2"></i> Prêt à Participer ? Inscrivez-vous Maintenant !
-                </a>
+
+                <!-- Final CTA Slide -->
+                <div class="event-slide">
+                    <div class="slide-content final-cta text-center">
+                        <a href="#register">
+                            <i class="fas fa-flag-checkered mr-2"></i> Prêt à Participer ? Inscrivez-vous Maintenant !
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1557,6 +1762,22 @@
             }
         });
 
+        // Scroll-Based Animation for Event Slides
+        const eventSlides = document.querySelectorAll('.event-slide');
+        const slideObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: Unobserve after triggering to improve performance
+                    slideObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2, // Trigger when 20% of the slide is visible
+            rootMargin: '0px 0px -50px 0px' // Trigger slightly before the slide is fully in view
+        });
+
+        eventSlides.forEach(slide => slideObserver.observe(slide));
     </script>
 </body>
 </html>
