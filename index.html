@@ -53,6 +53,17 @@
             background-position: center;
             background-repeat: no-repeat;
         }
+        /* Sticky stack scroll effect for carousel and event details */
+        #image-carousel-section {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+        .event-detail-section {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
         .event-detail-section:nth-child(1) {
             background-image: url('chat.jpeg'); /* This is already set, ensuring it stays */
         }
@@ -60,13 +71,13 @@
             background-image: url('ferme.jpg');
         }
         .event-detail-section:nth-child(3) {
-            background-image: url('pic7.jpg');
+            background-image: url('beaumont.webp');
         }
         .event-detail-section:nth-child(4) {
-            background-image: url('pic10-.jpg');
+            background-image: url('restoitu.jpg');
         }
         .event-detail-section:nth-child(5) {
-            background-image: url('pic9-.jpg');
+            background-image: url('palais.webp');
         }
         .event-detail-content {
             /* background: rgba(0, 0, 0, 0.55); */ /* Removed background */
