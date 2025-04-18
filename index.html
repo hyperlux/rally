@@ -12,6 +12,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        .blurry-container {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1rem auto;
+            max-width: 700px;
+            width: 90%;
+        }
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Racing+Sans+One&display=swap');
         
         /* --- Global Scroll Snap Styles --- */
@@ -68,7 +78,7 @@
             background-image: url('img/chat.jpeg'); /* This is already set, ensuring it stays */
         }
         .event-detail-section:nth-child(2) {
-            background-image: url('img/ferme.jpg');
+            background-image: url('img/fermenew.jpg');
         }
         .event-detail-section:nth-child(3) {
             background-image: url('img/beaumont.webp');
@@ -281,13 +291,12 @@
         }
 
         .countdown-container p {
-            font-size: 2rem; /* Larger for emphasis */
+            font-size: 1.8rem; /* Slightly smaller than hero-headline */
             color: #ffffff; /* Changed color to white */
             margin-bottom: 2rem;
             margin-left: -0.5rem; /* Shift left slightly */
             letter-spacing: 2px; /* More spacing for a premium feel */
             font-family: 'Racing Sans One', sans-serif;
-            text-transform: uppercase;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
         }
 
@@ -874,9 +883,13 @@
             right: 2rem;
             background: linear-gradient(135deg, #f59e0b, #d97706);
             color: white;
-            padding: 1rem;
+            width: 3rem;
+            height: 3rem;
+            padding: 0.75rem;
             border-radius: 50%;
-            display: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             z-index: 1000;
             transition: all 0.3s ease;
         }
@@ -1494,7 +1507,6 @@
                 </div>
                 <h2 class="font-bold">Le <span style="color: #fff;">27</span> et <span style="color: #fff;">28</span> Septembre 2025</h2>
                 <div class="countdown-container">
-                    <p>On demarre dans</p>
                     <div class="countdown md:justify-start"> <!-- Adjusted alignment for larger screens -->
                         <div data-label="Jours"><span id="days">00</span></div>
                         <div data-label="Heures"><span id="hours">00</span></div>
@@ -1575,32 +1587,42 @@
         <div id="event-details-scroll">
             <section class="event-detail-section">
                 <div class="event-detail-content">
-                    <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Matin</h2>
-                    <p class="text-lg text-white text-center">Niché aux confins du département de la Haute-Garonne et à la porte de la Gascogne, le <span class="font-semibold text-amber-300">Château de Drudas</span> nous accueille pour un petit-déjeuner avant de prendre le départ de cette édition.</p>
+                    <div class="blurry-container">
+                        <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Matin</h2>
+                        <p class="text-lg text-white text-center">Niché aux confins du département de la Haute-Garonne et à la porte de la Gascogne, le <span class="font-semibold text-amber-300">Château de Drudas</span> nous accueille pour un petit-déjeuner avant de prendre le départ de cette édition.</p>
+                    </div>
                 </div>
             </section>
             <section class="event-detail-section">
                 <div class="event-detail-content">
-                    <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Midi</h2>
-                    <p class="text-lg text-white text-center">À l’aide du Road Book, vous cheminerez sur les plus belles routes du Gers. Le déjeuner de midi aura lieu à la <span class="font-semibold text-amber-300">Ferme aux Grives</span>, célèbre établissement de Michel Guérard dans le village thermal d’Eugénie-les-Bains.</p>
+                    <div class="blurry-container">
+                        <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Midi</h2>
+                        <p class="text-lg text-white text-center">À l’aide du Road Book, vous cheminerez sur les plus belles routes du Gers. Le déjeuner de midi aura lieu à la <span class="font-semibold text-amber-300">Ferme aux Grives</span>, célèbre établissement de Michel Guérard dans le village thermal d’Eugénie-les-Bains.</p>
+                    </div>
                 </div>
             </section>
             <section class="event-detail-section">
                 <div class="event-detail-content">
-                    <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Soir</h2>
-                    <p class="text-lg text-white text-center">Le parcours de l’après-midi vous mènera au pied des Pyrénées, dans la douce ville de <span class="font-semibold text-amber-300">Pau</span>. L’Hôtel 5 étoiles Parc Beaumont nous accueillera pour le dîner et la nuitée.</p>
+                    <div class="blurry-container">
+                        <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Soir</h2>
+                        <p class="text-lg text-white text-center">Le parcours de l’après-midi vous mènera au pied des Pyrénées, dans la douce ville de <span class="font-semibold text-amber-300">Pau</span>. L’Hôtel 5 étoiles Parc Beaumont nous accueillera pour le dîner et la nuitée.</p>
+                    </div>
                 </div>
             </section>
             <section class="event-detail-section">
                 <div class="event-detail-content">
-                    <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Dimanche Matin</h2>
-                    <p class="text-lg text-white text-center">Le dimanche matin, vous cheminerez sur les routes du Béarn, en direction de l’Espagne et de quelques cols renommés. Le déjeuner dominical est assuré par la fameuse <span class="font-semibold text-amber-300">Maison Ithurria</span> à Ainhoa.</p>
+                    <div class="blurry-container">
+                        <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Dimanche Matin</h2>
+                        <p class="text-lg text-white text-center">Le dimanche matin, vous cheminerez sur les routes du Béarn, en direction de l’Espagne et de quelques cols renommés. Le déjeuner dominical est assuré par la fameuse <span class="font-semibold text-amber-300">Maison Ithurria</span> à Ainhoa.</p>
+                    </div>
                 </div>
             </section>
             <section class="event-detail-section">
                 <div class="event-detail-content">
-                    <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Dimanche Après-midi</h2>
-                    <p class="text-lg text-white text-center">L’étape de l’après-midi dans les Pyrénées Basques vous amènera au bord de la mer, dans le majestueux <span class="font-semibold text-amber-300">Hôtel du Palais</span> à Biarritz. La remise des prix et un cocktail clôtureront l’édition 2025.</p>
+                    <div class="blurry-container">
+                        <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Dimanche Après-midi</h2>
+                        <p class="text-lg text-white text-center">L’étape de l’après-midi dans les Pyrénées Basques vous amènera au bord de la mer, dans le majestueux <span class="font-semibold text-amber-300">Hôtel du Palais</span> à Biarritz. La remise des prix et un cocktail clôtureront l’édition 2025.</p>
+                    </div>
                 </div>
             </section>
         </div>
@@ -1618,9 +1640,7 @@
                 <div class="event-slide">
                     <div class="slide-content">
                         <h3><i class="fas fa-bed text-amber-500 mr-3"></i> Options d'Hébergement</h3>
-                        <ul>
-                            <li>Les concurrents qui désirent arriver le vendredi soir ou rester le dimanche soir bénéficieront de tarifs négociés au Château de Drudas et à l’Hôtel du Palais pour cette manifestation.</li>
-                        </ul>
+                        <p>Les concurrents qui désirent arriver le vendredi soir ou rester le dimanche soir bénéficieront de tarifs négociés au Château de Drudas et à l’Hôtel du Palais pour cette manifestation.</p>
                     </div>
                 </div>
 
@@ -1673,7 +1693,7 @@
                 <!-- Tarif & Paiement Slide -->
                 <div class="event-slide">
                     <div class="slide-content price-card">
-                        <h3><i class="fas fa-euro-sign text-amber-500 mr-3"></i> Tarif & Paiement</h3>
+                        <h3>Tarif & Paiement</h3>
                         <p class="price">2449 € <span class="text-base font-normal text-gray-400">par équipage (2 personnes)</span></p>
                         <p><span class="font-semibold">Acompte :</span> 1449 € demandé pour l'engagement.</p>
                         <p><span class="font-semibold">Solde :</span> À régler au maximum 30 jours avant le départ.</p>
