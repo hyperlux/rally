@@ -77,6 +77,12 @@
         .event-detail-section:nth-child(1) {
             background-image: url('img/chat.jpeg'); /* This is already set, ensuring it stays */
         }
+        .event-detail-section:nth-child(1) .event-detail-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
         .event-detail-section:nth-child(2) {
             background-image: url('img/fermenew.jpg');
         }
@@ -152,8 +158,9 @@
 
         /* Navigation */
         nav {
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-            backdrop-filter: blur(5px);
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
         nav a {
@@ -558,10 +565,15 @@
             font-size: 2rem;
             cursor: pointer;
             z-index: 3;
-            padding: 1rem;
-            background: rgba(0, 0, 0, 0.5);
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.7);
             border-radius: 50%;
-            transition: background 0.3s ease;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .carousel-arrow:hover {
@@ -885,13 +897,17 @@
             color: white;
             width: 3rem;
             height: 3rem;
-            padding: 0.75rem;
+            padding: 0;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1000;
             transition: all 0.3s ease;
+        }
+
+        .back-to-top i {
+            font-size: 1.5rem;
         }
 
         .back-to-top:hover {
@@ -1587,6 +1603,9 @@
         <div id="event-details-scroll">
             <section class="event-detail-section">
                 <div class="event-detail-content">
+                    <div class="blurry-container mb-8">
+                        <h2 class="text-3xl md:text-4xl font-bold text-center">DÉTAILS DU CARRERA RALLYE</h2>
+                    </div>
                     <div class="blurry-container">
                         <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Matin</h2>
                         <p class="text-lg text-white text-center">Niché aux confins du département de la Haute-Garonne et à la porte de la Gascogne, le <span class="font-semibold text-amber-300">Château de Drudas</span> nous accueille pour un petit-déjeuner avant de prendre le départ de cette édition.</p>
@@ -1605,7 +1624,7 @@
                 <div class="event-detail-content">
                     <div class="blurry-container">
                         <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Soir</h2>
-                        <p class="text-lg text-white text-center">Le parcours de l’après-midi vous mènera au pied des Pyrénées, dans la douce ville de <span class="font-semibold text-amber-300">Pau</span>. L’Hôtel 5 étoiles Parc Beaumont nous accueillera pour le dîner et la nuitée.</p>
+                        <p class="text-lg text-white text-center">Le parcours de l’après-midi vous mènera au pied des Pyrénées, dans la douce ville de Pau. L’Hôtel 5 étoiles <span class="font-semibold text-amber-300">Parc Beaumont</span> nous accueillera pour le dîner et la nuitée.</p>
                     </div>
                 </div>
             </section>
@@ -1632,7 +1651,6 @@
             <div class="event-slides">
                 <!-- Slide: Main Heading -->
                 <div class="event-slide">
-                    <h2 class="text-3xl md:text-4xl font-bold text-center">DÉTAILS DU CARRERA RALLYE</h2>
                 </div>
 
                 <!-- NOTE: event-details-scroll div was here -->
@@ -1644,30 +1662,20 @@
                     </div>
                 </div>
 
-                <!-- Dates & Lieu Slide -->
-                <div class="event-slide">
-                    <div class="slide-content">
-                        <h3><i class="fas fa-calendar-alt text-amber-500 mr-3"></i> Dates & Lieu</h3>
-                        <p><span class="font-semibold">Dates :</span> 27 et 28 Septembre 2025</p>
-                        <p><span class="font-semibold">Réservation :</span> via Porsche Collection</p>
-                        <p><span class="font-semibold">Capacité :</span> Strictement limitée à 40 voitures.</p>
-                    </div>
-                </div>
-
                 <!-- Voitures Admissibles Slide -->
                 <div class="event-slide">
                     <div class="slide-content">
                         <h3><i class="fas fa-car text-amber-500 mr-3"></i> Voitures Admissibles</h3>
-                        <p>Toutes les Porsche fabriquées entre 1950 et 1989 :</p>
-                        <ul>
+                        <p class="text-center">Toutes les Porsche fabriquées entre 1950 et 1989 :</p>
+                        <ul class="text-center list-inside">
                             <li>356 (Pré A, A, B, C, SC)</li>
                             <li>904 (4 ou 6 cylindres)</li>
                             <li>906, 910</li>
                             <li>911 (tout model), 912</li>
                             <li>914 (4 ou 6 cylindres)</li>
                         </ul>
-                        <p class="mt-4 font-semibold">Conditions :</p>
-                        <ul>
+                        <p class="mt-4 font-semibold text-center">Conditions :</p>
+                        <ul class="text-center list-inside">
                             <li>Voiture assurée</li>
                             <li>Conducteur avec permis de conduire valide</li>
                         </ul>
@@ -1946,12 +1954,22 @@
 
         // Back to Top Button
         const backToTop = document.querySelector('.back-to-top');
+        
+        // Scroll handler - show/hide button
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
-                backToTop.style.display = 'block';
+                backToTop.style.display = 'flex';
             } else {
                 backToTop.style.display = 'none';
             }
+        });
+        
+        // Click handler - scroll to top
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
 
         // Form submission simulation & Basic Validation
