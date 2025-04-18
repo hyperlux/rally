@@ -722,6 +722,47 @@
             margin-top: 4rem;
         }
 
+        /* Eligible Cars Section */
+        .eligible-cars-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 700px;
+            margin: 2rem auto;
+        }
+
+        .eligible-cars-card h3 {
+            font-family: 'Racing Sans One', sans-serif;
+            font-size: 1.8rem;
+            color: #f59e0b;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .eligible-cars-card ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0 auto;
+        }
+
+        .eligible-cars-card ul li {
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+            color: #d1d5db;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .eligible-cars-card ul li:before {
+            content: "•";
+            color: #f59e0b;
+            position: absolute;
+            left: 0;
+        }
+
         .final-cta a {
             display: inline-block;
             padding: 1.2rem 3rem;
@@ -738,7 +779,36 @@
             box-shadow: 0 8px 20px rgba(245, 158, 11, 0.6);
         }
 
-        /* Registration Section */
+        <!-- Eligible Cars Section -->
+        <section id="eligible-cars" class="eligible-cars-card">
+            <h3><i class="fas fa-car"></i> Prestations Incluses</h3>
+            <ul>
+                <li>Numéros de concurrents</li>
+                <li>Tenues pour pilote et copilote</li>
+                <li>Road book détaillé</li>
+                <li>Goodies exclusifs</li>
+                <li>Restauration dans des établissements du Guide Michelin</li>
+                <li>Hébergement en hôtel 5 étoiles</li>
+                <li>Remise des prix avec cocktail à l'arrivée</li>
+            </ul>
+
+            <h3 style="margin-top: 2rem;"><i class="fas fa-check-circle"></i> Voitures Admissibles</h3>
+            <p>Toutes les Porsche fabriquées entre 1950 et 1989 :</p>
+            <ul>
+                <li>356 (Pré A, A, B, C, SC)</li>
+                <li>904 (4 ou 6 cylindres)</li>
+                <li>906, 910</li>
+                <li>911 (tout model), 912</li>
+                <li>914 (4 ou 6 cylindres)</li>
+            </ul>
+            <p style="margin-top: 1rem;">Conditions :</p>
+            <ul>
+                <li>Voiture assurée</li>
+                <li>Conducteur avec permis de conduire valide</li>
+            </ul>
+        </section>
+
+        <!-- Registration Section -->
         #register {
             background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
             position: relative;
@@ -1649,16 +1719,19 @@
         <!-- Other Event Content (Constrained Width) -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="event-slides">
-                <!-- Slide: Main Heading -->
-                <div class="event-slide">
-                </div>
-
-                <!-- NOTE: event-details-scroll div was here -->
-
+                <!-- Prestations Incluses Slide -->
                 <div class="event-slide">
                     <div class="slide-content">
-                        <h3><i class="fas fa-bed text-amber-500 mr-3"></i> Options d'Hébergement</h3>
-                        <p>Les concurrents qui désirent arriver le vendredi soir ou rester le dimanche soir bénéficieront de tarifs négociés au Château de Drudas et à l’Hôtel du Palais pour cette manifestation.</p>
+                        <h3><i class="fas fa-gift text-amber-500 mr-3"></i> Prestations Incluses</h3>
+                        <ul>
+                            <li>Numéros de concurrents</li>
+                            <li>Tenues pour pilote et copilote</li>
+                            <li>Road book détaillé</li>
+                            <li>Goodies exclusifs</li>
+                            <li>Restauration dans des établissements du Guide Michelin</li>
+                            <li>Hébergement en hôtel 5 étoiles</li>
+                            <li>Remise des prix avec cocktail à l'arrivée</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -1681,8 +1754,20 @@
                         </ul>
                     </div>
                 </div>
+                <!-- Slide: Main Heading -->
+                <div class="event-slide">
+                </div>
 
-                <!-- Prestations Incluses Slide -->
+                <!-- NOTE: event-details-scroll div was here -->
+
+                <div class="event-slide">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-bed text-amber-500 mr-3"></i> Options d'Hébergement</h3>
+                        <p>Les concurrents qui désirent arriver le vendredi soir ou rester le dimanche soir bénéficieront de tarifs négociés au Château de Drudas et à l’Hôtel du Palais pour cette manifestation.</p>
+                    </div>
+                </div>
+
+                <!-- Combined Prestations and Voitures Slide -->
                 <div class="event-slide">
                     <div class="slide-content">
                         <h3><i class="fas fa-gift text-amber-500 mr-3"></i> Prestations Incluses</h3>
@@ -1694,6 +1779,21 @@
                             <li>Restauration dans des établissements du Guide Michelin</li>
                             <li>Hébergement en hôtel 5 étoiles</li>
                             <li>Remise des prix avec cocktail à l'arrivée</li>
+                        </ul>
+
+                        <h3 style="margin-top: 2rem;"><i class="fas fa-car text-amber-500 mr-3"></i> Voitures Admissibles</h3>
+                        <p class="text-center">Toutes les Porsche fabriquées entre 1950 et 1989 :</p>
+                        <ul class="text-center list-inside">
+                            <li>356 (Pré A, A, B, C, SC)</li>
+                            <li>904 (4 ou 6 cylindres)</li>
+                            <li>906, 910</li>
+                            <li>911 (tout model), 912</li>
+                            <li>914 (4 ou 6 cylindres)</li>
+                        </ul>
+                        <p class="mt-4 font-semibold text-center">Conditions :</p>
+                        <ul class="text-center list-inside">
+                            <li>Voiture assurée</li>
+                            <li>Conducteur avec permis de conduire valide</li>
                         </ul>
                     </div>
                 </div>
@@ -1712,37 +1812,37 @@
                 <!-- Règlement et Consignes du Rallye Slides -->
                 <div class="event-slide">
                     <div class="slide-content">
-                        <h3><i class="fas fa-clipboard-check text-amber-500 mr-3"></i> Règlement - Comportement sur la Route</h3>
+                        <h3><i class="fas fa-clipboard-check text-amber-500 mr-3"></i> Comportement sur la Route</h3>
                         <p>Un comportement irréprochable sur la route est exigé de tous les participants. Le rallye se déroulant sur des routes publiques ouvertes à la circulation, le respect scrupuleux du Code de la Route est impératif. Les participants doivent faire preuve d’une attitude exemplaire envers les autres usagers de la route et leurs collègues compétiteurs. Ceux qui ne partagent pas cet esprit de convivialité et de responsabilité ne sont pas les bienvenus et s’exposent à une exclusion de cet événement réservé aux passionnés.</p>
                     </div>
                 </div>
                 <div class="event-slide">
                     <div class="slide-content">
-                        <h3><i class="fas fa-car-side text-amber-500 mr-3"></i> Règlement - Exigences pour les Véhicules</h3>
+                        <h3><i class="fas fa-car-side text-amber-500 mr-3"></i> Exigences pour les Véhicules</h3>
                         <p>Tous les véhicules doivent être entièrement conformes au Code de la Route. Les participants doivent s’assurer que leur voiture est en parfait état, en vérifiant particulièrement l’état des pneumatiques, de l’éclairage, de la fixation de la batterie et des ceintures de sécurité (si celles-ci sont requises par la loi). Il est également recommandé de disposer d’un extincteur et d’un triangle de signalisation à bord. Aucun changement de véhicule inscrit ne sera autorisé sans l’accord préalable des organisateurs.</p>
                     </div>
                 </div>
                 <div class="event-slide">
                     <div class="slide-content">
-                        <h3><i class="fas fa-route text-amber-500 mr-3"></i> Règlement - Déroulement du Rallye</h3>
+                        <h3><i class="fas fa-route text-amber-500 mr-3"></i> Déroulement du Rallye</h3>
                         <p>Les participants doivent suivre l’itinéraire détaillé dans le road book, sans contrainte de vitesse ni de moyenne imposée. Pour valider leur passage, ils devront faire viser leur feuille de pointage aux différents contrôles de passage (CP), dont les emplacements restent confidentiels. Nous rappelons que l’épreuve se déroule sur des routes ouvertes non neutralisées, ce qui implique une conformité stricte au Code de la Route. Les consignes de sécurité détaillées seront fournies dans le road book remis aux participants.</p>
                     </div>
                 </div>
                 <div class="event-slide">
                     <div class="slide-content">
-                        <h3><i class="fas fa-handshake text-amber-500 mr-3"></i> Règlement - Esprit Non Compétitif</h3>
+                        <h3><i class="fas fa-handshake text-amber-500 mr-3"></i> Esprit Non Compétitif</h3>
                         <p>Ce rallye ne comporte pas de classement basé sur la performance. La remise des prix se veut conviviale et repose sur des critères non compétitifs, tels que l’élégance, l’esprit d’équipe ou l’authenticité des véhicules. À aucun moment, des notions de vitesse moyenne ou de temps imposé n’interviennent dans l’évaluation.</p>
                     </div>
                 </div>
                 <div class="event-slide">
                     <div class="slide-content">
-                        <h3><i class="fas fa-map text-amber-500 mr-3"></i> Règlement - Parcours</h3>
+                        <h3><i class="fas fa-map text-amber-500 mr-3"></i> Parcours</h3>
                         <p>Le rallye comprend six étapes, couvrant un total de 1 415 km d’itinéraires sur des routes 100 % asphaltées, soigneusement sélectionnées pour leur beauté et leur plaisir de conduite.</p>
                     </div>
                 </div>
                 <div class="event-slide">
                     <div class="slide-content">
-                        <h3><i class="fas fa-file-signature text-amber-500 mr-3"></i> Règlement - Inscription et Conditions</h3>
+                        <h3><i class="fas fa-file-signature text-amber-500 mr-3"></i> Inscription et Conditions</h3>
                         <p>Aucun engagement ne sera confirmé sans le versement d’un acompte. En cas d’annulation de votre part après le 27 août 2025, l’acompte ne sera pas remboursé.</p>
                     </div>
                 </div>
