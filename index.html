@@ -12,11 +12,84 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS content between lines 15-1534 remains unchanged */
+        /* Keep all existing styles, only add/modify the following */
+        
+        /* Ensure event-detail-section is consistent */
+        .event-detail-section {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: start;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            /* background-attachment: fixed;  Removed for smooth scrolling */
+        }
+        /* Remove sticky from first event-detail-section */
+
+        /* Remove event-slide specific styles since we're using event-detail-section */
+        .event-slide {
+            /* Deprecated, kept for backward compatibility but unused */
+            display: none;
+        }
+
+        /* Adjust slide-content for consistency with blurry-container */
+        .slide-content {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1rem auto;
+            max-width: 700px;
+            width: 90%;
+            text-align: center;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        }
+
+        /* Ensure event-details-scroll has no conflicting styles */
+        #event-details-scroll {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Specific background images for new sections */
+        .event-detail-section.voitures-admissibles {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/speedster.png');
+        }
+        .event-detail-section.tarif-paiement {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img2.jpg');
+        }
+        .event-detail-section.comportement-route {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img3.jpg');
+        }
+        .event-detail-section.exigences-vehicules {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img4.jpg');
+        }
+        .event-detail-section.deroulement-rallye {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img5.jpg');
+        }
+        .event-detail-section.esprit-non-competitif {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img6.JPG');
+        }
+        .event-detail-section.parcours {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img7.jpg');
+        }
+
+        /* Remove redundant prestations-slide */
+        .prestations-slide {
+            /* Deprecated, no special styling needed */
+        }
         .blurry-container {
             background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             border-radius: 12px;
             padding: 2rem;
             margin: 1rem auto;
@@ -51,7 +124,7 @@
              /* We might need to adjust this if event-details-scroll needs 100vh */
         }
 
-        .event-detail-section {
+        .event-detail-section, .event-slide {
             min-height: 100vh;
             width: 100%;
             display: flex;
@@ -66,13 +139,11 @@
         }
         /* Sticky stack scroll effect for carousel and event details */
         #image-carousel-section {
-            position: sticky;
-            top: 0;
+            position: relative;
             z-index: 2;
         }
         .event-detail-section {
-            position: sticky;
-            top: 0;
+            position: relative;
             z-index: 1;
         }
         .event-detail-section:nth-child(1) {
@@ -355,7 +426,7 @@
             overflow: hidden;
             /* Restored background image */
             background: linear-gradient(135deg, rgba(17, 24, 39, 0.75), rgba(31, 41, 55, 0.75)), url('img/posterwithouttext.png') no-repeat center center/cover;
-            background-attachment: fixed;
+            background-attachment: scroll;
         }
 
         #hero-section::before {
@@ -1830,9 +1901,9 @@
     </section>
 
     <!-- Event Details Section -->
-    <section id="event"> <!-- Removed py-20 class -->
-        <!-- Scrollable Full-Page Event Details (Moved outside max-width container) -->
+    <section id="event">
         <div id="event-details-scroll">
+            <!-- Existing event detail sections (Samedi Matin to Dimanche Après-midi) -->
             <section class="event-detail-section" id="samedi-matin">
                 <div class="event-detail-content">
                     <div class="blurry-container mb-8">
@@ -1876,37 +1947,38 @@
                     </div>
                 </div>
             </section>
-        </div>
 
-        <!-- Other Event Content -->
-        </div>
-        <section class="event-detail-section mb-[-1.5rem]" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/beaumont.webp') no-repeat center center/cover; background-attachment: fixed;">
-            <div class="event-detail-content">
-                <div class="slide-content mt-20 mb-0">
-                    <h3><i class="fas fa-bed text-amber-500 mr-3"></i> Options d'Hébergement</h3>
-                    <p>Les concurrents qui désirent arriver le vendredi soir ou rester le dimanche soir bénéficieront de tarifs négociés au Château de Drudas et à l’Hôtel du Palais pour cette manifestation.</p>
+            <!-- Options d'Hébergement -->
+            <section class="event-detail-section" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/beaumont.webp') no-repeat center center/cover; background-attachment: fixed;">
+                <div class="event-detail-content">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-bed text-amber-500 mr-3"></i> Options d'Hébergement</h3>
+                        <p>Les concurrents qui désirent arriver le vendredi soir ou rester le dimanche soir bénéficieront de tarifs négociés au Château de Drudas et à l’Hôtel du Palais pour cette manifestation.</p>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <!-- Prestations Incluses Slide -->
-        <section class="event-detail-section prestations-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img1.jpg') no-repeat center center/cover; background-attachment: fixed;">
-            <div class="event-detail-content">
-                <div class="slide-content">
-                    <h3><i class="fas fa-gift text-amber-500 mr-3"></i> Prestations Incluses</h3>
-                    <ul>
-                        <li>Numéros de concurrents</li>
-                        <li>Tenues pour pilote et copilote</li>
-                        <li>Road book détaillé</li>
-                        <li>Goodies exclusifs</li>
-                        <li>Restauration dans des établissements du Guide Michelin</li>
-                        <li>Hébergement en hôtel 5 étoiles</li>
+            </section>
+
+            <!-- Prestations Incluses -->
+            <section class="event-detail-section" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img1.jpg') no-repeat center center/cover; background-attachment: fixed;">
+                <div class="event-detail-content">
+                    <div class="slide-content">
+                        <h3><i class="fas fa-gift text-amber-500 mr-3"></i> Prestations Incluses</h3>
+                        <ul>
+                            <li>Numéros de concurrents</li>
+                            <li>Tenues pour pilote et copilote</li>
+                            <li>Road book détaillé</li>
+                            <li>Goodies exclusifs</li>
+                            <li>Restauration dans des établissements du Guide Michelin</li>
+                            <li>Hébergement en hôtel 5 étoiles</li>
                             <li>Remise des prix avec cocktail à l'arrivée</li>
                         </ul>
                     </div>
                 </div>
+            </section>
 
-                <!-- Voitures Admissibles Slide -->
-                <div class="event-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/speedster.png') no-repeat center center/cover; background-attachment: fixed;">
+            <!-- Voitures Admissibles -->
+            <section class="event-detail-section voitures-admissibles">
+                <div class="event-detail-content">
                     <div class="slide-content">
                         <h3><i class="fas fa-car text-amber-500 mr-3"></i> Voitures Admissibles</h3>
                         <p class="text-center">Toutes les Porsche fabriquées entre 1950 et 1989 :</p>
@@ -1924,15 +1996,11 @@
                         </ul>
                     </div>
                 </div>
-                <!-- Slide: Main Heading -->
-                <!-- Removed empty event-slide -->
+            </section>
 
-                <!-- NOTE: event-details-scroll div was here -->
-
-
-
-                <!-- Tarif & Paiement Slide -->
-                <div class="event-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img2.jpg') no-repeat center center/cover; background-attachment: fixed;">
+            <!-- Tarif & Paiement -->
+            <section class="event-detail-section tarif-paiement">
+                <div class="event-detail-content">
                     <div class="slide-content price-card">
                         <h3>Tarif & Paiement</h3>
                         <p class="price">2449 € <span class="text-base font-normal text-gray-400">par équipage (2 personnes)</span></p>
@@ -1941,42 +2009,70 @@
                         <a href="#register" aria-label="S'inscrire maintenant pour le Carrera Rallye">S'inscrire Maintenant</a>
                     </div>
                 </div>
+            </section>
 
-                <!-- Règlement et Consignes du Rallye Slides -->
-                <div class="event-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img3.jpg') no-repeat center center/cover; background-attachment: fixed;">
-                    <div class="slide-content" id="reglement">
+            <!-- Règlement et Consignes du Rallye -->
+            <section class="event-detail-section comportement-route" id="reglement">
+                <div class="event-detail-content">
+                    <div class="slide-content">
                         <h3><i class="fas fa-clipboard-check text-amber-500 mr-3"></i> Comportement sur la Route</h3>
                         <p>Un comportement irréprochable sur la route est exigé de tous les participants. Le rallye se déroulant sur des routes publiques ouvertes à la circulation, le respect scrupuleux du Code de la Route est impératif. Les participants doivent faire preuve d’une attitude exemplaire envers les autres usagers de la route et leurs collègues compétiteurs. Ceux qui ne partagent pas cet esprit de convivialité et de responsabilité ne sont pas les bienvenus et s’exposent à une exclusion de cet événement réservé aux passionnés.</p>
                     </div>
                 </div>
-                <div class="event-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img4.jpg') no-repeat center center/cover; background-attachment: fixed;">
+            </section>
+            <section class="event-detail-section exigences-vehicules">
+                <div class="event-detail-content">
                     <div class="slide-content">
                         <h3><i class="fas fa-car-side text-amber-500 mr-3"></i> Exigences pour les Véhicules</h3>
                         <p>Tous les véhicules doivent être entièrement conformes au Code de la Route. Les participants doivent s’assurer que leur voiture est en parfait état, en vérifiant particulièrement l’état des pneumatiques, de l’éclairage, de la fixation de la batterie et des ceintures de sécurité (si celles-ci sont requises par la loi). Il est également recommandé de disposer d’un extincteur et d’un triangle de signalisation à bord. Aucun changement de véhicule inscrit ne sera autorisé sans l’accord préalable des organisateurs.</p>
                     </div>
                 </div>
-                <div class="event-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img5.jpg') no-repeat center center/cover; background-attachment: fixed;">
+            </section>
+            <section class="event-detail-section deroulement-rallye">
+                <div class="event-detail-content">
                     <div class="slide-content">
                         <h3><i class="fas fa-route text-amber-500 mr-3"></i> Déroulement du Rallye</h3>
-                        <p>Les participants doivent follow l’itinéraire détaillé dans le road book, sans contrainte de vitesse ni de moyenne imposée. Pour valider leur passage, ils devront faire viser leur feuille de pointage aux différents contrôles de passage (CP), dont les emplacements restent confidentiels. Nous rappelons que l’épreuve se déroule sur des routes ouvertes non neutralisées, ce qui implique une conformité stricte au Code de la Route. Les consignes de sécurité détaillées seront fournies dans le road book remis aux participants.</p>
+                        <p>Les participants doivent suivre l’itinéraire détaillé dans le road book, sans contrainte de vitesse ni de moyenne imposée. Pour valider leur passage, ils devront faire viser leur feuille de pointage aux différents contrôles de passage (CP), dont les emplacements restent confidentiels. Nous rappelons que l’épreuve se déroule sur des routes ouvertes non neutralisées, ce qui implique une conformité stricte au Code de la Route. Les consignes de sécurité détaillées seront fournies dans le road book remis aux participants.</p>
                     </div>
                 </div>
-                <div class="event-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img6.JPG') no-repeat center center/cover; background-attachment: fixed;">
+            </section>
+            <section class="event-detail-section esprit-non-competitif">
+                <div class="event-detail-content">
                     <div class="slide-content">
                         <h3><i class="fas fa-handshake text-amber-500 mr-3"></i> Esprit Non Compétitif</h3>
                         <p>Ce rallye ne comporte pas de classement basé sur la performance. La remise des prix se veut conviviale et repose sur des critères non compétitifs, tels que l’élégance, l’esprit d’équipe ou l’authenticité des véhicules. À aucun moment, des notions de vitesse moyenne ou de temps imposé n’interviennent dans l’évaluation.</p>
                     </div>
                 </div>
-                <div class="event-slide" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img7.jpg') no-repeat center center/cover; background-attachment: fixed;">
+            </section>
+            <section class="event-detail-section parcours">
+                <div class="event-detail-content">
                     <div class="slide-content">
                         <h3><i class="fas fa-map text-amber-500 mr-3"></i> Parcours</h3>
                         <p>Le rallye comprend six étapes, couvrant un total de 1 415 km d’itinéraires sur des routes 100 % asphaltées, soigneusement sélectionnées pour leur beauté et leur plaisir de conduite.</p>
                     </div>
                 </div>
-
-            </div>
+            </section>
         </div>
     </section>
+        <!-- Remaining sections (Registration, Partners, Footer) remain unchanged -->
+        <!-- Existing JavaScript remains unchanged, but update the slide observer -->
+        <script>
+            // Previous JavaScript remains unchanged, only modify the slide observer
+            // Scroll-Based Animation for Event Detail Sections
+            const observedElements = document.querySelectorAll('.event-detail-section, .pop-up');
+            const unifiedObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        unifiedObserver.unobserve(entry.target); // Unobserve to reduce overhead
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            observedElements.forEach(element => unifiedObserver.observe(element));
+        </script>
 
     <!-- Registration Section -->
     <section id="register" class="py-20 bg-gray-900" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img9.jpg') no-repeat center center/cover; background-attachment: fixed;">
@@ -2175,12 +2271,16 @@
         const backToTop = document.querySelector('.back-to-top');
         
         // Scroll handler - show/hide button
+        let isScrolling;
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.style.display = 'flex';
-            } else {
-                backToTop.style.display = 'none';
-            }
+            clearTimeout(isScrolling);
+            isScrolling = setTimeout(() => {
+                if (window.scrollY > 300) {
+                    backToTop.style.display = 'flex';
+                } else {
+                    backToTop.style.display = 'none';
+                }
+            }, 100); // 100ms debounce
         });
         
         // Click handler - scroll to top
@@ -2309,15 +2409,28 @@
         function startCarouselInterval() {
             carouselTimer = setInterval(nextCarouselSlide, carouselInterval);
         }
-
+        function stopCarouselInterval() {
+            clearInterval(carouselTimer);
+        }
         function resetCarouselInterval() {
             clearInterval(carouselTimer);
             startCarouselInterval();
         }
-
         if (carouselSlides.length > 0) {
             carouselSlides[currentCarouselSlide].classList.add('active');
             startCarouselInterval();
+            // Pause carousel when out of view
+            const carouselSection = document.getElementById('image-carousel-section');
+            const carouselVisibilityObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startCarouselInterval();
+                    } else {
+                        stopCarouselInterval();
+                    }
+                });
+            }, { threshold: 0 });
+            carouselVisibilityObserver.observe(carouselSection);
         }
 
         // Mobile Menu Toggle
@@ -2340,22 +2453,6 @@
             }
         });
 
-        // Scroll-Based Animation for Event Slides
-        const eventSlides = document.querySelectorAll('.event-slide');
-        const slideObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    // Optional: Unobserve after triggering to improve performance
-                    slideObserver.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.2, // Trigger when 20% of the slide is visible
-            rootMargin: '0px 0px -50px 0px' // Trigger slightly before the slide is fully in view
-        });
-
-        eventSlides.forEach(slide => slideObserver.observe(slide));
     </script>
 </body>
 </html>
