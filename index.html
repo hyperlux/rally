@@ -433,7 +433,7 @@
             overflow: hidden;
             /* Restored background image */
             background: linear-gradient(135deg, rgba(17, 24, 39, 0.75), rgba(31, 41, 55, 0.75)), url('img/posterwithouttext.png') no-repeat center center/cover;
-            background-attachment: scroll;
+            background-attachment: fixed;
         }
 
         #hero-section::before {
@@ -745,6 +745,8 @@
             position: relative;
             overflow: hidden;
             /* height: 70vh; */ /* Use min-height: 100vh from global */
+            background: url('img/posterwithouttext.png') no-repeat center center/cover;
+            background-attachment: fixed;
         }
 
         .carousel-slide {
@@ -1862,7 +1864,7 @@
     </section>
 
     <!-- Image Carousel Section -->
-    <section id="image-carousel-section" class="pop-up">
+    <section id="image-carousel-section" class="pop-up" style="background-attachment: fixed;">
         <div class="carousel-slide active">
             <img src="img/img1.jpg" alt="Porsche Rallye Image 1">
         </div>
