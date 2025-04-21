@@ -1796,23 +1796,6 @@
     </section>
         <!-- Remaining sections (Registration, Partners, Footer) remain unchanged -->
         <!-- Existing JavaScript remains unchanged, but update the slide observer -->
-        <script>
-            // Previous JavaScript remains unchanged, only modify the slide observer
-            // Scroll-Based Animation for Event Detail Sections
-            const observedElements = document.querySelectorAll('.event-detail-section, .pop-up');
-            const unifiedObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        unifiedObserver.unobserve(entry.target); // Unobserve to reduce overhead
-                    }
-                });
-            }, {
-                threshold: 0.2,
-                rootMargin: '0px 0px -50px 0px'
-            });
-            observedElements.forEach(element => unifiedObserver.observe(element));
-        </script>
 
     <!-- Registration Section -->
     <section id="register" class="py-20 bg-gray-900">
@@ -1993,19 +1976,20 @@
             }
         }, 1000);
 
-        // Pop-up Animation on Scroll
-        const popUpElements = document.querySelectorAll('.pop-up');
-        const observer = new IntersectionObserver((entries) => {
+        // Unified IntersectionObserver for .event-detail-section and .pop-up
+        const observedElements = document.querySelectorAll('.event-detail-section, .pop-up');
+        const unifiedObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // Optional: Unobserve after triggering to improve performance
-                    // observer.unobserve(entry.target);
+                    unifiedObserver.unobserve(entry.target); // Unobserve to reduce overhead
                 }
             });
-        }, { threshold: 0 }); // Set threshold to 0 for immediate trigger
-
-        popUpElements.forEach(element => observer.observe(element));
+        }, {
+            threshold: 0,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        observedElements.forEach(element => unifiedObserver.observe(element));
 
         // Back to Top Button
         const backToTop = document.querySelector('.back-to-top');
@@ -2031,27 +2015,25 @@
             });
         });
 
-        // Form submission simulation & Basic Validation
-        const form = document.querySelector('#register form'); // More specific selector
+        // Form submission with Google Apps Script integration
+        const form = document.querySelector('#register form');
+        
         if (form) {
-            form.addEventListener('submit', function(e) {
-                // Basic client-side validation
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Client-side validation
                 const inputs = form.querySelectorAll('input[required], textarea[required]');
                 let isValid = true;
 
                 inputs.forEach(input => {
-                    // Reset custom validity
                     input.setCustomValidity('');
-                    // Check validity
                     if (!input.checkValidity()) {
-                        // For email type, provide a specific message if it's a type mismatch
                         if (input.type === 'email' && input.validity.typeMismatch) {
                             input.setCustomValidity('Veuillez entrer une adresse e-mail valide.');
                         } else if (input.validity.valueMissing) {
                             input.setCustomValidity('Ce champ est requis.');
                         }
-                        // Trigger browser's default invalid style/message temporarily
-                        // input.reportValidity(); // Can be annoying, let CSS handle visual state
                         isValid = false;
                     }
                 });
@@ -2059,33 +2041,71 @@
                 const termsCheckbox = document.getElementById('terms');
                 if (!termsCheckbox.checked) {
                     termsCheckbox.setCustomValidity('Veuillez accepter les termes et conditions.');
-                    // termsCheckbox.reportValidity(); // Optional: show browser message
                     isValid = false;
                 } else {
                     termsCheckbox.setCustomValidity('');
                 }
 
                 if (!isValid) {
-                    e.preventDefault(); // Prevent submission if form is invalid
-                    console.log('Form validation failed.');
-                    // Optionally, scroll to the first invalid field
                     const firstInvalid = form.querySelector(':invalid');
-                    if (firstInvalid) {
-                        firstInvalid.focus();
-                    }
-                    return; // Stop further processing
+                    if (firstInvalid) firstInvalid.focus();
+                    return;
                 }
 
-                // If valid, proceed with submission simulation
-                e.preventDefault(); // Keep preventing default for simulation
-                console.log('Form data submitted (simulation):');
+                // Collect form data
                 const formData = new FormData(form);
-                for (let [key, value] of formData.entries()) {
-                    console.log(`${key}: ${value}`);
-                }
+                const data = Object.fromEntries(formData);
 
-                alert('Merci pour votre demande d\'engagement ! Notre équipe vous contactera sous peu concernant le paiement de l\'acompte.');
-                form.reset();
+                try {
+                    // Send data to Google Apps Script Web App with CORS workaround
+                    const scriptUrl = 'https://script.google.com/macros/s/AKfycbw5jkRnZCcTx2SKv_fPC-lwnKZAdwsnAUnCUegs6sp7DCGj8zWyn4Z0zfmGu1je67CKPg/exec';
+                    
+                    // Create a hidden form for submission
+                    const hiddenForm = document.createElement('form');
+                    hiddenForm.style.display = 'none';
+                    hiddenForm.method = 'POST';
+                    hiddenForm.action = scriptUrl;
+                    hiddenForm.target = 'hidden-iframe';
+                    
+                    // Add data as hidden inputs
+                    Object.entries(data).forEach(([key, value]) => {
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = key;
+                        input.value = value;
+                        hiddenForm.appendChild(input);
+                    });
+                    
+                    // Create hidden iframe for response
+                    const iframe = document.createElement('iframe');
+                    iframe.name = 'hidden-iframe';
+                    iframe.style.display = 'none';
+                    document.body.appendChild(iframe);
+                    
+                    // Submit the form
+                    document.body.appendChild(hiddenForm);
+                    hiddenForm.submit();
+                    
+                    // Clean up after submission
+                    setTimeout(() => {
+                        document.body.removeChild(hiddenForm);
+                        document.body.removeChild(iframe);
+                    }, 1000);
+                    
+                    // Show success message (actual response handling would need server-side changes)
+                    alert('Merci pour votre demande d\'engagement ! Notre équipe vous contactera sous peu.');
+                    form.reset();
+
+                    if (result.status === 'success') {
+                        alert('Merci pour votre demande d\'engagement ! Notre équipe vous contactera sous peu.');
+                        form.reset();
+                    } else {
+                        alert(result.message || 'Erreur lors de l\'envoi. Veuillez réessayer.');
+                    }
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    alert('Erreur réseau. Veuillez vérifier votre connexion.');
+                }
             });
 
             // Optional: Clear custom validity on input
