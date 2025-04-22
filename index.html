@@ -1029,18 +1029,31 @@
         }
 
         .form-input input,
-        .form-input textarea {
+        .form-input textarea,
+        .form-input select { /* Added select */
             background: rgba(255, 255, 255, 0.05); /* Subtle background for better visibility */
             border: 1px solid #4b5563; /* Full border instead of just bottom */
             border-radius: 8px; /* Rounded corners for a modern look */
             padding: 1rem; /* Standardize padding */
             transition: all 0.3s ease;
-            color: white;
+            color: #e5e7eb;
+            font-size: 1rem;
             width: 100%;
+            /* Add appearance property to allow custom styling on selects */
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            /* Add custom arrow using background image */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%23d1d5db' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1em 1em;
+            padding-right: 3rem; /* Add padding to prevent text overlapping arrow */
         }
 
         .form-input input:focus,
-        .form-input textarea:focus {
+        .form-input textarea:focus,
+        .form-input select:focus { /* Added select */
             border: 1px solid #f59e0b; /* Full border on focus */
             background: rgba(255, 255, 255, 0.1); /* Slightly lighter background on focus */
             outline: none;
@@ -1056,6 +1069,7 @@
             pointer-events: none;
         }
 
+        /* Removed label transition logic for select as label is removed */
         .form-input input:focus + label,
         .form-input input:not(:placeholder-shown) + label,
         .form-input textarea:focus + label,
@@ -1064,7 +1078,26 @@
             left: 0.5rem; /* Keep consistent */
             font-size: 0.85rem; /* Slightly larger for readability */
             color: #f59e0b;
+            background: #111827; /* Add background to cover border */
+            padding: 0 0.25rem; /* Add padding around label */
         }
+        /* Style the select element itself when the placeholder is selected */
+        .form-input select:invalid {
+            color: #e5e7eb; /* Placeholder text color */
+        }
+        /* Style the select element when a valid option is selected */
+        .form-input select:valid {
+            color: #e5e7eb; /* Color like other inputs */
+        }
+        /* Ensure the options themselves are white when dropdown is opened */
+        .form-input select option {
+            color: #1f2937; /* Or a dark color suitable for the dropdown background */
+            background: white; /* Or match dropdown background */
+        }
+        /* Keep the placeholder option visually distinct if needed when opened */
+         .form-input select option[value=""] {
+             color: #e5e7eb;
+         }
 
         /* Error Styling */
         .form-input input:invalid:focus,
@@ -1833,6 +1866,30 @@
                     <div class="form-input">
                         <input type="tel" id="phone" name="telephone" required placeholder=" " class="w-full">
                         <label for="phone">Numéro de Téléphone</label>
+                        <span class="error-message">Ce champ est requis.</span>
+                    </div>
+                    <div class="form-input">
+                        <select id="pilote-size" name="pilote_taille" required class="w-full">
+                            <option value="" selected>Taille vêtement Pilote</option> <!-- Use first option as placeholder -->
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                        </select>
+                        <!-- Removed the separate label -->
+                        <span class="error-message">Ce champ est requis.</span>
+                    </div>
+                    <div class="form-input">
+                        <select id="copilote-size" name="copilote_taille" required class="w-full">
+                            <option value="" selected>Taille vêtement Copilote</option> <!-- Use first option as placeholder -->
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                        </select>
+                        <!-- Removed the separate label -->
                         <span class="error-message">Ce champ est requis.</span>
                     </div>
                 </div>
