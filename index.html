@@ -2056,55 +2056,38 @@
                 const formData = new FormData(form);
                 const data = Object.fromEntries(formData);
 
+                // Send data to Google Apps Script Web App using fetch
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbw5jkRnZCcTx2SKv_fPC-lwnKZAdwsnAUnCUegs6sp7DCGj8zWyn4Z0zfmGu1je67CKPg/exec';
+                const submitButton = form.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.innerHTML;
+                submitButton.disabled = true;
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Envoi...'; // Indicate loading
+
                 try {
-                    // Send data to Google Apps Script Web App with CORS workaround
-                    const scriptUrl = 'https://script.google.com/macros/s/AKfycbw5jkRnZCcTx2SKv_fPC-lwnKZAdwsnAUnCUegs6sp7DCGj8zWyn4Z0zfmGu1je67CKPg/exec';
-                    
-                    // Create a hidden form for submission
-                    const hiddenForm = document.createElement('form');
-                    hiddenForm.style.display = 'none';
-                    hiddenForm.method = 'POST';
-                    hiddenForm.action = scriptUrl;
-                    hiddenForm.target = 'hidden-iframe';
-                    
-                    // Add data as hidden inputs
-                    Object.entries(data).forEach(([key, value]) => {
-                        const input = document.createElement('input');
-                        input.type = 'hidden';
-                        input.name = key;
-                        input.value = value;
-                        hiddenForm.appendChild(input);
+                    const response = await fetch(scriptUrl, {
+                        method: 'POST',
+                        mode: 'no-cors', // Important for Apps Script web apps called from client-side JS if not handling CORS properly in script
+                        cache: 'no-cache',
+                        headers: {
+                            // 'Content-Type': 'application/json' // Cannot set Content-Type with mode: 'no-cors'
+                            // Apps Script will receive this as application/x-www-form-urlencoded, need to adjust script
+                        },
+                        // body: JSON.stringify(data) // Cannot send JSON with no-cors, send as FormData
+                        body: formData // Send the original FormData object
                     });
-                    
-                    // Create hidden iframe for response
-                    const iframe = document.createElement('iframe');
-                    iframe.name = 'hidden-iframe';
-                    iframe.style.display = 'none';
-                    document.body.appendChild(iframe);
-                    
-                    // Submit the form
-                    document.body.appendChild(hiddenForm);
-                    hiddenForm.submit();
-                    
-                    // Clean up after submission
-                    setTimeout(() => {
-                        document.body.removeChild(hiddenForm);
-                        document.body.removeChild(iframe);
-                    }, 1000);
-                    
-                    // Show success message (actual response handling would need server-side changes)
+
+                    // Note: With mode: 'no-cors', we cannot read the response status or body.
+                    // We assume success if the fetch doesn't throw an error.
                     alert('Merci pour votre demande d\'engagement ! Notre équipe vous contactera sous peu.');
                     form.reset();
 
-                    if (result.status === 'success') {
-                        alert('Merci pour votre demande d\'engagement ! Notre équipe vous contactera sous peu.');
-                        form.reset();
-                    } else {
-                        alert(result.message || 'Erreur lors de l\'envoi. Veuillez réessayer.');
-                    }
                 } catch (error) {
-                    console.error('Submission error:', error);
-                    alert('Erreur réseau. Veuillez vérifier votre connexion.');
+                    console.error('Error submitting form:', error);
+                    alert('Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer.');
+                } finally {
+                    // Restore button state
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonText;
                 }
             });
 
