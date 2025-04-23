@@ -12,8 +12,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Header Logo Styles */
+        #header-logo {
+            height: 40px; /* Logo size */
+            width: auto;
+            /* Vertical alignment handled by parent flex container (items-center) */
+        }
+        .header-logo-link {
+             margin-left: 1rem; /* Space from edge */
+             margin-right: 1.5rem; /* Space between logo and nav links */
+        }
+
         /* Keep all existing styles, only add/modify the following */
-        
+
         /* Ensure event-detail-section is consistent */
         .event-detail-section {
             min-height: 100vh;
@@ -1586,9 +1597,13 @@
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-black bg-opacity-80 backdrop-filter backdrop-blur-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20"> <!-- Medium height -->
-                <div class="flex items-center">
-                    <!-- Removed logo area from navigation -->
+            <div class="flex items-center justify-between h-20"> <!-- Medium height, items-center handles vertical alignment -->
+                <!-- Logo Added Here -->
+                <a href="#hero-section" class="flex-shrink-0 header-logo-link"> <!-- Added class for margin -->
+                    <img id="header-logo" src="img/SPELOGO.png" alt="SPE Logo">
+                </a>
+                <div class="flex items-center"> <!-- This div now starts after the logo link -->
+                    <!-- Original content starts here -->
                     <div class="hidden md:block">
                         <div class="ml-16 flex items-baseline space-x-4">
                             <a href="#hero-section" class="nav-item px-3 py-2 rounded-md text-lg text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;" onclick="document.getElementById('hero-section').scrollIntoView({behavior: 'smooth'})">L'Événement</a>
