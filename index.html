@@ -157,6 +157,49 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
         }
+        /* Removed superu-container styles */
+        /* Individual Logo Scaling */
+        #partenaires .superu-logo {
+            transform: scale(1.05);
+        }
+        #partenaires .speedster-logo {
+            transform: scale(1.2);
+        }
+        #partenaires .parcbeaumont-logo {
+            transform: scale(1.04);
+        }
+        #partenaires .maison-logo {
+            transform: scale(1.03);
+        }
+        #partenaires .palais-logo {
+            transform: scale(0.9);
+        }
+        #partenaires .drudas-logo {
+            transform: scale(0.524);
+        }
+        #partenaires .ferme-logo {
+            transform: scale(1); /* Default scale */
+            object-fit: contain;
+            max-height: 100%;
+            max-width: 100%;
+            /* margin: auto; */ /* Optional centering */
+        }
+        /* Example for individual adjustment: */
+        /*
+        #partenaires .superu-logo {
+            transform: scale(1.4);
+        }
+        #partenaires .speedster-logo {
+            transform: scale(1.2);
+        }
+        */
+
+        /* Optional: Prevent double scaling on hover if needed */
+        /*
+        #partenaires div:hover .superu-logo {
+            transform: scale(1.3);
+        }
+        */
         footer {
             min-height: auto; /* Let content define height */
         }
@@ -1970,10 +2013,10 @@ L’ arrivée à l’hôtel du Palais, en bord de la plage à Biarritz, connaît
             <div class="flex flex-wrap justify-center items-center gap-12 md:gap-16">
                 <!-- Partner Logo -->
                 <div class="flex justify-center items-center h-40 w-64 bg-white p-1 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
-                    <img src="img/superu.png" alt="Super U Logo" class="object-contain h-full w-full">
+                    <img src="img/superu.png" alt="Super U Logo" class="object-contain superu-logo">
                 </div>
-                <div class="flex justify-center items-center h-40 w-64 bg-white p-4 sm:p-6 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
-                    <img src="img/speedster.png" alt="Speedster Logo" class="object-contain h-full w-full">
+                <div class="flex justify-center items-center h-40 w-64 bg-white p-1 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
+                    <img src="img/speedster.png" alt="Speedster Logo" class="object-contain speedster-logo">
                 </div>
                 <div class="flex justify-center items-center h-40 w-64 bg-white p-4 sm:p-6 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
                     <img src="img/audi.png" alt="Audi Logo" class="object-contain h-full w-full">
@@ -1982,23 +2025,23 @@ L’ arrivée à l’hôtel du Palais, en bord de la plage à Biarritz, connaît
                 <div class="flex justify-center items-center h-40 w-64 bg-white p-4 sm:p-6 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
                     <img src="img/abeille.png" alt="Abeille Assurances Logo" class="object-contain h-full w-full">
                 </div>
-                <div class="flex justify-center items-center h-40 w-64 bg-white p-4 sm:p-6 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
-                    <img src="img/parcbeaumont.png" alt="Hotel Parc Beaumont Logo" class="object-contain h-full w-full">
+                <div class="flex justify-center items-center h-40 w-64 bg-white p-1 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
+                    <img src="img/parcbeaumont.png" alt="Hotel Parc Beaumont Logo" class="object-contain parcbeaumont-logo">
                 </div>
-                <div class="flex justify-center items-center h-40 w-64 bg-white p-4 sm:p-6 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
-                    <img src="img/maisonlogo.png" alt="Maison Ithurria Logo" class="object-contain h-full w-full">
+                <div class="flex justify-center items-center h-40 w-64 bg-white p-1 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
+                    <img src="img/maisonlogo.png" alt="Maison Ithurria Logo" class="object-contain maison-logo">
                 </div>
-                <div class="flex justify-center items-center h-40 w-64 bg-white p-4 sm:p-6 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
-                    <img src="img/hotelpalaislogo.png" alt="Hotel du Palais Logo" class="object-contain h-full w-full">
+                <div class="flex justify-center items-center h-40 w-64 bg-white p-1 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
+                    <img src="img/hotelpalaislogo.png" alt="Hotel du Palais Logo" class="object-contain palais-logo">
                 </div>
                 <div class="flex justify-center items-center h-40 w-64 bg-white p-4 sm:p-6 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
                     <img src="img/motul.png" alt="Motul Logo" class="object-contain h-full w-full">
                 </div>
-                <div class="flex justify-center items-center h-40 w-64 bg-white p-4 sm:p-6 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
-                    <img src="img/drudaslogo.png" alt="Château de Drudas Logo" class="object-contain h-full w-full">
+                <div class="flex justify-center items-center h-40 w-64 bg-white p-1 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
+                    <img src="img/drudaslogo.png" alt="Château de Drudas Logo" class="object-contain drudas-logo">
                 </div>
-                <div class="flex justify-center items-center h-40 w-64 bg-white p-4 sm:p-6 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
-                    <img src="img/fermelogo.png" alt="Ferme aux Grives Logo" class="object-contain h-full w-full">
+                <div class="flex justify-center items-center h-40 w-64 bg-white p-1 rounded-xl opacity-90 hover:opacity-100 transition duration-300 transform hover:scale-105 shadow-lg">
+                    <img src="img/fermelogo.png" alt="Ferme aux Grives Logo" class="object-contain ferme-logo">
                 </div>
             </div>
         </div>
