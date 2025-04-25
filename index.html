@@ -26,6 +26,7 @@
         /* Keep all existing styles, only add/modify the following */
 
         /* Ensure event-detail-section is consistent */
+        /* Ensure event-detail-section is consistent */
         .event-detail-section {
             min-height: 100vh;
             width: 100%;
@@ -36,10 +37,28 @@
             position: relative;
             z-index: 1;
             overflow: hidden;
+            /* Remove background properties from the section itself */
+        }
+        
+        /* General ::before for all .event-detail-section with background images */
+        .event-detail-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 0; /* Place behind content but not behind other sections */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            /* background-attachment: fixed;  Removed for smooth scrolling */
+            opacity: 0.5; /* Adjust opacity here */
+        }
+        
+        /* Ensure content is above the background */
+        .event-detail-content {
+            position: relative;
+            z-index: 1; /* Ensure content is above the ::before background */
         }
         /* Remove sticky from first event-detail-section */
 
@@ -71,41 +90,79 @@
         }
 
         /* Specific background images for new sections */
-        .event-detail-section.voitures-admissibles {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img6.jpg');
-            background-attachment: fixed;
-        }
-        .event-detail-section.tarif-paiement {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img8.jpg');
-            background-attachment: fixed;
-        }
-        .event-detail-section.comportement-route {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img4.jpg');
-            background-attachment: fixed;
-        }
-        .event-detail-section.exigences-vehicules {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img5.jpg');
-            background-attachment: fixed;
-        }
-        .event-detail-section.deroulement-rallye {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img1.jpg');
-            background-attachment: fixed;
-        }
-        .event-detail-section.esprit-non-competitif {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img12.jpg');
-            background-attachment: fixed;
-        }
-.event-detail-section.histoire {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img2.jpg') !important;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-        #event-details-scroll .event-detail-section.parcours {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img3.jpg') !important;
-            background-attachment: fixed !important;
-        }
+.event-detail-section.voitures-admissibles::before {
+    background-image: url('img/img6.jpg');
+    background-attachment: fixed;
+}
+.event-detail-section.tarif-paiement::before {
+    background-image: url('img/img8.jpg');
+    background-attachment: fixed;
+}
+.event-detail-section.comportement-route::before {
+    background-image: url('img/img4.jpg');
+    background-attachment: fixed;
+}
+.event-detail-section.exigences-vehicules::before {
+    background-image: url('img/img5.jpg');
+    background-attachment: fixed;
+}
+.event-detail-section.deroulement-rallye::before {
+    background-image: url('img/img1.jpg');
+    background-attachment: fixed;
+}
+.event-detail-section.esprit-non-competitif::before {
+    background-image: url('img/img12.jpg');
+    background-attachment: fixed;
+}
+#event .event-detail-section.histoire::before {
+    background-image: url('img/img2.jpg');
+    background-attachment: fixed;
+}
+#event-details-scroll .event-detail-section.parcours::before {
+    background-image: url('img/img3.jpg');
+    background-attachment: fixed;
+}
+
+/* Sections that previously had inline styles */
+.event-detail-section#samedi-matin::before {
+    background-image: url('img/chate.jpeg');
+    background-attachment: fixed;
+}
+
+.event-detail-section:nth-child(2)::before {
+    background-image: url('img/fermenew.jpg');
+    background-attachment: fixed;
+}
+
+.event-detail-section:nth-child(3)::before {
+    background-image: url('img/fermenew.jpg'); /* Samedi Midi */
+    background-attachment: fixed;
+}
+
+.event-detail-section:nth-child(4)::before {
+    background-image: url('img/beaumont.webp'); /* Samedi Soir */
+    background-attachment: fixed;
+}
+
+.event-detail-section:nth-child(5)::before {
+    background-image: url('img/restoitu.jpg'); /* Dimanche Matin */
+    background-attachment: fixed;
+}
+
+.event-detail-section:nth-child(6)::before {
+    background-image: url('img/palais.webp'); /* Dimanche Après-midi */
+    background-attachment: fixed;
+}
+
+.event-detail-section:nth-child(7)::before {
+    background-image: url('img/cham.jpg'); /* Options d'Hébergement */
+    background-attachment: fixed;
+}
+
+.event-detail-section:nth-child(8)::before {
+    background-image: url('img/img9.jpg'); /* Prestations Incluses */
+    background-attachment: fixed;
+}
 
         /* Remove redundant prestations-slide */
         .prestations-slide {
@@ -141,22 +198,41 @@
              justify-content: center; /* Center content vertically */
         }
         /* Override min-height for sections that shouldn't be full viewport */
-        #partenaires {
-            min-height: 100vh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            scroll-snap-align: start;
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/posterwithouttext.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
+/* #partenaires Section */
+/* #partenaires Section */
+#partenaires {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+#partenaires::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0; /* Place behind content */
+    background-image: url('img/posterwithouttext.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.5;
+}
+
+/* Ensure content in #partenaires is above the background */
+#partenaires > * {
+    position: relative;
+    z-index: 1;
+}
         /* Removed superu-container styles */
         /* Individual Logo Scaling */
         #partenaires .superu-logo {
@@ -208,49 +284,41 @@
              /* We might need to adjust this if event-details-scroll needs 100vh */
         }
 
-        .event-detail-section, .event-slide {
-            min-height: 100vh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            scroll-snap-align: start;
-            position: relative;
-            overflow: hidden;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        /* Sticky stack scroll effect for carousel and event details */
-        #image-carousel-section {
-            position: relative;
-            z-index: 2;
-        }
-        .event-detail-section {
-            position: relative;
-            z-index: 1;
-        }
-        .event-detail-section:nth-child(1) {
-            background-image: url('img/chate.jpeg'); /* This is already set, ensuring it stays */
-        }
+.event-detail-section, .event-slide {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+}
+/* Sticky stack scroll effect for carousel and event details */
+#image-carousel-section {
+    position: relative;
+    z-index: 2;
+}
+.event-detail-section {
+    position: relative;
+    z-index: 1;
+}
+.event-detail-section:nth-child(1) {
+}
         .event-detail-section:nth-child(1) .event-detail-content {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
-        .event-detail-section:nth-child(2) {
-            background-image: url('img/fermenew.jpg');
-        }
-        .event-detail-section:nth-child(3) {
-            background-image: url('img/beaumont.webp');
-        }
-        .event-detail-section:nth-child(4) {
-            background-image: url('img/restoitu.jpg');
-        }
-        .event-detail-section:nth-child(5) {
-            background-image: url('img/palais.webp');
-        }
+.event-detail-section:nth-child(2) {
+}
+.event-detail-section:nth-child(3) {
+}
+.event-detail-section:nth-child(4) {
+}
+.event-detail-section:nth-child(5) {
+}
         .event-detail-content {
             display: flex;
             flex-direction: column;
@@ -529,29 +597,47 @@
         }
 
         /* Hero Section */
-        #hero-section {
-            /* min-height: 100vh; */ /* Handled by global section style */
-            /* display: flex;  Moved to .hero-inner */
-            /* align-items: center; */ /* Handled by global section style */
-            justify-content: center;
-            padding-top: 5rem; /* Keep padding or adjust */
-            position: relative;
-            overflow: hidden;
-            /* Restored background image */
-            background: linear-gradient(135deg, rgba(17, 24, 39, 0.75), rgba(31, 41, 55, 0.75)), url('img/posterwithouttext.png') no-repeat center center/cover;
-            background-attachment: fixed;
-        }
+/* #hero-section */
+/* #hero-section */
+#hero-section {
+    justify-content: center;
+    padding-top: 5rem;
+    position: relative;
+    overflow: hidden;
+}
 
-        #hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)); /* Lighter overlay */
-            z-index: 0;
-        }
+#hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
+    z-index: 0;
+}
+
+#hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1; /* Place behind ::before gradient */
+    background-image: url('img/posterwithouttext.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.5;
+}
+
+/* Ensure content in #hero-section is above the background */
+.hero-inner {
+    position: relative;
+    z-index: 1;
+}
 
         /* New container for the image */
         .hero-image-container {
@@ -1047,20 +1133,34 @@
     margin-top: 5rem;
 }
 
-        #register {
-            /* background: linear-gradient(135deg, #1f2937 0%, #111827 100%); */ /* Removed conflicting background */
-            position: relative;
-            text-align: center;
-            /* min-height: 100vh; */ /* Handled by global section style */
-        }
+/* #register Section */
+/* #register Section */
+#register {
+    position: relative;
+    text-align: center;
+}
 
-        #register {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
+#register::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    background-image: url('img/img1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.5;
+}
+
+/* Ensure content in #register is above the background */
+#register > * {
+    position: relative;
+    z-index: 1;
+}
 
         #register > * {
             position: relative;
@@ -1658,7 +1758,7 @@
                         <div class="flex justify-center items-baseline space-x-4">
                             <a href="#hero-section" class="nav-item px-3 py-2 rounded-md text-lg text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;" onclick="document.getElementById('hero-section').scrollIntoView({behavior: 'smooth'})">L'Événement</a>
                             <a href="#event" class="nav-item px-3 py-2 rounded-md text-lg text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Parcours</a>
-                            <a href="#reglement" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Règlement</a>
+                            <a href="#voitures-admissibles" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Règlement</a>
                             <a href="#histoire" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Histoire</a>
                             <a href="#partenaires" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Nos Partenaires</a>
                         </div>
@@ -1754,7 +1854,7 @@
             </section>
 
             <!-- Existing event detail sections (Samedi Matin to Dimanche Après-midi) -->
-            <section class="event-detail-section" id="samedi-matin" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/chate.jpeg') no-repeat center center/cover; background-attachment: fixed;">
+            <section class="event-detail-section" id="samedi-matin">
                 <div class="event-detail-content">
                     <div class="blurry-container">
                         <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Matin</h2>
@@ -1762,7 +1862,7 @@
                     </div>
                 </div>
             </section>
-            <section class="event-detail-section" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/fermenew.jpg') no-repeat center center/cover; background-attachment: fixed;">
+            <section class="event-detail-section">
                 <div class="event-detail-content">
                     <div class="blurry-container">
                         <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Midi</h2>
@@ -1770,7 +1870,7 @@
                     </div>
                 </div>
             </section>
-            <section class="event-detail-section" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/beaumont.webp') no-repeat center center/cover; background-attachment: fixed;">
+            <section class="event-detail-section">
                 <div class="event-detail-content">
                     <div class="blurry-container">
                         <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Soir</h2>
@@ -1778,7 +1878,7 @@
                     </div>
                 </div>
             </section>
-            <section class="event-detail-section" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/restoitu.jpg') no-repeat center center/cover; background-attachment: fixed;">
+            <section class="event-detail-section">
                 <div class="event-detail-content">
                     <div class="blurry-container">
                         <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Dimanche Matin</h2>
@@ -1786,7 +1886,7 @@
                     </div>
                 </div>
             </section>
-            <section class="event-detail-section" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/palais.webp') no-repeat center center/cover; background-attachment: fixed;">
+            <section class="event-detail-section">
                 <div class="event-detail-content">
                     <div class="blurry-container">
                         <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Dimanche Après-midi</h2>
@@ -1796,7 +1896,7 @@
             </section>
 
             <!-- Options d'Hébergement -->
-            <section class="event-detail-section" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/cham.jpg') no-repeat center center/cover; background-attachment: fixed;">
+            <section class="event-detail-section">
                 <div class="event-detail-content">
                     <div class="slide-content">
                         <h2><i class="fas fa-bed text-amber-500 mr-3"></i> Options d'Hébergement</h2>
@@ -1806,7 +1906,7 @@
             </section>
 
             <!-- Prestations Incluses -->
-            <section class="event-detail-section" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/img9.jpg') no-repeat center center/cover; background-attachment: fixed;">
+            <section class="event-detail-section">
                 <div class="event-detail-content">
                     <div class="slide-content">
                         <h2><i class="fas fa-gift text-amber-500 mr-3"></i> Prestations Incluses</h2>
@@ -1838,7 +1938,7 @@
             </section>
 
             <!-- Voitures Admissibles -->
-            <section class="event-detail-section voitures-admissibles">
+            <section class="event-detail-section voitures-admissibles" id="voitures-admissibles">
                 <div class="event-detail-content">
                     <div class="slide-content">
                         <h2><i class="fas fa-car text-amber-500 mr-3"></i> Voitures Admissibles</h2>
