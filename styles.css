@@ -423,6 +423,26 @@ nav {
   box-shadow: var(--shadow);
 }
 
+.slide-content.prestations-content {
+  text-align: left;
+  width: 100%; /* Allow to expand up to max-width */
+  /* max-width handled by more specific rule below */
+}
+
+/* Override max-width for the Prestations Incluses slide content */
+.event-detail-section:nth-child(8) .slide-content.prestations-content {
+  max-width: 1400px; /* Further increased width */
+}
+
+.slide-content.prestations-content ul {
+  list-style-type: disc;
+  padding-left: 1.5rem; /* Add some padding for the bullet points */
+}
+
+.slide-content.prestations-content ul li {
+  margin-bottom: 0.5rem; /* Add space between list items */
+}
+
 .event-detail-section.parcours::before { background-image: url('img/img3.jpg'); }
 .event-detail-section#samedi-matin::before { background-image: url('img/chate.jpeg'); }
 .event-detail-section:nth-child(3)::before { background-image: url('img/fermenew.jpg'); } /* Samedi Midi */
