@@ -353,8 +353,8 @@ nav {
   border-radius: 12px;
   padding: calc(var(--spacing-unit) * 2);
   margin: var(--spacing-unit) auto;
-  max-width: 800px; /* Adjust max-width as needed */
-  width: 90%;
+  max-width: 1400px; /* Adjust max-width as needed */
+  width: 100%;
   text-align: center;
   color: var(--text-white);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
