@@ -326,6 +326,76 @@ nav {
   z-index: 1;
 }
 
+/* Registered Participants Section */
+#registered-participants {
+  position: relative;
+  min-height: 100vh; /* Ensure full viewport height */
+}
+
+#registered-participants::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url('img/img10.jpg') center/cover no-repeat fixed; /* Choose a suitable background image */
+  opacity: 0.5;
+}
+
+#registered-participants > * {
+  position: relative;
+  z-index: 1;
+}
+
+.participants-content {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 12px;
+  padding: calc(var(--spacing-unit) * 2);
+  margin: var(--spacing-unit) auto;
+  max-width: 800px; /* Adjust max-width as needed */
+  width: 90%;
+  text-align: center;
+  color: var(--text-white);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.participants-content h2 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 2.7rem;
+  color: var(--primary-color);
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+}
+
+.participant-entry {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: var(--spacing-unit);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.participant-entry p {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.participant-entry p:last-child {
+  margin-bottom: 0;
+}
+
+.flag-icon {
+  margin-left: 0.5rem;
+  font-size: 1.2rem; /* Adjust size as needed */
+}
+
 #event-details-scroll {
   display: flex;
   flex-direction: column;
