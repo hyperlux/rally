@@ -397,21 +397,22 @@ nav {
 }
 
 .blurry-container {
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
   padding: calc(var(--spacing-unit) * 2);
   margin: var(--spacing-unit) auto;
   max-width: 700px;
   width: 90%;
+  box-shadow: var(--shadow);
 }
 
 .slide-content {
-  background: rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
   padding: calc(var(--spacing-unit) * 2);
   margin: var(--spacing-unit) auto;
   max-width: 700px;
@@ -419,6 +420,7 @@ nav {
   text-align: center;
   color: var(--text-white);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  box-shadow: var(--shadow);
 }
 
 .event-detail-section.parcours::before { background-image: url('img/img3.jpg'); }
