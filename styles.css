@@ -509,6 +509,162 @@ nav {
   box-shadow: 0 8px 20px rgba(245, 158, 11, 0.6);
 }
 
+/* Registered Participants Section - Now using event-detail-section structure */
+.event-detail-section.registered-participants::before {
+  background-image: url('img/img3.jpg');
+}
+
+.slide-content.participants-content {
+  max-width: 2000px; /* Increased width for better layout */
+  width: 100%; /* Even wider to utilize more space */
+}
+
+.slide-content.participants-content h2 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 2.7rem;
+  color: var(--primary-color);
+  margin-bottom: calc(var(--spacing-unit) * 1.5);
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* Participants List Styles */
+.slide-content.participants-content .participants-list {
+  max-width: 100%;
+  margin: 0 auto calc(var(--spacing-unit) * 2) auto;
+}
+
+.slide-content.participants-content .participants-list ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: calc(var(--spacing-unit) * 0.8);
+}
+
+.slide-content.participants-content .participant-list-item {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: calc(var(--spacing-unit) * 1);
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 0.8);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  min-height: 70px;
+}
+
+.slide-content.participants-content .participant-list-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.slide-content.participants-content .participant-number {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 1.1rem;
+  min-width: 30px;
+  text-align: right;
+  align-self: flex-start;
+  padding-top: 2px;
+}
+
+.slide-content.participants-content .participant-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 0.3);
+}
+
+.slide-content.participants-content .pilot-info,
+.slide-content.participants-content .copilot-info {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing-unit) * 0.5);
+}
+
+.slide-content.participants-content .flag-icon {
+  font-size: 1.2rem;
+  min-width: 25px;
+  text-align: center;
+}
+
+.slide-content.participants-content .name {
+  color: var(--text-white);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.slide-content.participants-content .car-info {
+  color: var(--text-gray);
+  font-size: 0.85rem;
+  font-style: italic;
+  text-align: right;
+  min-width: 140px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  align-self: flex-start;
+  padding-top: 2px;
+}
+
+/* Responsive adjustments for list */
+@media (max-width: 768px) {
+  .slide-content.participants-content .participants-list ol {
+    grid-template-columns: 1fr;
+    gap: calc(var(--spacing-unit) * 0.6);
+  }
+  
+  .slide-content.participants-content .participant-list-item {
+    flex-direction: column;
+    text-align: center;
+    gap: calc(var(--spacing-unit) * 0.6);
+    padding: calc(var(--spacing-unit) * 1);
+    min-height: auto;
+  }
+  
+  .slide-content.participants-content .participant-number {
+    text-align: center;
+    min-width: auto;
+    align-self: center;
+    padding-top: 0;
+  }
+  
+  .slide-content.participants-content .participant-details {
+    align-items: center;
+  }
+  
+  .slide-content.participants-content .pilot-info,
+  .slide-content.participants-content .copilot-info {
+    justify-content: center;
+  }
+  
+  .slide-content.participants-content .car-info {
+    text-align: center;
+    min-width: auto;
+    align-self: center;
+    padding-top: 0;
+  }
+}
+
+.slide-content.participants-content > p:last-child {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  text-align: center;
+  margin-top: calc(var(--spacing-unit) * 2);
+  padding: calc(var(--spacing-unit) * 1.5);
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 15px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
 /* Registration Section */
 #register {
   position: relative;
