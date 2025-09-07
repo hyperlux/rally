@@ -1509,9 +1509,11 @@ footer a:hover {
     max-width: 350px;
   }
   .event-detail-content {
-    padding: calc(var(--spacing-unit) * 2) 1rem;
+    padding: calc(var(--spacing-unit) * 2) 1.5rem;
     width: 100%;
     max-width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
   }
   .event-detail-content h2 { font-size: 2rem; }
   .event-detail-content h3 { font-size: 1.5rem; }
@@ -1519,11 +1521,11 @@ footer a:hover {
   
   .blurry-container,
   .slide-content {
-    width: 100%;
-    max-width: calc(100vw - 2rem);
+    width: calc(100% - 1rem);
+    max-width: calc(100vw - 3rem);
     margin-left: auto;
     margin-right: auto;
-    padding: 1rem;
+    padding: 1.5rem;
     box-sizing: border-box;
   }
   
@@ -1565,9 +1567,26 @@ footer a:hover {
   }
   
   nav .max-w-7xl {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    max-width: 100vw;
+  }
+  
+  /* Ensure all sections have proper margins */
+  .event-detail-section {
     padding-left: 1rem;
     padding-right: 1rem;
-    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  
+  #partenaires {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
@@ -1585,16 +1604,16 @@ footer a:hover {
   }
   
   section {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
     width: 100% !important;
     max-width: 100vw !important;
     overflow-x: hidden !important;
   }
   
   #hero-section {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
   }
   
   .hero-inner {
@@ -1657,9 +1676,17 @@ footer a:hover {
   
   .blurry-container,
   .slide-content {
-    width: calc(100vw - 1rem) !important;
-    max-width: calc(100vw - 1rem) !important;
-    padding: 0.75rem !important;
+    width: calc(100% - 1rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    padding: 1rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  .event-detail-content {
+    padding: calc(var(--spacing-unit) * 2) 1rem !important;
+    width: 100% !important;
+    max-width: 100vw !important;
     margin-left: auto !important;
     margin-right: auto !important;
   }
@@ -1703,8 +1730,8 @@ footer a:hover {
   }
   
   nav .max-w-7xl {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
     max-width: 100vw !important;
     width: 100% !important;
   }
