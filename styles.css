@@ -831,78 +831,199 @@ button[type="submit"] {
   z-index: 1;
 }
 
-/* Partner logo specific sizing adjustments */
+/* Partner Cards Styling */
+.partner-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 130px;
+  width: 220px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1.25rem;
+  border-radius: 16px;
+  opacity: 0.92;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border: 2px solid transparent;
+  backdrop-filter: blur(5px);
+}
+
+.partner-card:hover {
+  opacity: 1;
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(245, 158, 11, 0.25);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.partner-card.main-sponsor {
+  height: 150px;
+  width: 260px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 3px solid rgba(245, 158, 11, 0.2);
+  padding: 1.5rem;
+}
+
+.partner-card.main-sponsor:hover {
+  border-color: rgba(245, 158, 11, 0.6);
+  box-shadow: 0 20px 50px rgba(245, 158, 11, 0.35);
+}
+
+/* Partner category headings */
+#partenaires h3 {
+  font-family: var(--font-heading);
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Uniform logo sizing for better visual consistency */
 #partenaires .superu-logo {
-  max-height: 75%;
-  max-width: 85%;
-}
-
-#partenaires .rs-magazine-logo {
-  max-height: 85%;
-  max-width: 85%;
-}
-
-#partenaires .audi-logo {
-  max-height: 55%;
-  max-width: 75%;
-}
-
-#partenaires .abeille-logo {
-  max-height: 75%;
-  max-width: 75%;
-}
-
-#partenaires .parcbeaumont-logo {
-  max-height: 80%;
-  max-width: 80%;
-}
-
-#partenaires .maison-logo {
-  max-height: 85%;
-  max-width: 85%;
-}
-
-#partenaires .palais-logo {
-  max-height: 70%;
-  max-width: 80%;
-}
-
-#partenaires .motul-logo {
-  max-height: 55%;
-  max-width: 75%;
-}
-
-#partenaires .drudas-logo {
-  max-height: 40%;
-  max-width: 60%;
-}
-
-#partenaires .ferme-logo {
-  max-height: 80%;
-  max-width: 80%;
-}
-
-#partenaires .sid-logo {
-  max-height: 30%;
-  max-width: 45%;
-}
-
-#partenaires .dsi-logo {
   max-height: 65%;
   max-width: 75%;
 }
 
-/* Ensure all partner logos maintain aspect ratio and consistent baseline */
+#partenaires .rs-magazine-logo {
+  max-height: 70%;
+  max-width: 75%;
+}
+
+#partenaires .audi-logo {
+  max-height: 45%;
+  max-width: 65%;
+}
+
+#partenaires .abeille-logo {
+  max-height: 65%;
+  max-width: 65%;
+}
+
+#partenaires .parcbeaumont-logo {
+  max-height: 70%;
+  max-width: 70%;
+}
+
+#partenaires .maison-logo {
+  max-height: 75%;
+  max-width: 75%;
+}
+
+#partenaires .palais-logo {
+  max-height: 60%;
+  max-width: 70%;
+}
+
+#partenaires .motul-logo {
+  max-height: 45%;
+  max-width: 65%;
+}
+
+#partenaires .drudas-logo {
+  max-height: 30%;
+  max-width: 50%;
+}
+
+#partenaires .ferme-logo {
+  max-height: 70%;
+  max-width: 70%;
+}
+
+#partenaires .sid-logo {
+  max-height: 20%;
+  max-width: 35%;
+}
+
+#partenaires .dsi-logo {
+  max-height: 55%;
+  max-width: 65%;
+}
+
+/* Ensure all partner logos maintain aspect ratio and are centered */
 #partenaires img {
   object-fit: contain;
   transition: transform 0.3s ease;
+  display: block;
+  margin: auto;
 }
 
-/* Additional fine-tuning for better visual balance */
-#partenaires .partner-container {
+/* Responsive adjustments */
+/* Partner section flexbox layouts */
+.partners-main-flex {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.partners-hospitality-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.partners-media-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .partner-card {
+    height: 110px;
+    width: 180px;
+    padding: 1rem;
+  }
+  
+  .partner-card.main-sponsor {
+    height: 130px;
+    width: 200px;
+    padding: 1.25rem;
+  }
+  
+  #partenaires h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .partners-main-flex,
+  .partners-hospitality-flex,
+  .partners-media-flex {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .partner-card {
+    height: 100px;
+    width: 160px;
+    padding: 0.75rem;
+  }
+  
+  .partner-card.main-sponsor {
+    height: 120px;
+    width: 180px;
+  }
+  
+  .partners-main-flex,
+  .partners-hospitality-flex,
+  .partners-media-flex {
+    gap: 0.75rem;
+  }
+  
+  /* Force single column on very small screens */
+  .partners-main-flex {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* Footer */
