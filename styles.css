@@ -1134,76 +1134,98 @@ button[type="submit"]:active {
   margin: auto;
 }
 
-#partenaires .superu-logo {
-  max-height: 50px;
-  max-width: 160px;
-  transform: scale(var(--superu-scale));
+/* Desktop/tablet logo scaling (768px and up) */
+@media (min-width: 768px) {
+  #partenaires .superu-logo {
+    max-height: 50px;
+    max-width: 160px;
+    transform: scale(var(--superu-scale));
+  }
+
+  #partenaires .rs-magazine-logo {
+    max-height: 60px;
+    max-width: 140px;
+    transform: scale(var(--rs-magazine-scale));
+  }
+
+  #partenaires .audi-logo {
+    max-height: 60px;
+    max-width: 140px;
+    transform: scale(var(--audi-scale));
+  }
+
+  #partenaires .abeille-logo {
+    max-height: 70px;
+    max-width: 140px;
+    transform: scale(var(--abeille-scale));
+  }
+
+  #partenaires .parcbeaumont-logo {
+    max-height: 70px;
+    max-width: 160px;
+    transform: scale(var(--parcbeaumont-scale));
+  }
+
+  #partenaires .maison-logo {
+    max-height: 70px;
+    max-width: 160px;
+    transform: scale(var(--maison-scale));
+  }
+
+  #partenaires .palais-logo {
+    max-height: 60px;
+    max-width: 140px;
+    transform: scale(var(--palais-scale));
+  }
+
+  #partenaires .motul-logo {
+    max-height: 50px;
+    max-width: 140px;
+    transform: scale(var(--motul-scale));
+  }
+
+  #partenaires .drudas-logo {
+    max-height: 40px;
+    max-width: 120px;
+    transform: scale(var(--drudas-scale));
+  }
+
+  #partenaires .ferme-logo {
+    max-height: 70px;
+    max-width: 160px;
+    transform: scale(var(--ferme-scale));
+  }
+
+  #partenaires .sid-logo {
+    max-height: 35px;
+    max-width: 100px;
+    transform: scale(var(--sid-scale));
+  }
+
+  #partenaires .dsi-logo {
+    max-height: 60px;
+    max-width: 140px;
+    transform: scale(var(--dsi-scale));
+  }
 }
 
-#partenaires .rs-magazine-logo {
-  max-height: 60px;
-  max-width: 140px;
-  transform: scale(var(--rs-magazine-scale));
-}
-
-#partenaires .audi-logo {
-  max-height: 60px;
-  max-width: 140px;
-  transform: scale(var(--audi-scale));
-}
-
-#partenaires .abeille-logo {
-  max-height: 70px;
-  max-width: 140px;
-  transform: scale(var(--abeille-scale));
-}
-
-#partenaires .parcbeaumont-logo {
-  max-height: 70px;
-  max-width: 160px;
-  transform: scale(var(--parcbeaumont-scale));
-}
-
-#partenaires .maison-logo {
-  max-height: 70px;
-  max-width: 160px;
-  transform: scale(var(--maison-scale));
-}
-
-#partenaires .palais-logo {
-  max-height: 60px;
-  max-width: 140px;
-  transform: scale(var(--palais-scale));
-}
-
-#partenaires .motul-logo {
-  max-height: 50px;
-  max-width: 140px;
-  transform: scale(var(--motul-scale));
-}
-
-#partenaires .drudas-logo {
-  max-height: 40px;
-  max-width: 120px;
-  transform: scale(var(--drudas-scale));
-}
-
-#partenaires .ferme-logo {
-  max-height: 70px;
-  max-width: 160px;
-  transform: scale(var(--ferme-scale));
-}
-
-#partenaires .sid-logo {
-  max-height: 35px;
-  max-width: 100px;
-  transform: scale(var(--sid-scale));
-}
-
-#partenaires .dsi-logo {
-  max-height: 60px;
-  max-width: 140px;
-  transform: scale(var(--dsi-scale));
+/* Mobile logo scaling (below 768px) - no extra scaling to avoid affecting mobile layout */
+@media (max-width: 767px) {
+  #partenaires .superu-logo,
+  #partenaires .rs-magazine-logo,
+  #partenaires .audi-logo,
+  #partenaires .abeille-logo,
+  #partenaires .parcbeaumont-logo,
+  #partenaires .maison-logo,
+  #partenaires .palais-logo,
+  #partenaires .motul-logo,
+  #partenaires .drudas-logo,
+  #partenaires .ferme-logo,
+  #partenaires .sid-logo,
+  #partenaires .dsi-logo {
+    max-height: 50px;
+    transform: scale(1);
+  }
 }
 
 /* Ensure all partner logos maintain aspect ratio and are centered */
