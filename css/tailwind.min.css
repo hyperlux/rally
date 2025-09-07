@@ -29,6 +29,7 @@
 }
 
 /* Layout and positioning */
+body{/* Reset body margin for full screen elements */margin:0;}body{/* Existing body styles placeholder */}
 .fixed{position:fixed;}
 .w-full{width:100%}
 
