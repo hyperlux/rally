@@ -1,16 +1,17 @@
-// Smooth scrolling for anchor links
+// Smooth scrolling for anchor links - preserved to work with scroll snap
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
-      e.preventDefault();
       const targetElement = document.querySelector(this.getAttribute('href'));
       if (targetElement) {
           const headerOffset = 80;
           const elementPosition = targetElement.getBoundingClientRect().top;
           const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-          window.scrollTo({
-              top: offsetPosition,
-              behavior: "smooth"
+          // Use scrollIntoView instead of scrollTo for better scroll snap compatibility
+          targetElement.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+              inline: "nearest"
           });
       }
   });
