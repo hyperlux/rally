@@ -877,8 +877,8 @@ button[type="submit"] {
 
 /* Uniform logo sizing for better visual consistency */
 #partenaires .superu-logo {
-  max-height: 65%;
-  max-width: 75%;
+  max-height: 100%;
+  max-width: 120%;
 }
 
 #partenaires .rs-magazine-logo {
