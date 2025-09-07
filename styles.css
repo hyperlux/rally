@@ -76,6 +76,11 @@ nav {
   padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
   border-radius: 4px;
   transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+nav a {
+  text-decoration: none;
 }
 
 .nav-item:hover {
