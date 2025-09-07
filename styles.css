@@ -16,7 +16,7 @@
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Montserrat', sans-serif;
   --font-nav: 'Racing Sans One', sans-serif;
-  --superu-scale: 1;
+  --superu-scale: 4;
   --rs-magazine-scale: 1;
   --audi-scale: 1;
   --abeille-scale: 1;
@@ -850,6 +850,8 @@ button[type="submit"] {
   display: flex;
   justify-content: center;
   align-items: center;
+  justify-content: center;
+  align-items: center;
   height: 130px;
   width: 220px;
   background: rgba(255, 255, 255, 0.95);
@@ -892,6 +894,12 @@ button[type="submit"] {
 /* Uniform logo sizing for better visual consistency */
 #partenaires .partner-card img {
   transition: transform 0.3s ease;
+}
+
+#partenaires .superu-logo {
+  max-height: 65px;
+  max-width: 120px;
+  transform: scale(var(--superu-scale));
 }
 
 #partenaires .rs-magazine-logo {
