@@ -16,18 +16,18 @@
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Montserrat', sans-serif;
   --font-nav: 'Racing Sans One', sans-serif;
-  --superu-scale: 1.1;
-  --rs-magazine-scale: 1.2;
+  --superu-scale: 2.6;
+  --rs-magazine-scale: 1.22;
   --audi-scale: 1.1;
-  --abeille-scale: 1.1;
-  --parcbeaumont-scale: 1.0;
-  --maison-scale: 1.0;
-  --palais-scale: 1.1;
+  --abeille-scale: 1.628;
+  --parcbeaumont-scale: 1.22;
+  --maison-scale: 1.2;
+  --palais-scale: 1.6;
   --motul-scale: 1.1;
-  --drudas-scale: 1.3;
-  --ferme-scale: 1.0;
-  --sid-scale: 1.5;
-  --dsi-scale: 1.1;
+  --drudas-scale: 1.621;
+  --ferme-scale: 1.22;
+  --sid-scale: 1.2;
+  --dsi-scale: 1.5;
 }
 
 /* Global Styles */
