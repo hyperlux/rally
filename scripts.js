@@ -169,16 +169,40 @@ const mobileMenuIcon = mobileMenuButton.querySelector('i');
 mobileMenuButton.addEventListener('click', () => {
   const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
   mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-  mobileMenu.style.display = isExpanded ? 'none' : 'block';
-
-  // Toggle icon (optional: change between bars and times)
+  
+  // Use class-based animations instead of direct style manipulation
   if (!isExpanded) {
-      mobileMenuIcon.classList.remove('fa-bars');
-      mobileMenuIcon.classList.add('fa-times');
+    mobileMenu.classList.add('show');
+    mobileMenuIcon.classList.remove('fa-bars');
+    mobileMenuIcon.classList.add('fa-times');
   } else {
-      mobileMenuIcon.classList.remove('fa-times');
-      mobileMenuIcon.classList.add('fa-bars');
+    mobileMenu.classList.remove('show');
+    mobileMenuIcon.classList.remove('fa-times');
+    mobileMenuIcon.classList.add('fa-bars');
   }
+});
+
+// Close mobile menu when clicking on a navigation link
+const mobileNavLinks = mobileMenu.querySelectorAll('a');
+mobileNavLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('show');
+    mobileMenuButton.setAttribute('aria-expanded', 'false');
+    mobileMenuIcon.classList.remove('fa-times');
+    mobileMenuIcon.classList.add('fa-bars');
+  });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+    mobileMenu.classList.remove('show');
+    mobileMenuButton.setAttribute('aria-expanded', 'false');
+    mobileMenuIcon.classList.remove('fa-times');
+    mobileMenuIcon.classList.add('fa-bars');
+  }
+});
+
 // Logo Scale Controls
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize scale controls for each logo
@@ -206,5 +230,4 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
-});
 });

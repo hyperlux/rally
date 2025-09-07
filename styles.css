@@ -33,6 +33,10 @@
 /* Global Styles */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Racing+Sans+One&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: var(--font-body);
   font-weight: 400;
@@ -41,6 +45,14 @@ body {
   background: var(--bg-dark);
   color: var(--text-light);
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 html {
@@ -54,6 +66,9 @@ section, footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 p, li, a, span, div {
@@ -97,6 +112,159 @@ nav a {
   width: auto;
 }
 
+/* Mobile Menu Styles */
+#mobile-menu {
+  opacity: 0;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#mobile-menu.show {
+  opacity: 1;
+  visibility: visible;
+  max-height: 500px;
+}
+
+/* Mobile menu button styles */
+nav button[aria-controls="mobile-menu"] {
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+nav button[aria-controls="mobile-menu"]:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+nav button[aria-controls="mobile-menu"] i {
+  transition: transform 0.3s ease;
+  font-size: 1.2rem;
+}
+
+nav button[aria-controls="mobile-menu"][aria-expanded="true"] i {
+  transform: rotate(90deg);
+}
+
+/* Mobile menu navigation items */
+#mobile-menu .nav-item {
+  display: block;
+  padding: 12px 16px;
+  margin: 4px 0;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+#mobile-menu .nav-item:hover {
+  background-color: rgba(245, 158, 11, 0.1);
+  border-left-color: var(--primary-color);
+  transform: translateX(8px);
+  color: var(--primary-color);
+}
+
+/* Mobile register button */
+#mobile-menu .bg-gradient-to-r {
+  margin-top: 8px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+}
+
+#mobile-menu .bg-gradient-to-r:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+}
+
+/* Mobile-first responsive design */
+.desktop-nav {
+  display: none;
+}
+
+.desktop-register {
+  display: none;
+}
+
+.mobile-menu-button {
+  display: flex;
+}
+
+/* Tablet and desktop (768px and up) */
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: flex !important;
+  }
+  
+  .desktop-register {
+    display: block !important;
+  }
+  
+  .mobile-menu-button {
+    display: none !important;
+  }
+  
+  #mobile-menu {
+    display: none !important;
+  }
+}
+
+/* Mobile styling improvements */
+@media (max-width: 767px) {
+  /* Ensure mobile menu is positioned correctly */
+  #mobile-menu {
+    position: relative;
+    width: 100%;
+  }
+  
+  /* Make sure the logo doesn't take too much space */
+  .header-logo-link {
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+  }
+  
+  #header-logo {
+    height: 32px;
+    max-width: 120px;
+  }
+  
+  /* Ensure the mobile button is properly positioned */
+  .mobile-menu-button button {
+    margin-right: 0.5rem;
+    z-index: 51;
+  }
+}
+
+/* Additional mobile breakpoint */
+@media (max-width: 480px) {
+  #header-logo {
+    height: 28px;
+    max-width: 100px;
+  }
+  
+  .header-logo-link {
+    margin-left: 0.25rem;
+    margin-right: 0.75rem;
+  }
+  
+  #mobile-menu .nav-item {
+    font-size: 1rem;
+    padding: 10px 12px;
+  }
+  
+  nav .max-w-7xl {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
 /* Hero Section */
 #hero-section {
   position: relative;
@@ -130,6 +298,8 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 .hero-image-container {
@@ -158,6 +328,9 @@ nav a {
   position: relative;
   z-index: 1;
   padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 3) 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .hero-content {
@@ -165,6 +338,8 @@ nav a {
   margin-left: calc(var(--spacing-unit) * 3);
   text-align: left;
   max-width: 700px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hero-headline {
@@ -387,6 +562,9 @@ nav a {
   text-align: center;
   color: var(--text-white);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
 }
 
 .event-detail-content h2 {
@@ -1219,6 +1397,9 @@ footer a:hover {
     padding-top: 7rem;
     align-items: center;
     text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 100vw;
   }
   .hero-image-container {
     flex-basis: auto;
@@ -1226,55 +1407,314 @@ footer a:hover {
     max-width: 400px;
     padding: var(--spacing-unit) 0;
     order: 1;
+    margin-left: 0;
   }
   .hero-content-container {
     flex-basis: auto;
     width: 100%;
     padding: calc(var(--spacing-unit) * 2);
     order: 2;
+    max-width: 100%;
   }
   .hero-content {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
-  .countdown-container { margin: var(--spacing-unit) auto; }
+  .countdown-container {
+    margin: var(--spacing-unit) auto;
+    margin-left: 0;
+  }
   .countdown { justify-content: center; }
   .hero-buttons { justify-content: center; }
 }
 
 @media (max-width: 768px) {
-  #hero-section { padding: calc(var(--spacing-unit) * 4) var(--spacing-unit); }
-  .hero-image-container { width: 80%; max-width: 300px; }
-  .countdown { gap: var(--spacing-unit); }
-  .countdown div { padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.5); }
+  body, html {
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
+  
+  #hero-section {
+    padding: calc(var(--spacing-unit) * 4) 1rem;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  .hero-inner {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .hero-image-container {
+    width: 80%;
+    max-width: 300px;
+    margin-left: 0;
+  }
+  
+  .hero-content-container {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .hero-content {
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .countdown-container {
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .countdown {
+    gap: var(--spacing-unit);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .countdown div {
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 1.5);
+    margin: 0;
+  }
   .countdown span { font-size: 1.8rem; }
+  .countdown div[data-label="Jours"] {
+    margin-right: 0;
+  }
   .countdown div[data-label="Jours"] span { font-size: 2.2rem; }
   .countdown div::after { font-size: var(--spacing-unit); }
-  .hero-buttons { flex-direction: column; align-items: center; gap: calc(var(--spacing-unit) * 1.5); }
-  .hero-buttons a { padding: 0.75rem 1.5rem; font-size: 1.1rem; width: 90%; max-width: 350px; }
-  .event-detail-content { padding: calc(var(--spacing-unit) * 2) var(--spacing-unit); }
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 1.5);
+    width: 100%;
+    max-width: 100%;
+  }
+  .hero-buttons a {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    width: 90%;
+    max-width: 350px;
+  }
+  .event-detail-content {
+    padding: calc(var(--spacing-unit) * 2) 1rem;
+    width: 100%;
+    max-width: 100vw;
+  }
   .event-detail-content h2 { font-size: 2rem; }
   .event-detail-content h3 { font-size: 1.5rem; }
   .event-detail-content p { font-size: 1rem; }
-  #register form { padding: calc(var(--spacing-unit) * 1.5); }
-  .grid { gap: var(--spacing-unit); }
+  
+  .blurry-container,
+  .slide-content {
+    width: 100%;
+    max-width: calc(100vw - 2rem);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  
+  #register {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  #register form {
+    padding: calc(var(--spacing-unit) * 1.5);
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .grid {
+    gap: var(--spacing-unit);
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+  .form-input {
+    width: 100%;
+    max-width: 100%;
+  }
   .form-input input,
-  .form-input textarea { padding: 0.75rem; }
-  button[type="submit"] { max-width: 100%; padding: 0.75rem 1.5rem; }
+  .form-input textarea {
+    padding: 0.75rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  button[type="submit"] {
+    max-width: 100%;
+    padding: 0.75rem 1.5rem;
+    width: 100%;
+  }
+  
+  nav .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    max-width: 100vw;
+  }
 }
 
 @media (max-width: 480px) {
-  .countdown { gap: 0.3rem; }
-  .countdown div { padding: 0.4rem 0.5rem; border-radius: 10px; }
-  .countdown span { font-size: 1.2rem; }
-  .countdown div[data-label="Jours"] span { font-size: 1.5rem; }
-  .countdown div::after { font-size: 0.6rem; margin-top: 0.25rem; }
-  .hero-buttons a { width: 90%; }
-  #register form { padding: var(--spacing-unit); }
-  .grid { gap: 0.75rem; }
-  .form-input { margin-bottom: 1.2rem; }
-  #partenaires { padding-top: 50px; }
+  /* Force proper constraints on all elements */
+  *, *::before, *::after {
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+  
+  body, html {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  
+  section {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+  
+  #hero-section {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  
+  .hero-inner {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .hero-content {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+  }
+  
+  .hero-headline {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+    word-wrap: break-word !important;
+    hyphens: auto !important;
+  }
+  
+  .countdown-container {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+  }
+  
+  .countdown {
+    gap: 0.3rem !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+  }
+  .countdown div {
+    padding: 0.4rem 0.5rem !important;
+    border-radius: 10px !important;
+    margin: 0 !important;
+  }
+  .countdown span { font-size: 1.2rem !important; }
+  .countdown div[data-label="Jours"] {
+    margin-right: 0 !important;
+    transform: scale(1.1) !important;
+  }
+  .countdown div[data-label="Jours"] span { font-size: 1.5rem !important; }
+  .countdown div::after { font-size: 0.6rem !important; margin-top: 0.25rem !important; }
+  
+  .hero-buttons {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .hero-buttons a {
+    width: 95% !important;
+    max-width: 100% !important;
+  }
+  
+  .blurry-container,
+  .slide-content {
+    width: calc(100vw - 1rem) !important;
+    max-width: calc(100vw - 1rem) !important;
+    padding: 0.75rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  #register {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  #register form {
+    padding: var(--spacing-unit) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .grid {
+    gap: 0.75rem !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .form-input {
+    margin-bottom: 1.2rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .form-input input,
+  .form-input select,
+  .form-input textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  #partenaires {
+    padding-top: 50px !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  
+  nav .max-w-7xl {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+  }
+  
+  /* Prevent text overflow */
+  p, h1, h2, h3, h4, h5, h6, span, div, a {
+    word-wrap: break-word !important;
+    hyphens: auto !important;
+    overflow-wrap: break-word !important;
+  }
 }
 .partners-grid {
   display: grid;
@@ -1282,9 +1722,46 @@ footer a:hover {
   grid-template-rows: repeat(3, 1fr);
   gap: 1rem;
   justify-items: center;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
 }
 
 .partners-grid .partner-card {
   height: 130px;
   width: 250px;
+}
+
+/* Additional Mobile Constraints for Partners */
+@media (max-width: 768px) {
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+    padding: 0 1rem !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  
+  .partners-grid .partner-card {
+    width: 100% !important;
+    max-width: 200px !important;
+    height: 110px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .partners-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+    padding: 0 0.5rem !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  
+  .partners-grid .partner-card {
+    width: 100% !important;
+    max-width: 180px !important;
+    height: 100px !important;
+    margin: 0 auto !important;
+  }
 }

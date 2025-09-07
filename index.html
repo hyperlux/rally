@@ -16,43 +16,46 @@
 <body class="bg-gray-900 text-white">
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-black bg-opacity-95 backdrop-filter backdrop-blur-custom">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20"> <!-- Medium height, items-center handles vertical alignment -->
-                <!-- Logo Added Here -->
-                <a href="#hero-section" class="flex-shrink-0 header-logo-link"> <!-- Added class for margin -->
+        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#hero-section" class="flex-shrink-0 header-logo-link">
                     <img id="header-logo" src="img/SPELOGO.png" alt="SPE Logo">
                 </a>
-                <div class="flex items-center"> <!-- This div now starts after the logo link -->
-                    <!-- Original content starts here -->
-                    <div class="hidden md:block">
-                        <div class="flex justify-center items-baseline space-x-4">
-                            <a href="#hero-section" class="nav-item px-3 py-2 rounded-md text-lg text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;" onclick="document.getElementById('hero-section').scrollIntoView({behavior: 'smooth'})">L'Événement</a>
-                            <a href="#event" class="nav-item px-3 py-2 rounded-md text-lg text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Parcours</a>
-                            <a href="#voitures-admissibles" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Règlement</a>
-                            <a href="#registered-participants" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Équipages</a>
-                            <a href="#histoire" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Histoire</a>
-                            <a href="#partenaires" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Nos Partenaires</a>
-                        </div>
+                
+                <!-- Desktop Navigation - Hidden on mobile -->
+                <div class="desktop-nav hidden md:flex items-center flex-1 justify-center">
+                    <div class="flex justify-center items-baseline space-x-4">
+                        <a href="#hero-section" class="nav-item px-3 py-2 rounded-md text-lg text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;" onclick="document.getElementById('hero-section').scrollIntoView({behavior: 'smooth'})">L'Événement</a>
+                        <a href="#event" class="nav-item px-3 py-2 rounded-md text-lg text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Parcours</a>
+                        <a href="#voitures-admissibles" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Règlement</a>
+                        <a href="#registered-participants" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Équipages</a>
+                        <a href="#histoire" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Histoire</a>
+                        <a href="#partenaires" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Nos Partenaires</a>
                     </div>
                 </div>
-                <div class="hidden md:block">
+                
+                <!-- Desktop Register Button - Hidden on mobile -->
+                <div class="desktop-register hidden md:block">
                     <div class="ml-4 flex items-center md:ml-6">
                         <a href="#register" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-4 py-2 rounded-md text-sm font-medium">
                             <i class="fas fa-ticket-alt mr-2"></i> Réserver Votre Place
                         </a>
                     </div>
                 </div>
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                
+                <!-- Mobile Menu Button - Shown only on mobile -->
+                <div class="mobile-menu-button md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
                         <span class="sr-only">Ouvrir le menu principal</span>
-                        <i class="fas fa-bars"></i>
+                        <i class="fas fa-bars text-white text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
         <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="md:hidden" id="mobile-menu" style="display: none;">
+        <div class="md:hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#hero-section" class="nav-item block px-3 py-2 rounded-md text-lg text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;" onclick="document.getElementById('hero-section').scrollIntoView({behavior: 'smooth'})">L'Événement</a>
                 <a href="#event" class="nav-item block px-3 py-2 rounded-md text-lg text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Détails</a>
@@ -517,7 +520,7 @@ prestation encore plus aboutie. Et pour les participants de se réunir autour d�
 
     <!-- Registration Section -->
     <section id="register" class="py-20 bg-gray-900">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto px-2 sm:px-4 lg:px-6">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 font-['Racing_Sans_One'] pop-up">INSCRIPTION AU CARRERA RALLYE</h2>
             <p class="text-xl text-center text-gray-300 mb-16 pop-up">Remplissez le formulaire pour soumettre votre demande d'engagement. Places limitées à 40 équipages.</p>
             <form class="pop-up"> <!-- Removed Tailwind classes, styles applied via CSS -->
@@ -614,7 +617,7 @@ prestation encore plus aboutie. Et pour les participants de se réunir autour d�
 
     <!-- Partners Section -->
     <section id="partenaires" class="py-20 bg-gray-800 pop-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
             <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-white font-['Racing_Sans_One']">Nos Partenaires</h2>
             
             <!-- Main Sponsors Row -->
@@ -661,7 +664,7 @@ prestation encore plus aboutie. Et pour les participants de se réunir autour d�
 
     <!-- Footer -->
     <footer class="bg-black py-12 pop-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center justify-items-center">
                 <div>
                     <h3 class="text-white font-semibold mb-4">Le Carrera Rallye par STEPHANE PLAGNAT EVENTS (SPE)</h3>
