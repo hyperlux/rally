@@ -831,20 +831,79 @@ button[type="submit"] {
   z-index: 1;
 }
 
-#partenaires .superu-logo { transform: scale(1.05); }
-#partenaires .speedster-logo { transform: scale(1.2); }
-#partenaires .parcbeaumont-logo { transform: scale(1.04); }
-#partenaires .maison-logo { transform: scale(1.03); }
-#partenaires .palais-logo { transform: scale(0.9); }
-#partenaires .drudas-logo { transform: scale(0.524); }
-#partenaires .ferme-logo {
-  transform: scale(1);
-  object-fit: contain;
-  max-height: 100%;
-  max-width: 100%;
+/* Partner logo specific sizing adjustments */
+#partenaires .superu-logo {
+  max-height: 75%;
+  max-width: 85%;
 }
-#partenaires .sid-logo { transform: scale(0.6) !important; }
-#partenaires .dsi-logo { transform: scale(0.8); }
+
+#partenaires .rs-magazine-logo {
+  max-height: 85%;
+  max-width: 85%;
+}
+
+#partenaires .audi-logo {
+  max-height: 55%;
+  max-width: 75%;
+}
+
+#partenaires .abeille-logo {
+  max-height: 75%;
+  max-width: 75%;
+}
+
+#partenaires .parcbeaumont-logo {
+  max-height: 80%;
+  max-width: 80%;
+}
+
+#partenaires .maison-logo {
+  max-height: 85%;
+  max-width: 85%;
+}
+
+#partenaires .palais-logo {
+  max-height: 70%;
+  max-width: 80%;
+}
+
+#partenaires .motul-logo {
+  max-height: 55%;
+  max-width: 75%;
+}
+
+#partenaires .drudas-logo {
+  max-height: 40%;
+  max-width: 60%;
+}
+
+#partenaires .ferme-logo {
+  max-height: 80%;
+  max-width: 80%;
+}
+
+#partenaires .sid-logo {
+  max-height: 30%;
+  max-width: 45%;
+}
+
+#partenaires .dsi-logo {
+  max-height: 65%;
+  max-width: 75%;
+}
+
+/* Ensure all partner logos maintain aspect ratio and consistent baseline */
+#partenaires img {
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* Additional fine-tuning for better visual balance */
+#partenaires .partner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* Footer */
 footer {
