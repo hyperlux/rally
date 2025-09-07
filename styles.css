@@ -843,6 +843,7 @@ button[type="submit"] {
   max-height: 100%;
   max-width: 100%;
 }
+#partenaires .sid-logo { transform: scale(0.6) !important; }
 #partenaires .dsi-logo { transform: scale(0.8); }
 
 /* Footer */
