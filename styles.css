@@ -1190,3 +1190,15 @@ footer a:hover {
   .form-input { margin-bottom: 1.2rem; }
   #partenaires { padding-top: 50px; }
 }
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1rem;
+  justify-items: center;
+}
+
+.partners-grid .partner-card {
+  height: 130px;
+  width: 250px;
+}
