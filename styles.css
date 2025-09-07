@@ -847,6 +847,7 @@ button[type="submit"] {
 
 /* Footer */
 footer {
+   min-height: 100vh;
   min-height: auto;
   background: linear-gradient(135deg, #1a1a1a 0%, var(--bg-dark) 100%);
 }
