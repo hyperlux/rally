@@ -688,6 +688,13 @@ nav a {
 #register {
   position: relative;
   text-align: center;
+  padding-top: 120px; /* Account for fixed header */
+  padding-bottom: 80px; /* Prevent bottom cut-off */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-snap-align: start;
 }
 
 #register::before {
@@ -711,8 +718,32 @@ nav a {
   border-radius: 20px;
   padding: calc(var(--spacing-unit) * 2);
   box-shadow: var(--shadow);
-  max-width: 700px;
+  max-width: 800px; /* Increased from 700px */
   margin: 0 auto;
+  width: 95%; /* Ensure it doesn't exceed viewport width */
+  box-sizing: border-box;
+}
+
+/* Fix form grid overflow */
+#register .grid {
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure form inputs don't overflow */
+#register .form-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#register .form-input input,
+#register .form-input textarea,
+#register .form-input select {
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 #register h3 {
@@ -816,11 +847,29 @@ nav a {
 }
 
 button[type="submit"] {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: var(--text-white);
+  border: none;
+  border-radius: 10px;
   padding: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+  font-size: 1.1rem;
+  font-weight: 600;
   box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
   max-width: 400px;
   margin: 0 auto;
   display: block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.6);
+}
+
+button[type="submit"]:active {
+  transform: scale(0.98);
 }
 
 /* Partners Section */
