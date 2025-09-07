@@ -16,18 +16,18 @@
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Montserrat', sans-serif;
   --font-nav: 'Racing Sans One', sans-serif;
-  --superu-scale: 4.5;
-  --rs-magazine-scale: 3.05;
-  --audi-scale: 2.5;
-  --abeille-scale: 2.08;
-  --parcbeaumont-scale: 3.23;
-  --maison-scale: 3;
-  --palais-scale: 2.8;
-  --motul-scale: 3.5;
-  --drudas-scale: 4.5;
-  --ferme-scale: 3;
-  --sid-scale: 6.5;
-  --dsi-scale: 2.95;
+  --superu-scale: 1.1;
+  --rs-magazine-scale: 1.2;
+  --audi-scale: 1.1;
+  --abeille-scale: 1.1;
+  --parcbeaumont-scale: 1.0;
+  --maison-scale: 1.0;
+  --palais-scale: 1.1;
+  --motul-scale: 1.1;
+  --drudas-scale: 1.3;
+  --ferme-scale: 1.0;
+  --sid-scale: 1.5;
+  --dsi-scale: 1.1;
 }
 
 /* Global Styles */
@@ -1082,33 +1082,34 @@ button[type="submit"]:active {
   display: flex;
   justify-content: center;
   align-items: center;
-  justify-content: center;
-  align-items: center;
   height: 130px;
-  width: 220px;
+  width: 100%;
+  max-width: 250px;
   background: rgba(255, 255, 255, 0.95);
-  padding: 1.25rem;
+  padding: 1rem;
   border-radius: 16px;
   opacity: 1;
   transition: all 0.4s ease;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   border: 2px solid transparent;
   backdrop-filter: blur(5px);
+  box-sizing: border-box;
 }
 
 .partner-card:hover {
   opacity: 1;
-  transform: translateY(-8px) scale(1.05);
+  transform: translateY(-8px) scale(1.02);
   box-shadow: 0 15px 40px rgba(245, 158, 11, 0.25);
   border-color: rgba(245, 158, 11, 0.3);
 }
 
 .partner-card.main-sponsor {
   height: 130px;
-  width: 220px;
+  width: 100%;
+  max-width: 250px;
   background: rgba(255, 255, 255, 0.98);
   border: 3px solid rgba(245, 158, 11, 0.2);
-  padding: 1.5rem;
+  padding: 1rem;
 }
 
 .partner-card.main-sponsor:hover {
@@ -1126,77 +1127,82 @@ button[type="submit"]:active {
 /* Uniform logo sizing for better visual consistency */
 #partenaires .partner-card img {
   transition: transform 0.3s ease;
+  max-height: 80px;
+  max-width: 180px;
+  object-fit: contain;
+  display: block;
+  margin: auto;
 }
 
 #partenaires .superu-logo {
-  max-height: 65px;
-  max-width: 120px;
+  max-height: 50px;
+  max-width: 160px;
   transform: scale(var(--superu-scale));
 }
 
 #partenaires .rs-magazine-logo {
-  max-height: 91px;
-  max-width: 97px;
+  max-height: 60px;
+  max-width: 140px;
   transform: scale(var(--rs-magazine-scale));
 }
 
 #partenaires .audi-logo {
-  max-height: 58px;
-  max-width: 84px;
+  max-height: 60px;
+  max-width: 140px;
   transform: scale(var(--audi-scale));
 }
 
 #partenaires .abeille-logo {
-  max-height: 84px;
-  max-width: 84px;
+  max-height: 70px;
+  max-width: 140px;
   transform: scale(var(--abeille-scale));
 }
 
 #partenaires .parcbeaumont-logo {
-  max-height: 91px;
-  max-width: 91px;
+  max-height: 70px;
+  max-width: 160px;
   transform: scale(var(--parcbeaumont-scale));
 }
 
 #partenaires .maison-logo {
-  max-height: 97px;
-  max-width: 97px;
+  max-height: 70px;
+  max-width: 160px;
   transform: scale(var(--maison-scale));
 }
 
 #partenaires .palais-logo {
-  max-height: 78px;
-  max-width: 91px;
+  max-height: 60px;
+  max-width: 140px;
   transform: scale(var(--palais-scale));
 }
 
 #partenaires .motul-logo {
-  max-height: 58px;
-  max-width: 84px;
+  max-height: 50px;
+  max-width: 140px;
   transform: scale(var(--motul-scale));
 }
 
 #partenaires .drudas-logo {
-  max-height: 39px;
-  max-width: 65px;
+  max-height: 40px;
+  max-width: 120px;
   transform: scale(var(--drudas-scale));
 }
 
 #partenaires .ferme-logo {
-  max-height: 91px;
-  max-width: 91px;
+  max-height: 70px;
+  max-width: 160px;
   transform: scale(var(--ferme-scale));
 }
 
 #partenaires .sid-logo {
-  max-height: 26px;
-  max-width: 45px;
+  max-height: 35px;
+  max-width: 100px;
   transform: scale(var(--sid-scale));
 }
 
 #partenaires .dsi-logo {
-  max-height: 71px;
-  max-width: 84px;
+  max-height: 60px;
+  max-width: 140px;
   transform: scale(var(--dsi-scale));
 }
 
@@ -1745,50 +1751,34 @@ footer a:hover {
 }
 .partners-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
   justify-items: center;
+  align-items: center;
   width: 100%;
-  max-width: 100vw;
+  max-width: 1200px;
+  margin: 0 auto;
   box-sizing: border-box;
-}
-
-.partners-grid .partner-card {
-  height: 130px;
-  width: 250px;
+  padding: 0 1rem;
 }
 
 /* Additional Mobile Constraints for Partners */
 @media (max-width: 768px) {
   .partners-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 0.75rem !important;
-    padding: 0 1rem !important;
-    width: 100% !important;
-    max-width: 100vw !important;
-  }
-  
-  .partners-grid .partner-card {
-    width: 100% !important;
-    max-width: 200px !important;
-    height: 110px !important;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 0 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .partners-grid {
-    grid-template-columns: 1fr !important;
-    gap: 0.5rem !important;
-    padding: 0 0.5rem !important;
-    width: 100% !important;
-    max-width: 100vw !important;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem;
+    padding: 0 0.5rem;
   }
   
-  .partners-grid .partner-card {
-    width: 100% !important;
-    max-width: 180px !important;
-    height: 100px !important;
-    margin: 0 auto !important;
+  .partner-card {
+    height: 110px !important;
   }
 }
