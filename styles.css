@@ -1,5 +1,7 @@
 /* styles.css - Refactored CSS for Carrera Rallye */
 
+/* Individual Logo Scale Controls */
+
 /* Custom Properties */
 :root {
   --primary-color: #f59e0b;
@@ -14,6 +16,18 @@
   --font-heading: 'Playfair Display', serif;
   --font-body: 'Montserrat', sans-serif;
   --font-nav: 'Racing Sans One', sans-serif;
+  --superu-scale: 1;
+  --rs-magazine-scale: 1;
+  --audi-scale: 1;
+  --abeille-scale: 1;
+  --parcbeaumont-scale: 1;
+  --maison-scale: 1;
+  --palais-scale: 1;
+  --motul-scale: 1;
+  --drudas-scale: 1;
+  --ferme-scale: 1;
+  --sid-scale: 3;
+  --dsi-scale: 1;
 }
 
 /* Global Styles */
@@ -876,64 +890,74 @@ button[type="submit"] {
 }
 
 /* Uniform logo sizing for better visual consistency */
-#partenaires .superu-logo {
-  max-height: 100%;
-  max-width: 120%;
+#partenaires .partner-card img {
+  transition: transform 0.3s ease;
 }
 
 #partenaires .rs-magazine-logo {
-  max-height: 70%;
-  max-width: 75%;
+  max-height: 91px;
+  max-width: 97px;
+  transform: scale(var(--rs-magazine-scale));
 }
 
 #partenaires .audi-logo {
-  max-height: 45%;
-  max-width: 65%;
+  max-height: 58px;
+  max-width: 84px;
+  transform: scale(var(--audi-scale));
 }
 
 #partenaires .abeille-logo {
-  max-height: 65%;
-  max-width: 65%;
+  max-height: 84px;
+  max-width: 84px;
+  transform: scale(var(--abeille-scale));
 }
 
 #partenaires .parcbeaumont-logo {
-  max-height: 70%;
-  max-width: 70%;
+  max-height: 91px;
+  max-width: 91px;
+  transform: scale(var(--parcbeaumont-scale));
 }
 
 #partenaires .maison-logo {
-  max-height: 75%;
-  max-width: 75%;
+  max-height: 97px;
+  max-width: 97px;
+  transform: scale(var(--maison-scale));
 }
 
 #partenaires .palais-logo {
-  max-height: 60%;
-  max-width: 70%;
+  max-height: 78px;
+  max-width: 91px;
+  transform: scale(var(--palais-scale));
 }
 
 #partenaires .motul-logo {
-  max-height: 45%;
-  max-width: 65%;
+  max-height: 58px;
+  max-width: 84px;
+  transform: scale(var(--motul-scale));
 }
 
 #partenaires .drudas-logo {
-  max-height: 30%;
-  max-width: 50%;
+  max-height: 39px;
+  max-width: 65px;
+  transform: scale(var(--drudas-scale));
 }
 
 #partenaires .ferme-logo {
-  max-height: 70%;
-  max-width: 70%;
+  max-height: 91px;
+  max-width: 91px;
+  transform: scale(var(--ferme-scale));
 }
 
 #partenaires .sid-logo {
-  max-height: 20%;
-  max-width: 35%;
+  max-height: 26px;
+  max-width: 45px;
+  transform: scale(var(--sid-scale));
 }
 
 #partenaires .dsi-logo {
-  max-height: 55%;
-  max-width: 65%;
+  max-height: 71px;
+  max-width: 84px;
+  transform: scale(var(--dsi-scale));
 }
 
 /* Ensure all partner logos maintain aspect ratio and are centered */

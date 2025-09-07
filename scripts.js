@@ -179,4 +179,32 @@ mobileMenuButton.addEventListener('click', () => {
       mobileMenuIcon.classList.remove('fa-times');
       mobileMenuIcon.classList.add('fa-bars');
   }
+// Logo Scale Controls
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize scale controls for each logo
+    const logoScales = [
+        { id: 'superu-scale', property: '--superu-scale' },
+        { id: 'rs-magazine-scale', property: '--rs-magazine-scale' },
+        { id: 'audi-scale', property: '--audi-scale' },
+        { id: 'abeille-scale', property: '--abeille-scale' },
+        { id: 'parcbeaumont-scale', property: '--parcbeaumont-scale' },
+        { id: 'maison-scale', property: '--maison-scale' },
+        { id: 'palais-scale', property: '--palais-scale' },
+        { id: 'motul-scale', property: '--motul-scale' },
+        { id: 'drudas-scale', property: '--drudas-scale' },
+        { id: 'ferme-scale', property: '--ferme-scale' },
+        { id: 'sid-scale', property: '--sid-scale' },
+        { id: 'dsi-scale', property: '--dsi-scale' }
+    ];
+
+    logoScales.forEach(({ id, property }) => {
+        const input = document.getElementById(id);
+        if (input) {
+            input.addEventListener('input', (e) => {
+                const value = e.target.value;
+                document.documentElement.style.setProperty(property, value);
+            });
+        }
+    });
+});
 });
