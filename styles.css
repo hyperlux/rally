@@ -543,12 +543,10 @@ picture {
 }
 
 img[loading="lazy"] {
-  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 img[loading="lazy"].loaded {
-  opacity: 1;
   animation: fadeInUp 0.5s ease;
 }
 
@@ -686,9 +684,9 @@ img[loading="lazy"].loaded {
   /* max-width handled by more specific rule below */
 }
 
-/* Override max-width for the Prestations Incluses slide content */
+/* Use standard width for the Prestations Incluses slide content */
 .event-detail-section:nth-child(8) .slide-content.prestations-content {
-  max-width: 1400px; /* Further increased width */
+  max-width: 700px; /* Standard width consistent with other sections */
 }
 
 /* Override max-width for the Voitures Admissibles slide content */
