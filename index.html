@@ -8,6 +8,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/car.png">
     <link rel="icon" type="image/png" sizes="48x48" href="img/car.png">
     <link rel="icon" type="image/png" sizes="64x64" href="img/car.png">
+    <link rel="preload" href="img/optimized/SPELOGO.webp" as="image" type="image/webp">
+    <link rel="preload" href="img/optimized/poster.webp" as="image" type="image/webp">
+    <link rel="preload" href="img/optimized/posterwithouttext.webp" as="image" type="image/webp">
     <link rel="apple-touch-icon" sizes="180x180" href="img/car.png">
     <link rel="stylesheet" href="css/tailwind.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -33,7 +36,10 @@
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
                 <a href="#hero-section" class="flex-shrink-0 header-logo-link">
-                    <img id="header-logo" src="img/SPELOGO.png" alt="SPE Logo">
+                    <picture>
+                        <source srcset="img/optimized/SPELOGO.webp" type="image/webp">
+                        <img id="header-logo" src="img/SPELOGO.png" alt="SPE Logo">
+                    </picture>
                 </a>
                 
                 <!-- Desktop Navigation - Hidden on mobile -->
@@ -91,7 +97,10 @@
     <section id="hero-section" class="relative">
         <div class="hero-inner">
         <div class="hero-image-container"> <!-- New container for the image -->
-            <img src="img/poster.jpeg" alt="Carrera Rallye Poster" class="hero-poster-image">
+            <picture>
+                <source srcset="img/optimized/poster.webp" type="image/webp">
+                <img src="img/poster.jpeg" alt="Carrera Rallye Poster" class="hero-poster-image">
+            </picture>
         </div>
         <div class="hero-content-container"> <!-- New container for the content -->
             <div class="hero-content">
@@ -636,40 +645,40 @@ prestation encore plus aboutie. Et pour les participants de se réunir autour d�
             <!-- Main Sponsors Row -->
             <div class="partners-grid">
                 <div class="partner-card">
-                    <img src="img/superu.png" alt="Super U Logo" class="object-contain h-full w-full superu-logo">
+                    <img src="img/superu.png" alt="Super U Logo" class="object-contain h-full w-full superu-logo" loading="lazy">
                 </div>
                 <div class="partner-card">
-                    <img src="img/audi.png" alt="Audi Logo" class="object-contain h-full w-full audi-logo">
+                    <img src="img/audi.png" alt="Audi Logo" class="object-contain h-full w-full audi-logo" loading="lazy">
                 </div>
                 <div class="partner-card">
-                    <img src="img/motul.png" alt="Motul Logo" class="object-contain h-full w-full motul-logo">
+                    <img src="img/motul.png" alt="Motul Logo" class="object-contain h-full w-full motul-logo" loading="lazy">
                 </div>
                 <div class="partner-card">
-                    <img src="img/drudaslogo.png" alt="Château de Drudas Logo" class="object-contain h-full w-full drudas-logo">
+                    <img src="img/drudaslogo.png" alt="Château de Drudas Logo" class="object-contain h-full w-full drudas-logo" loading="lazy">
                 </div>
                 <div class="partner-card">
-                    <img src="img/fermelogo.png" alt="Ferme aux Grives Logo" class="object-contain h-full w-full ferme-logo">
+                    <img src="img/fermelogo.png" alt="Ferme aux Grives Logo" class="object-contain h-full w-full ferme-logo" loading="lazy">
                 </div>
                 <div class="partner-card">
-                    <img src="img/parcbeaumont.png" alt="Hotel Parc Beaumont Logo" class="object-contain h-full w-full parcbeaumont-logo">
+                    <img src="img/parcbeaumont.png" alt="Hotel Parc Beaumont Logo" class="object-contain h-full w-full parcbeaumont-logo" loading="lazy">
                 </div>
                 <div class="partner-card">
-                    <img src="img/hotelpalaislogo.png" alt="Hotel du Palais Logo" class="object-contain h-full w-full palais-logo">
+                    <img src="img/hotelpalaislogo.png" alt="Hotel du Palais Logo" class="object-contain h-full w-full palais-logo" loading="lazy">
                 </div>
                 <div class="partner-card">
-                    <img src="img/maisonlogo.png" alt="Maison Ithurria Logo" class="object-contain h-full w-full maison-logo">
+                    <img src="img/maisonlogo.png" alt="Maison Ithurria Logo" class="object-contain h-full w-full maison-logo" loading="lazy">
                 </div>
                 <div class="partner-card">
-                    <img src="img/RS magazine.png" alt="RS magazine Logo" class="object-contain h-full w-full rs-magazine-logo">
+                    <img src="img/RS magazine.png" alt="RS magazine Logo" class="object-contain h-full w-full rs-magazine-logo" loading="lazy">
                 </div>
                 <div class="partner-card">
-                    <img src="img/abeille.png" alt="Abeille Assurances Logo" class="object-contain h-full w-full abeille-logo">
+                    <img src="img/abeille.png" alt="Abeille Assurances Logo" class="object-contain h-full w-full abeille-logo" loading="lazy">
                 </div>
                 <div class="partner-card">
-                    <img src="img/sid.png" alt="Sid Logo" class="object-contain h-full w-full sid-logo">
+                    <img src="img/sid.png" alt="Sid Logo" class="object-contain h-full w-full sid-logo" loading="lazy">
                 </div>
                 <div class="partner-card">
-                    <img src="img/dsilogo.png" alt="DSI Logo" class="object-contain h-full w-full dsi-logo">
+                    <img src="img/dsilogo.png" alt="DSI Logo" class="object-contain h-full w-full dsi-logo" loading="lazy">
                 </div>
             </div>
         </div>
@@ -696,7 +705,7 @@ prestation encore plus aboutie. Et pour les participants de se réunir autour d�
                 <div class="flex items-center text-gray-400 text-sm">
                     Site web créé par
                     <a href="https://magicstudio.space" target="_blank">
-                        <img src="img/magicstudiologolight.png" alt="Magic Studio Logo" class="h-6 ml-1" style="height: 38px !important;">
+                        <img src="img/magicstudiologolight.png" alt="Magic Studio Logo" class="h-6 ml-1" style="height: 38px !important;" loading="lazy">
                     </a>
                 </div>
             </div>

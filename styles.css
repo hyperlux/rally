@@ -284,7 +284,7 @@ nav button[aria-controls="mobile-menu"][aria-expanded="true"] i {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('img/posterwithouttext.png') center/cover no-repeat fixed;
+  background: url('img/optimized/posterwithouttext.webp') center/cover no-repeat fixed;
   opacity: 0.5;
   z-index: -1;
 }
@@ -496,6 +496,66 @@ nav button[aria-controls="mobile-menu"][aria-expanded="true"] i {
 .hero-buttons .info-btn:hover {
   color: var(--bg-dark);
   transform: scale(1.05);
+}
+/* Image Optimization */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+picture {
+  width: 100%;
+  display: block;
+}
+
+.hero-poster-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+#header-logo {
+  height: 40px;
+  width: auto;
+}
+
+/* Ensure smooth loading with proper aspect ratio placeholders */
+.partner-card {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Loading animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
+  animation: fadeInUp 0.5s ease;
+}
+
+.hero-poster-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
 .scroll-down {
@@ -1068,7 +1128,7 @@ button[type="submit"]:active {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: url('img/posterwithouttext.png') center/cover no-repeat fixed;
+  background: url('img/optimized/posterwithouttext.webp') center/cover no-repeat fixed;
   opacity: 0.5;
 }
 

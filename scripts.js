@@ -231,4 +231,38 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+// Image Loading Optimization
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle lazy-loaded image states
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+
+    lazyImages.forEach(img => {
+        img.addEventListener('load', function() {
+            this.classList.add('loaded');
+        });
+
+        // Fallback for browsers that don't support native lazy loading
+        if ('loading' in HTMLImageElement.prototype === false) {
+            const lazyObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.addEventListener('load', function() {
+                            this.classList.add('loaded');
+                        });
+                        lazyObserver.unobserve(img);
+                    }
+                });
+            });
+
+            lazyObserver.observe(img);
+        }
+    });
+
+    // Preload critical images above the fold
+    const heroImage = document.querySelector('.hero-poster-image');
+    const headerLogo = document.getElementById('header-logo');
+
+    // These are already preloaded via the link preload tags, but we can add additional handling if needed
+});
 });
