@@ -30,6 +30,17 @@
     </script>
 </head>
 <body class="bg-gray-900 text-white">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <picture class="loading-logo">
+                <source srcset="img/optimized/SPELOGO.webp" type="image/webp">
+                <img src="img/SPELOGO.png" alt="SPE Logo" style="height: 80px; width: auto;">
+            </picture>
+            <div class="loading-spinner"></div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-black bg-opacity-95 backdrop-filter backdrop-blur-custom">
         <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
@@ -38,7 +49,7 @@
                 <a href="#hero-section" class="flex-shrink-0 header-logo-link">
                     <picture>
                         <source srcset="img/optimized/SPELOGO.webp" type="image/webp">
-                        <img id="header-logo" src="img/SPELOGO.png" alt="SPE Logo">
+                        <img id="header-logo" src="img/SPELOGO.png" alt="SPE Logo" style="height: 40px; width: auto; max-height: 40px;">
                     </picture>
                 </a>
                 

@@ -1,3 +1,33 @@
+// Loading Screen Management
+window.addEventListener('load', function() {
+    const loadingScreen = document.getElementById('loading-screen');
+    if (loadingScreen) {
+        // Add a small delay to ensure smooth transition
+        setTimeout(() => {
+            loadingScreen.classList.add('fade-out');
+            // Remove the element from DOM after transition
+            setTimeout(() => {
+                loadingScreen.remove();
+            }, 500);
+        }, 500);
+    }
+});
+
+// Hide loading screen if DOM is ready but load event hasn't fired yet
+document.addEventListener('DOMContentLoaded', function() {
+    const loadingScreen = document.getElementById('loading-screen');
+    
+    // Backup timer in case load event takes too long
+    setTimeout(() => {
+        if (loadingScreen && !loadingScreen.classList.contains('fade-out')) {
+            loadingScreen.classList.add('fade-out');
+            setTimeout(() => {
+                loadingScreen.remove();
+            }, 500);
+        }
+    }, 3000); // 3 second maximum loading time
+});
+
 // Smooth scrolling for anchor links - preserved to work with scroll snap
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
