@@ -2,8 +2,9 @@
 window.addEventListener('load', function() {
     const loadingScreen = document.getElementById('loading-screen');
     if (loadingScreen) {
-        // Add a small delay to ensure smooth transition
+        // Show content and fade out loading screen
         setTimeout(() => {
+            document.body.classList.add('loaded');
             loadingScreen.classList.add('fade-out');
             // Remove the element from DOM after transition
             setTimeout(() => {
@@ -13,13 +14,14 @@ window.addEventListener('load', function() {
     }
 });
 
-// Hide loading screen if DOM is ready but load event hasn't fired yet
+// Backup timer and DOMContentLoaded handler
 document.addEventListener('DOMContentLoaded', function() {
     const loadingScreen = document.getElementById('loading-screen');
     
     // Backup timer in case load event takes too long
     setTimeout(() => {
         if (loadingScreen && !loadingScreen.classList.contains('fade-out')) {
+            document.body.classList.add('loaded');
             loadingScreen.classList.add('fade-out');
             setTimeout(() => {
                 loadingScreen.remove();
