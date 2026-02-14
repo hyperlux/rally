@@ -3,783 +3,501 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrera Rallye - Expérience Porsche</title>
+    <title>Carrera Rallye 2026 - Provence Edition</title>
+    <meta name="description" content="Carrera Rallye 2026 Provence Edition - Une exp&eacute;rience exclusive pour les passionn&eacute;s de Porsche classiques. 26-28 Septembre 2026.">
     <link rel="icon" type="image/png" href="img/car.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/car.png">
-    <link rel="icon" type="image/png" sizes="48x48" href="img/car.png">
-    <link rel="icon" type="image/png" sizes="64x64" href="img/car.png">
     <link rel="preload" href="img/optimized/SPELOGO.webp" as="image" type="image/webp">
     <link rel="preload" href="img/optimized/poster.webp" as="image" type="image/webp">
-    <link rel="preload" href="img/optimized/posterwithouttext.webp" as="image" type="image/webp">
-    <link rel="apple-touch-icon" sizes="180x180" href="img/car.png">
-    <link rel="stylesheet" href="css/tailwind.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/animations.css">
     <style>
-        /* Critical loading screen styles - inline for immediate application */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1f2937 100%);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
-        }
-        .loading-screen.fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
-        .loading-content {
-            text-align: center;
-            animation: fadeInUp 0.8s ease-out;
-        }
-        .loading-logo {
-            display: block;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: logoFadeIn 0.8s ease-out 0.2s forwards;
-        }
-        .loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid rgba(245, 158, 11, 0.2);
-            border-top: 3px solid #f59e0b;
-            border-radius: 50%;
-            margin: 0 auto;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes logoFadeIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        /* Hide body content until loading screen is ready */
-        body:not(.loaded) > *:not(#loading-screen) {
-            visibility: hidden;
-        }
+        body:not(.loaded) > *:not(#loading-screen) { visibility: hidden; }
     </style>
-    <script>
-        // Dynamic cache-busting for local assets
-        const timestamp = Date.now();
-        document.querySelectorAll('link[href*="css/tailwind.min.css"], link[href*="styles.css"]').forEach(link => {
-            link.href += '?t=' + timestamp;
-        });
-
-        // Update script link dynamically
-        const scriptLink = document.querySelector('script[src*="scripts.js"]');
-        if (scriptLink) {
-            scriptLink.src += '?t=' + timestamp;
-        }
-    </script>
 </head>
-<body class="bg-gray-900 text-white">
+<body>
     <!-- Loading Screen -->
-    <div id="loading-screen" class="loading-screen">
-        <div class="loading-content">
-            <picture class="loading-logo">
+    <div id="loading-screen" class="loading">
+        <div class="loading__inner">
+            <picture class="loading__logo">
                 <source srcset="img/optimized/SPELOGO.webp" type="image/webp">
-                <img src="img/SPELOGO.png" alt="SPE Logo" style="height: 80px; width: auto;">
+                <img src="img/SPELOGO.png" alt="SPE Logo">
             </picture>
-            <div class="loading-spinner"></div>
+            <div class="loading__spinner"></div>
         </div>
     </div>
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-black bg-opacity-95 backdrop-filter backdrop-blur-custom">
-        <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
-            <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
-                <a href="#hero-section" class="flex-shrink-0 header-logo-link">
-                    <picture>
-                        <source srcset="img/optimized/SPELOGO.webp" type="image/webp">
-                        <img id="header-logo" src="img/SPELOGO.png" alt="SPE Logo" style="height: 40px; width: auto; max-height: 40px;">
-                    </picture>
+    <nav class="nav nav--top">
+        <div class="nav__inner">
+            <a href="#hero" class="nav__logo">
+                <picture>
+                    <source srcset="img/optimized/SPELOGO.webp" type="image/webp">
+                    <img src="img/SPELOGO.png" alt="SPE Logo">
+                </picture>
+            </a>
+            <div class="nav__links">
+                <a href="#parcours" class="nav__link">Parcours</a>
+                <a href="#details" class="nav__link">D&eacute;tails</a>
+                <a href="#reglement" class="nav__link">R&egrave;glement</a>
+                <a href="#equipages" class="nav__link">&Eacute;quipages</a>
+                <a href="#histoire" class="nav__link">Histoire</a>
+                <a href="#partenaires" class="nav__link">Partenaires</a>
+            </div>
+            <div class="nav__cta-wrap">
+                <a href="#register" class="nav__cta">
+                    <i class="fas fa-flag-checkered"></i> R&eacute;server
                 </a>
-                
-                <!-- Desktop Navigation - Hidden on mobile -->
-                <div class="desktop-nav hidden md:flex items-center flex-1 justify-center">
-                    <div class="flex justify-center items-baseline space-x-4">
-                        <a href="#hero-section" class="nav-item px-3 py-2 rounded-md text-lg text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;" onclick="document.getElementById('hero-section').scrollIntoView({behavior: 'smooth'})">L'Événement</a>
-                        <a href="#event" class="nav-item px-3 py-2 rounded-md text-lg text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Parcours</a>
-                        <a href="#voitures-admissibles" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Règlement</a>
-                        <a href="#registered-participants" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Équipages</a>
-                        <a href="#histoire" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Histoire</a>
-                        <a href="#partenaires" class="nav-item px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Nos Partenaires</a>
-                    </div>
-                </div>
-                
-                <!-- Desktop Register Button - Hidden on mobile -->
-                <div class="desktop-register hidden md:block">
-                    <div class="ml-4 flex items-center md:ml-6">
-                        <a href="#register" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-4 py-2 rounded-md text-sm font-medium">
-                            <i class="fas fa-ticket-alt mr-2"></i> Réserver Votre Place
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Mobile Menu Button - Shown only on mobile -->
-                <div class="mobile-menu-button md:hidden">
-                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-                        <span class="sr-only">Ouvrir le menu principal</span>
-                        <i class="fas fa-bars text-white text-xl"></i>
-                    </button>
-                </div>
             </div>
+            <button class="nav__burger" aria-controls="mobile-menu" aria-expanded="false" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-
-        <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="md:hidden" id="mobile-menu">
-            <div class="px-4 pt-2 pb-3 space-y-1 sm:px-6">
-                <a href="#hero-section" class="nav-item block px-3 py-2 rounded-md text-lg text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;" onclick="document.getElementById('hero-section').scrollIntoView({behavior: 'smooth'})">L'Événement</a>
-                <a href="#event" class="nav-item block px-3 py-2 rounded-md text-lg text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Détails</a>
-                <a href="#reglement" class="nav-item block px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Règlement</a>
-                <a href="#registered-participants" class="nav-item block px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Équipages</a>
-                <a href="#histoire" class="nav-item block px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Histoire</a>
-                <a href="#partenaires" class="nav-item block px-3 py-2 rounded-md text-base text-gray-300 hover:text-white hover:bg-gray-700 font-playfair" style="font-family: 'Playfair Display', serif; font-weight: 500;">Nos Partenaires</a>
-            </div>
-            <div class="pt-4 pb-3 border-t border-gray-700">
-                <div class="flex items-center px-5">
-                    <a href="#register" class="w-full text-center bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-4 py-2 rounded-md text-base font-medium">
-                        <i class="fas fa-ticket-alt mr-2"></i> Réserver Votre Place
-                    </a>
-                </div>
-            </div>
+        <div class="nav__mobile" id="mobile-menu">
+            <a href="#hero" class="nav__mobile-link">L'&Eacute;v&eacute;nement</a>
+            <a href="#parcours" class="nav__mobile-link">Parcours</a>
+            <a href="#details" class="nav__mobile-link">D&eacute;tails</a>
+            <a href="#reglement" class="nav__mobile-link">R&egrave;glement</a>
+            <a href="#equipages" class="nav__mobile-link">&Eacute;quipages</a>
+            <a href="#histoire" class="nav__mobile-link">Histoire</a>
+            <a href="#partenaires" class="nav__mobile-link">Partenaires</a>
+            <a href="#register" class="nav__mobile-cta"><i class="fas fa-flag-checkered"></i> R&eacute;server Votre Place</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero-section" class="relative">
-        <div class="hero-inner">
-        <div class="hero-image-container"> <!-- New container for the image -->
-            <picture>
-                <source srcset="img/optimized/poster.webp" type="image/webp">
-                <img src="img/poster.jpeg" alt="Carrera Rallye Poster" class="hero-poster-image">
-            </picture>
-        </div>
-        <div class="hero-content-container"> <!-- New container for the content -->
-            <div class="hero-content">
-                <!-- Existing content goes here -->
-                <div class="flex justify-center mb-4 md:justify-start"> <!-- Adjusted alignment for larger screens -->
-                    <p class="hero-headline"><strong>Une expérience exclusive pour les passionnés de Porsche classiques</strong></p>
-                </div>
-                <h2 class="hero-date" style="font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 1.5rem; letter-spacing: 0.3px; color: #fff;">Le 27 et 28 Septembre 2025</h2>
-                <div class="countdown-container">
-                    <div class="countdown md:justify-start"> <!-- Adjusted alignment for larger screens -->
-                        <div data-label="Jours"><span id="days">00</span></div>
-                        <div data-label="Heures"><span id="hours">00</span></div>
-                        <div data-label="Minutes"><span id="minutes">00</span></div>
-                        <div data-label="Secondes"><span id="seconds">00</span></div>
+    <section id="hero" class="hero">
+        <div class="hero__bg"></div>
+        <div class="hero__overlay"></div>
+        <div class="hero__inner">
+            <div class="hero__content">
+                <h1 class="hero__headline">Une exp&eacute;rience exclusive pour les passionn&eacute;s de <em>Porsche classiques</em></h1>
+                <p class="hero__date">Le 26, 27 et 28 Septembre 2026</p>
+                <div class="countdown">
+                    <div class="countdown__item countdown__item--primary">
+                        <span class="countdown__number" id="days">00</span>
+                        <span class="countdown__label">Jours</span>
+                    </div>
+                    <div class="countdown__item">
+                        <span class="countdown__number" id="hours">00</span>
+                        <span class="countdown__label">Heures</span>
+                    </div>
+                    <div class="countdown__item">
+                        <span class="countdown__number" id="minutes">00</span>
+                        <span class="countdown__label">Minutes</span>
+                    </div>
+                    <div class="countdown__item">
+                        <span class="countdown__number" id="seconds">00</span>
+                        <span class="countdown__label">Secondes</span>
                     </div>
                 </div>
-                <div class="hero-buttons md:justify-start"> <!-- Adjusted alignment for larger screens -->
-                    <a href="#register" class="reserve-btn">
-                        <span class="button-text-main">
-                            <i class="fas fa-flag-checkered"></i> Réservez Votre Place
-                        </span>
-                        <span class="button-text-secondary">(40 Équipages Max)</span>
+                <div class="hero__buttons">
+                    <a href="#register" class="hero__btn-primary">
+                        <span><i class="fas fa-flag-checkered"></i> R&eacute;servez Votre Place</span>
+                        <small>(40 &Eacute;quipages Max)</small>
                     </a>
-                    <a href="#event" class="info-btn">
-                        <span class="button-text-main">
-                            <i class="fas fa-info-circle"></i> En Savoir Plus
-                        </span>
+                    <a href="#parcours" class="hero__btn-secondary">
+                        <i class="fas fa-info-circle"></i> En Savoir Plus
                     </a>
                 </div>
             </div>
+            <div class="hero__image">
+                <picture>
+                    <source srcset="img/optimized/poster.webp" type="image/webp">
+                    <img src="img/provence/poster-2026.jpeg" alt="Carrera Rallye 2026 Provence Edition Poster" class="hero__poster">
+                </picture>
+            </div>
         </div>
-        </div> <!-- close .hero-inner -->
-        <div class="scroll-down">
-            <a href="#event"><i class="fas fa-chevron-down"></i></a>
+        <a href="#parcours" class="hero__scroll"><i class="fas fa-chevron-down"></i></a>
+    </section>
+
+    <!-- Parcours / Itinerary -->
+    <section id="parcours" class="section section-dark">
+        <div class="container">
+            <div class="section__header reveal">
+                <span class="section__label">Itin&eacute;raire 2026</span>
+                <h2 class="section__title">Trois Jours en Provence</h2>
+                <p class="section__subtitle">Un parcours de 600 km &agrave; travers les plus beaux paysages de Provence, des champs de lavande aux calanques de la c&ocirc;te.</p>
+            </div>
+            <div class="timeline">
+                <!-- Vendredi -->
+                <div class="timeline__day reveal reveal--delay-1">
+                    <span class="timeline__day-label">Jour 1</span>
+                    <h3 class="timeline__day-title">Vendredi 26 Septembre</h3>
+                    <div class="timeline__card">
+                        <span class="timeline__card-time">Matin</span>
+                        <h4 class="timeline__card-title">D&eacute;part du Ch&acirc;teau</h4>
+                        <p class="timeline__card-text">D&eacute;part depuis un magnifique <span class="timeline__card-venue">domaine proven&ccedil;al</span> apr&egrave;s un petit-d&eacute;jeuner d'exception. Remise des road books et briefing de bienvenue.</p>
+                    </div>
+                    <div class="timeline__card">
+                        <span class="timeline__card-time">Soir</span>
+                        <h4 class="timeline__card-title">D&icirc;ner Gastronomique</h4>
+                        <p class="timeline__card-text">Arriv&eacute;e en fin de journ&eacute;e pour un d&icirc;ner dans un <span class="timeline__card-venue">restaurant &eacute;toil&eacute; Michelin</span>. Nuit&eacute;e dans un h&ocirc;tel de charme.</p>
+                    </div>
+                </div>
+                <!-- Samedi -->
+                <div class="timeline__day reveal reveal--delay-2">
+                    <span class="timeline__day-label">Jour 2</span>
+                    <h3 class="timeline__day-title">Samedi 27 Septembre</h3>
+                    <div class="timeline__card">
+                        <span class="timeline__card-time">Matin</span>
+                        <h4 class="timeline__card-title">Les Routes du Luberon</h4>
+                        <p class="timeline__card-text">Travers&eacute;e des <span class="timeline__card-venue">champs de lavande et villages perch&eacute;s du Luberon</span>. Passage par Gordes, Roussillon et leurs panoramas exceptionnels.</p>
+                    </div>
+                    <div class="timeline__card">
+                        <span class="timeline__card-time">Midi</span>
+                        <h4 class="timeline__card-title">D&eacute;jeuner Proven&ccedil;al</h4>
+                        <p class="timeline__card-text">Pause gourmande dans un <span class="timeline__card-venue">&eacute;tablissement du Guide Michelin</span> au c&oelig;ur de la Provence.</p>
+                    </div>
+                    <div class="timeline__card">
+                        <span class="timeline__card-time">Soir</span>
+                        <h4 class="timeline__card-title">Aix-en-Provence</h4>
+                        <p class="timeline__card-text">Arriv&eacute;e &agrave; un <span class="timeline__card-venue">h&ocirc;tel 5 &eacute;toiles dans la r&eacute;gion d'Aix-en-Provence</span>. D&icirc;ner et nuit&eacute;e de prestige.</p>
+                    </div>
+                </div>
+                <!-- Dimanche -->
+                <div class="timeline__day reveal reveal--delay-3">
+                    <span class="timeline__day-label">Jour 3</span>
+                    <h3 class="timeline__day-title">Dimanche 28 Septembre</h3>
+                    <div class="timeline__card">
+                        <span class="timeline__card-time">Matin</span>
+                        <h4 class="timeline__card-title">Vers la C&ocirc;te</h4>
+                        <p class="timeline__card-text">Derni&egrave;re &eacute;tape sur les <span class="timeline__card-venue">routes panoramiques en direction de la M&eacute;diterran&eacute;e</span>. Cols et virages spectaculaires.</p>
+                    </div>
+                    <div class="timeline__card">
+                        <span class="timeline__card-time">Apr&egrave;s-midi</span>
+                        <h4 class="timeline__card-title">Arriv&eacute;e &amp; Remise des Prix</h4>
+                        <p class="timeline__card-text">Arriv&eacute;e dans un <span class="timeline__card-venue">lieu prestigieux en bord de mer</span>. Cocktail et c&eacute;r&eacute;monie de remise des prix pour cl&ocirc;turer cette &eacute;dition 2026.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Event Details Section -->
-    <section id="event">
-        <div id="event-details-scroll">
-            <!-- Parcours Section -->
-            <section class="event-detail-section parcours">
-                <div class="event-detail-content">
-                    <div class="blurry-container">
-                        <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Parcours</h2>
-                        <p class="text-lg text-white text-center" style="color: white; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);">Le rallye se déroulera sur deux jours, avec un itinéraire en deux étapes totalisant 450 km, soigneusement conçu pour sublimer les paysages pittoresques de la région du sud ouest. Chaque étape combinera routes sinueuses et cols de montagne exigeants. Le parcours détaillé sera révélé aux participants le jour du départ pour garder l'effet de suprise. Venez partager ce moment convivial en notre compagnie et parcourir des itinéraires judicieusement choisis. L’ arrivée à l’hôtel du Palais, en bord de la plage à Biarritz, connaîtra l’épilogue de ce rallye, autour d’un cocktail pendant la remise des prix.</p>
-                    </div>
+    <!-- Details: Prestations, Tarif, H&eacute;bergement -->
+    <section id="details" class="section section-cream">
+        <div class="container">
+            <div class="section__header reveal">
+                <span class="section__label">L'Exp&eacute;rience</span>
+                <h2 class="section__title">D&eacute;tails &amp; Prestations</h2>
+            </div>
+            <div class="cards-grid">
+                <div class="card reveal reveal--delay-1">
+                    <div class="card__icon"><i class="fas fa-gift"></i></div>
+                    <h3 class="card__title">Prestations Incluses</h3>
+                    <ul class="card__list">
+                        <li>Num&eacute;ros de concurrents</li>
+                        <li>Tenues pour pilote et copilote</li>
+                        <li>Road book d&eacute;taill&eacute;</li>
+                        <li>Goodies exclusifs</li>
+                        <li>Restauration dans des &eacute;tablissements du Guide Michelin</li>
+                        <li>H&eacute;bergement en h&ocirc;tels 5 &eacute;toiles (2 nuit&eacute;es)</li>
+                        <li>Remise des prix avec cocktail &agrave; l'arriv&eacute;e</li>
+                        <li>Assistance m&eacute;canique et d&eacute;pannage</li>
+                    </ul>
                 </div>
-            </section>
-
-            <!-- Existing event detail sections (Samedi Matin to Dimanche Après-midi) -->
-            <section class="event-detail-section" id="samedi-matin">
-                <div class="event-detail-content">
-                    <div class="blurry-container">
-                        <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Matin</h2>
-                        <p class="text-lg text-white text-center" style="color: white; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);">Niché aux confins du département de la Haute-Garonne et à la porte de la Gascogne, le <span class="font-semibold text-amber-300">Château de Drudas</span> nous accueille pour un petit-déjeuner avant de prendre le départ de cette édition.</p>
-                    </div>
+                <div class="card card--price reveal reveal--delay-2">
+                    <div class="card__icon"><i class="fas fa-tag"></i></div>
+                    <h3 class="card__title">Tarif &amp; Paiement</h3>
+                    <p class="card__price">2 449 &euro;</p>
+                    <p class="card__price-sub">par &eacute;quipage (2 personnes)</p>
+                    <p class="card__price-detail"><strong>Acompte :</strong> 1 449 &euro; pour l'engagement</p>
+                    <p class="card__price-detail"><strong>Solde :</strong> &Agrave; r&eacute;gler 30 jours avant le d&eacute;part</p>
+                    <a href="#register" class="card__price-btn">S'inscrire Maintenant</a>
                 </div>
-            </section>
-            <section class="event-detail-section">
-                <div class="event-detail-content">
-                    <div class="blurry-container">
-                        <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Midi</h2>
-                        <p class="text-lg text-white text-center" style="color: white; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);">À l’aide du Road Book, vous cheminerez sur les plus belles routes du Gers. Le déjeuner de midi aura lieu à la <span class="font-semibold text-amber-300">Ferme aux Grives</span>, célèbre établissement de Michel Guérard dans le village thermal d’Eugénie-les-Bains.</p>
-                    </div>
+                <div class="card reveal reveal--delay-3">
+                    <div class="card__icon"><i class="fas fa-bed"></i></div>
+                    <h3 class="card__title">H&eacute;bergement</h3>
+                    <p class="card__text">Les concurrents souhaitant arriver le jeudi soir ou prolonger le dimanche soir b&eacute;n&eacute;ficieront de tarifs n&eacute;goci&eacute;s aupr&egrave;s de nos h&ocirc;tels partenaires. Il leur suffira de mentionner leur participation au Rallye pour en b&eacute;n&eacute;ficier.</p>
                 </div>
-            </section>
-            <section class="event-detail-section">
-                <div class="event-detail-content">
-                    <div class="blurry-container">
-                        <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Samedi Soir</h2>
-                        <p class="text-lg text-white text-center" style="color: white; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);">Le parcours de l’après-midi vous mènera au pied des Pyrénées, dans la douce ville de Pau. L’Hôtel 5 étoiles <span class="font-semibold text-amber-300">Parc Beaumont</span> nous accueillera pour le dîner et la nuitée.</p>
-                    </div>
-                </div>
-            </section>
-            <section class="event-detail-section">
-                <div class="event-detail-content">
-                    <div class="blurry-container">
-                        <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Dimanche Matin</h2>
-                        <p class="text-lg text-white text-center" style="color: white; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);">Le dimanche matin, vous cheminerez sur les routes du Béarn, en direction de l’Espagne et de quelques cols renommés. Le déjeuner dominical est assuré par la fameuse <span class="font-semibold text-amber-300">Maison Ithurria</span> à Ainhoa.</p>
-                    </div>
-                </div>
-            </section>
-            <section class="event-detail-section">
-                <div class="event-detail-content">
-                    <div class="blurry-container">
-                        <h2 class="text-4xl font-bold mb-6 text-amber-400 text-center">Dimanche Après-midi</h2>
-                        <p class="text-lg text-white text-center" style="color: white; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);">L’étape de l’après-midi dans les Pyrénées Basque vous amènera au bord de la mer, dans le majestueux <span class="font-semibold text-amber-300">Hôtel du Palais</span> à Biarritz. La remise des prix et un cocktail clôtureront l’édition 2025.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Options d'Hébergement -->
-            <section class="event-detail-section">
-                <div class="event-detail-content">
-                    <div class="slide-content">
-                        <h2><i class="fas fa-bed text-amber-500 mr-3"></i> Options d'Hébergement</h2>
-                        <p style="color: white; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);">Les concurrents qui désirent arriver le vendredi soir ou rester le dimanche soir bénéficieront de tarifs négociés au Château de Drudas et à l’Hôtel du Palais pour cette manifestation. Ils leur suffira de mentionner leur participation au Rallye pour en bénéficier.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Prestations Incluses -->
-            <section class="event-detail-section">
-                <div class="event-detail-content">
-                    <div class="slide-content prestations-content">
-                        <h2><i class="fas fa-gift text-amber-500 mr-3"></i> Prestations Incluses</h2>
-                        <ul style="color: white; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);">
-                            <li>Numéros de concurrents</li>
-                            <li>Tenues pour pilote et copilote</li>
-                            <li>Road book détaillé</li>
-                            <li>Goodies exclusifs</li>
-                            <li>Restauration dans des établissements du Guide Michelin</li>
-                            <li>Hébergement en hôtel 5 étoiles</li>
-                            <li>Remise des prix avec cocktail à l'arrivée</li>
-                            <li>Assistance mécanique et dépannage</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Tarif & Paiement -->
-            <section class="event-detail-section tarif-paiement">
-                <div class="event-detail-content">
-                    <div class="slide-content price-card">
-                        <h2>Tarif & Paiement</h2>
-                        <p class="price">2449 € <span class="text-base font-semibold text-white">par équipage (2 personnes)</span></p>
-                        <p><span class="font-semibold">Acompte :</span> 1449 € demandé pour l'engagement.</p>
-                        <p><span class="font-semibold">Solde :</span> À régler au maximum 30 jours avant le départ.</p>
-                        <a href="#register" aria-label="S'inscrire maintenant pour le Carrera Rallye">S'inscrire Maintenant</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Voitures Admissibles -->
-            <section class="event-detail-section voitures-admissibles" id="voitures-admissibles">
-                <div class="event-detail-content voitures-content-wider">
-                    <div class="slide-content voitures-content">
-                        <h2><i class="fas fa-car text-amber-500 mr-3"></i> Voitures Admissibles</h2>
-                        <p>Toutes les Porsche fabriquées entre 1950 et 1989 :</p>
-                        <ul class="list-inside">
-                            <li>356 (Pré A, A, B, C, SC)</li>
-                            <li>904 (4 ou 6 cylindres)</li>
-                            <li>906, 910</li>
-                            <li>911 (tout model), 912</li>
-                            <li>914 (4 ou 6 cylindres)</li>
-                        </ul>
-                        <p class="mt-4 font-semibold">Conditions :</p>
-                        <ul class="list-inside">
-                            <li>Voiture assurée</li>
-                            <li>Conducteur avec permis de conduire valide</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Règlement et Consignes du Rallye -->
-            <section class="event-detail-section deroulement-rallye">
-                <div class="event-detail-content">
-                    <div class="slide-content">
-                        <h2><i class="fas fa-route text-amber-500 mr-3"></i> Déroulement du Rallye</h2>
-                        <p>Les participants doivent suivre l’itinéraire détaillé dans le road book, sans contrainte de vitesse ni de moyenne imposée. Pour valider leur passage, ils devront faire viser leur feuille de pointage aux différents contrôles de passage (CP), dont les emplacements restent confidentiels. Nous rappelons que l’épreuve se déroule sur des routes ouvertes non neutralisées, ce qui implique une conformité stricte au Code de la Route. Les consignes de sécurité détaillées seront fournies dans le road book remis aux participants.</p>
-                    </div>
-                </div>
-            </section>
-            <section class="event-detail-section comportement-route" id="reglement">
-                <div class="event-detail-content">
-                    <div class="slide-content">
-                        <h2><i class="fas fa-clipboard-check text-amber-500 mr-3"></i> Comportement sur la Route</h2>
-                        <p>Un comportement irréprochable sur la route est exigé de tous les participants. Le rallye se déroulant sur des routes publiques ouvertes à la circulation, le respect scrupuleux du Code de la Route est impératif. Les participants doivent faire preuve d’une attitude exemplaire envers les autres usagers de la route et leurs collègues compétiteurs. Ceux qui ne partagent pas cet esprit de convivialité et de responsabilité ne sont pas les bienvenus et s’exposent à une exclusion de cet événement réservé aux passionnés.</p>
-                    </div>
-                </div>
-            </section>
-            <section class="event-detail-section exigences-vehicules">
-                <div class="event-detail-content">
-                    <div class="slide-content">
-                        <h2><i class="fas fa-car-side text-amber-500 mr-3"></i> Exigences pour les Véhicules</h2>
-                        <p>Tous les véhicules doivent beneficier d'une assurance et d'un contrôle technique valide. Les participants doivent s’assurer que leur voiture est en parfait état, en vérifiant particulièrement l’état des pneumatiques, de l’éclairage, de la fixation de la batterie et des ceintures de sécurité. Il est également recommandé de disposer d’un extincteur, des gilet jaunes et d’un triangle de signalisation à bord. Aucun changement de véhicule inscrit ne sera autorisé sans l’accord préalable des organisateurs.</p>
-                    </div>
-                </div>
-            </section>
-            <section class="event-detail-section esprit-non-competitif">
-                <div class="event-detail-content">
-                    <div class="slide-content">
-                        <h2><i class="fas fa-handshake text-amber-500 mr-3"></i>Classement</h2>
-                        <p>Ce rallye ne repose pas sur un classement de performance. La remise des prix ne tient pas compte d'une consideration sur la vitesse ou de temps imposé. Le classement est déterminé par le passage aux checkpoints et les bonnes réponses à un quiz sur l’automobile, avec des prix attribués en fonction des ces résultats. </p>
-                    </div>
-                </div>
-            </section>
-            <section class="event-detail-section histoire" id="histoire">
-                <div class="event-detail-content">
-                    <div class="slide-content">
-                        <h2>Histoire</h2>
-                        <p>Depuis l’obtention de son permis de conduire, Stéphane PLAGNAT parcours la France à la découverte de sites, de gens, de routes exceptionnelles. Il aime vivre la route comme autrefois, où la préparation du voyage faisait déjà partie des vacances.
-En 2003, l’idée de créer un rallye afin de découvrir les régions de notre belle France prends forme. Une vingtaine d’équipages répondent à l’appel. Depuis 22 éditions se sont écoulées. D’année en année, l’expérience acquise permet de proposer une offre plus élaboré. Pour la 23ème édition, le choix de s’entourer de partenaires locaux mais aussi nationaux marque un tournant important. Il va nous permettre de proposer une
-prestation encore plus aboutie. Et pour les participants de se réunir autour d’une passion commune et s’évader le temps d’un week end.</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </section>
-        <!-- Remaining sections (Registration, Partners, Footer) remain unchanged -->
-        <!-- Existing JavaScript remains unchanged, but update the slide observer -->
-
-    <!-- Registered Participants Section -->
-    <section id="registered-participants" class="event-detail-section registered-participants">
-        <div class="event-detail-content">
-            <div class="slide-content participants-content">
-                <h2><i class="fas fa-users text-amber-500 mr-3"></i> Équipages Inscrits</h2>
-                <div class="participants-list">
-                    <ol class="text-left space-y-3">
-                        <li class="participant-list-item">
-                            <span class="participant-number">1.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name">Christophe SOULIER</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name">Chrystelle SOULIER</span>
-                                </div>
-                            </div>
-                            <span class="car-info">356 C Coupé - 1964</span>
-                        </li>
-                        <li class="participant-list-item">
-                            <span class="participant-number">2.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇨🇭</span>
-                                    <span class="name"> Jean-Luc GAVELLE</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇦🇺</span>
-                                    <span class="name"> Alun THOMAS</span>
-                                </div>
-                            </div>
-                            <span class="car-info">356 B Coupé GT - 1960</span>
-                        </li>
-                        <li class="participant-list-item">
-                            <span class="participant-number">3.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Thierry PETOT</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Nicolas GAVELLE</span>
-                                </div>
-                            </div>
-                            <span class="car-info">356 C Cabriolet - 1964</span>
-                        </li>
-                        <li class="participant-list-item">
-                            <span class="participant-number">4.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Olivier CATALA</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Olivier TOURNIER</span>
-                                </div>
-                            </div>
-                            <span class="car-info">911 Carrera 3.2 - 1989</span>
-                        </li>
-                        <li class="participant-list-item">
-                            <span class="participant-number">5.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Gregory VOUTERS</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Carole VOUTERS</span>
-                                </div>
-                            </div>
-                            <span class="car-info">356 C Cabrio - 1964</span>
-                        </li>
-                        <li class="participant-list-item">
-                            <span class="participant-number">6.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇩🇪</span>
-                                    <span class="name"> Stefan GIESE</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇩🇪</span>
-                                    <span class="name"> Martina GIESE</span>
-                                </div>
-                            </div>
-                            <span class="car-info">911 Carrera 3.2 - 1984</span>
-                        </li>
-                        <li class="participant-list-item">
-                            <span class="participant-number">7.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Emmanuel OLIVARI</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Valérie OLIVARI</span>
-                                </div>
-                            </div>
-                            <span class="car-info">911 2.2S - 1970</span>
-                        </li>
-                        <li class="participant-list-item">
-                            <span class="participant-number">8.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Jean Jacques PEREZ</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Hugo PEREZ</span>
-                                </div>
-                            </div>
-                            <span class="car-info">911 2.0S Targa - 1968</span>
-                        </li>
-                        <li class="participant-list-item">
-                            <span class="participant-number">9.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Xavier CONSTANTIN</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Isabelle CONSTANTIN</span>
-                                </div>
-                            </div>
-                            <span class="car-info">911 2.0E - 1969</span>
-                        </li>
-                        <li class="participant-list-item">
-                            <span class="participant-number">10.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Sebastien LAURENT</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Sandrine LAURENT</span>
-                                </div>
-                            </div>
-                            <span class="car-info">911 Carrera Targa 3.2 - 1984</span>
-                        </li>
-                        <li class="participant-list-item">
-                            <span class="participant-number">11.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Herve RIGAL</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Valentin RIGAL</span>
-                                </div>
-                            </div>
-                            <span class="car-info">911 Carrera 3.2 Cabriolet - 1986</span>
-                        </li>
-                        <li class="participant-list-item">
-                            <span class="participant-number">12.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇧🇪</span>
-                                    <span class="name"> Hervé CHARBONNEAUX</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇧🇪</span>
-                                    <span class="name"> Segolene CHARBONNEAUX</span>
-                                </div>
-                            </div>
-                            <span class="car-info">904 Carrera - 1963</span>
-                        </li>
-                        <li class="participant-list-item">
-                            <span class="participant-number">13.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇧🇪</span>
-                                    <span class="name"> Donat CLAEYS</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇧🇪</span>
-                                    <span class="name"> Corinne DE CLERCQ</span>
-                                </div>
-                            </div>
-                            <span class="car-info">911 Carrera Targa 3.2 - 1988</span>
-                        </li>
-                        <li class="participant-list-item">
-                            <span class="participant-number">14.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Serge BRULIERE</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Marie BRULIERE</span>
-                                </div>
-                            </div>
-                            <span class="car-info">911 SC Jubilé - 1981</span>
-                        </li>
-                        <li class="participant-list-item">
-                            <span class="participant-number">15.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Patrick PUPILE</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇫🇷</span>
-                                    <span class="name"> Sandrine PUPILE</span>
-                                </div>
-                            </div>
-                            <span class="car-info">911 SC - 1979</span>
-                        </li>
-                        <li class="participant-list-item">
-                            <span class="participant-number">16.</span>
-                            <div class="participant-details">
-                                <div class="pilot-info">
-                                    <span class="flag-icon">🇨🇭</span>
-                                    <span class="name"> Thomas LEBLANC</span>
-                                </div>
-                                <div class="copilot-info">
-                                    <span class="flag-icon">🇨🇭</span>
-                                    <span class="name"> Elise LEBLANC</span>
-                                </div>
-                            </div>
-                            <span class="car-info">356 Speedster - 1956</span>
-                        </li>
-                    </ol>
+            </div>
         </div>
     </section>
 
-    <!-- Registration Section -->
-    <section id="register" class="py-20 bg-gray-900">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 font-['Racing_Sans_One'] pop-up">INSCRIPTION AU CARRERA RALLYE</h2>
-            <p class="text-xl text-center text-gray-300 mb-16 pop-up">Remplissez le formulaire pour soumettre votre demande d'engagement. Places limitées à 40 équipages.</p>
-            <form class="pop-up"> <!-- Removed Tailwind classes, styles applied via CSS -->
-                <h3 class="text-xl font-semibold text-white mb-6">Informations des Participants</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 px-4 sm:px-6">
-                    <div class="form-input">
-                        <input type="text" id="first-name" name="pilote_prenom" required placeholder=" " class="w-full">
-                        <label for="first-name">Prénom (Pilote)</label>
-                        <span class="error-message">Ce champ est requis.</span>
+    <!-- Voitures Admissibles -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section__header reveal">
+                <span class="section__label">V&eacute;hicules</span>
+                <h2 class="section__title">Voitures Admissibles</h2>
+            </div>
+            <div class="cards-grid reveal" style="max-width: 900px; margin: 0 auto;">
+                <div class="card">
+                    <div class="card__icon"><i class="fas fa-car"></i></div>
+                    <h3 class="card__title">Porsche 1950&ndash;1989</h3>
+                    <ul class="card__list">
+                        <li>356 (Pr&eacute; A, A, B, C, SC)</li>
+                        <li>904 (4 ou 6 cylindres)</li>
+                        <li>906, 910</li>
+                        <li>911 (tout mod&egrave;le), 912</li>
+                        <li>914 (4 ou 6 cylindres)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card__icon"><i class="fas fa-clipboard-check"></i></div>
+                    <h3 class="card__title">Conditions</h3>
+                    <ul class="card__list">
+                        <li>Voiture assur&eacute;e avec contr&ocirc;le technique valide</li>
+                        <li>Conducteur avec permis de conduire valide</li>
+                        <li>V&eacute;hicule en parfait &eacute;tat m&eacute;canique</li>
+                        <li>Pneumatiques, &eacute;clairage et ceintures v&eacute;rifi&eacute;s</li>
+                        <li>Extincteur et gilet jaune recommand&eacute;s</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- R&egrave;glement (Accordion) -->
+    <section id="reglement" class="section section-dark">
+        <div class="container">
+            <div class="section__header reveal">
+                <span class="section__label">R&egrave;glement</span>
+                <h2 class="section__title">R&egrave;gles &amp; Consignes</h2>
+            </div>
+            <div class="accordion reveal">
+                <div class="accordion__item">
+                    <button class="accordion__trigger">
+                        <span><i class="fas fa-route" style="color: var(--color-ochre); margin-right: 0.75rem;"></i>D&eacute;roulement du Rallye</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion__content">
+                        <div class="accordion__content-inner">Les participants doivent suivre l'itin&eacute;raire d&eacute;taill&eacute; dans le road book, sans contrainte de vitesse ni de moyenne impos&eacute;e. Pour valider leur passage, ils devront faire viser leur feuille de pointage aux diff&eacute;rents contr&ocirc;les de passage (CP), dont les emplacements restent confidentiels. L'&eacute;preuve se d&eacute;roule sur des routes ouvertes non neutralis&eacute;es, ce qui implique une conformit&eacute; stricte au Code de la Route.</div>
                     </div>
-                    <div class="form-input">
-                        <input type="text" id="last-name" name="pilote_nom" required placeholder=" " class="w-full">
-                        <label for="last-name">Nom (Pilote)</label>
-                        <span class="error-message">Ce champ est requis.</span>
+                </div>
+                <div class="accordion__item">
+                    <button class="accordion__trigger">
+                        <span><i class="fas fa-clipboard-check" style="color: var(--color-ochre); margin-right: 0.75rem;"></i>Comportement sur la Route</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion__content">
+                        <div class="accordion__content-inner">Un comportement irr&eacute;prochable sur la route est exig&eacute; de tous les participants. Le rallye se d&eacute;roulant sur des routes publiques ouvertes &agrave; la circulation, le respect scrupuleux du Code de la Route est imp&eacute;ratif. Les participants doivent faire preuve d'une attitude exemplaire envers les autres usagers et leurs coll&egrave;gues comp&eacute;titeurs.</div>
                     </div>
-                    <div class="form-input">
-                        <input type="text" id="copilote-first-name" name="copilote_prenom" required placeholder=" " class="w-full">
-                        <label for="copilote-first-name">Prénom (Copilote)</label>
-                        <span class="error-message">Ce champ est requis.</span>
+                </div>
+                <div class="accordion__item">
+                    <button class="accordion__trigger">
+                        <span><i class="fas fa-car-side" style="color: var(--color-ochre); margin-right: 0.75rem;"></i>Exigences pour les V&eacute;hicules</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion__content">
+                        <div class="accordion__content-inner">Tous les v&eacute;hicules doivent b&eacute;n&eacute;ficier d'une assurance et d'un contr&ocirc;le technique valide. Les participants doivent s'assurer que leur voiture est en parfait &eacute;tat, en v&eacute;rifiant particuli&egrave;rement l'&eacute;tat des pneumatiques, de l'&eacute;clairage, de la fixation de la batterie et des ceintures de s&eacute;curit&eacute;. Il est recommand&eacute; de disposer d'un extincteur, de gilets jaunes et d'un triangle de signalisation &agrave; bord. Aucun changement de v&eacute;hicule inscrit ne sera autoris&eacute; sans l'accord pr&eacute;alable des organisateurs.</div>
                     </div>
-                    <div class="form-input">
-                        <input type="text" id="copilote-last-name" name="copilote_nom" required placeholder=" " class="w-full">
-                        <label for="copilote-last-name">Nom (Copilote)</label>
-                        <span class="error-message">Ce champ est requis.</span>
+                </div>
+                <div class="accordion__item">
+                    <button class="accordion__trigger">
+                        <span><i class="fas fa-handshake" style="color: var(--color-ochre); margin-right: 0.75rem;"></i>Classement</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="accordion__content">
+                        <div class="accordion__content-inner">Ce rallye ne repose pas sur un classement de performance. La remise des prix ne tient pas compte de la vitesse ou d'un temps impos&eacute;. Le classement est d&eacute;termin&eacute; par le passage aux checkpoints et les bonnes r&eacute;ponses &agrave; un quiz sur l'automobile, avec des prix attribu&eacute;s en fonction de ces r&eacute;sultats.</div>
                     </div>
-                    <div class="form-input">
-                        <input type="email" id="email" name="email" required placeholder=" " class="w-full">
-                        <label for="email">Adresse E-mail</label>
-                        <span class="error-message">Veuillez entrer une adresse e-mail valide.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- &Eacute;quipages -->
+    <section id="equipages" class="section section-dark">
+        <div class="container-wide">
+            <div class="section__header reveal">
+                <span class="section__label">&Eacute;dition 2026</span>
+                <h2 class="section__title">&Eacute;quipages Inscrits</h2>
+                <p class="section__subtitle">Les inscriptions sont ouvertes. Soyez parmi les premiers &agrave; rejoindre l'aventure proven&ccedil;ale.</p>
+            </div>
+            <div class="participants-grid reveal">
+                <p style="text-align: center; color: var(--text-cream-muted); font-style: italic; grid-column: 1 / -1; padding: 2rem 0;">Les premiers &eacute;quipages inscrits appara&icirc;tront ici prochainement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Histoire -->
+    <section id="histoire" class="section section-cream">
+        <div class="container">
+            <div class="section__header reveal">
+                <span class="section__label">Depuis 2003</span>
+                <h2 class="section__title">Notre Histoire</h2>
+            </div>
+            <div class="reveal" style="max-width: 800px; margin: 0 auto;">
+                <div class="card">
+                    <p class="card__text">Depuis l'obtention de son permis de conduire, St&eacute;phane PLAGNAT parcourt la France &agrave; la d&eacute;couverte de sites, de gens, de routes exceptionnelles. Il aime vivre la route comme autrefois, o&ugrave; la pr&eacute;paration du voyage faisait d&eacute;j&agrave; partie des vacances.</p>
+                    <br>
+                    <p class="card__text">En 2003, l'id&eacute;e de cr&eacute;er un rallye afin de d&eacute;couvrir les r&eacute;gions de notre belle France prend forme. Une vingtaine d'&eacute;quipages r&eacute;pondent &agrave; l'appel. Depuis, 23 &eacute;ditions se sont &eacute;coul&eacute;es. D'ann&eacute;e en ann&eacute;e, l'exp&eacute;rience acquise permet de proposer une offre plus &eacute;labor&eacute;e.</p>
+                    <br>
+                    <p class="card__text">Pour l'&eacute;dition 2026, le choix de la Provence marque un nouveau chapitre. Le partenariat avec des acteurs locaux et nationaux nous permet de proposer une prestation encore plus aboutie, pour que les participants se r&eacute;unissent autour d'une passion commune et s'&eacute;vadent le temps d'un week-end prolong&eacute;.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration -->
+    <section id="register" class="section section-dark">
+        <div class="container">
+            <div class="section__header reveal">
+                <span class="section__label">Rejoignez-nous</span>
+                <h2 class="section__title">Inscription au Carrera Rallye</h2>
+                <p class="section__subtitle">Remplissez le formulaire pour soumettre votre demande d'engagement. Places limit&eacute;es &agrave; 40 &eacute;quipages.</p>
+            </div>
+            <form class="form reveal">
+                <h3 class="form__section-title">Informations des Participants</h3>
+                <div class="form__grid">
+                    <div class="form__group">
+                        <input type="text" id="first-name" name="pilote_prenom" required placeholder=" " class="form__input">
+                        <label for="first-name" class="form__label">Pr&eacute;nom (Pilote)</label>
                     </div>
-                    <div class="form-input">
-                        <input type="tel" id="phone" name="telephone" required placeholder=" " class="w-full">
-                        <label for="phone">Numéro de Téléphone</label>
-                        <span class="error-message">Ce champ est requis.</span>
+                    <div class="form__group">
+                        <input type="text" id="last-name" name="pilote_nom" required placeholder=" " class="form__input">
+                        <label for="last-name" class="form__label">Nom (Pilote)</label>
                     </div>
-                    <div class="form-input">
-                        <select id="pilote-size" name="pilote_taille" required class="w-full">
-                            <option value="" selected>Taille vêtement Pilote</option> <!-- Use first option as placeholder -->
+                    <div class="form__group">
+                        <input type="text" id="copilote-first-name" name="copilote_prenom" required placeholder=" " class="form__input">
+                        <label for="copilote-first-name" class="form__label">Pr&eacute;nom (Copilote)</label>
+                    </div>
+                    <div class="form__group">
+                        <input type="text" id="copilote-last-name" name="copilote_nom" required placeholder=" " class="form__input">
+                        <label for="copilote-last-name" class="form__label">Nom (Copilote)</label>
+                    </div>
+                    <div class="form__group">
+                        <input type="email" id="email" name="email" required placeholder=" " class="form__input">
+                        <label for="email" class="form__label">Adresse E-mail</label>
+                    </div>
+                    <div class="form__group">
+                        <input type="tel" id="phone" name="telephone" required placeholder=" " class="form__input">
+                        <label for="phone" class="form__label">Num&eacute;ro de T&eacute;l&eacute;phone</label>
+                    </div>
+                    <div class="form__group">
+                        <select id="pilote-size" name="pilote_taille" required class="form__select">
+                            <option value="">Taille v&ecirc;tement Pilote</option>
                             <option value="S">S</option>
                             <option value="M">M</option>
                             <option value="L">L</option>
                             <option value="XL">XL</option>
                             <option value="XXL">XXL</option>
                         </select>
-                        <!-- Removed the separate label -->
-                        <span class="error-message">Ce champ est requis.</span>
                     </div>
-                    <div class="form-input">
-                        <select id="copilote-size" name="copilote_taille" required class="w-full">
-                            <option value="" selected>Taille vêtement Copilote</option> <!-- Use first option as placeholder -->
+                    <div class="form__group">
+                        <select id="copilote-size" name="copilote_taille" required class="form__select">
+                            <option value="">Taille v&ecirc;tement Copilote</option>
                             <option value="S">S</option>
                             <option value="M">M</option>
                             <option value="L">L</option>
                             <option value="XL">XL</option>
                             <option value="XXL">XXL</option>
                         </select>
-                        <!-- Removed the separate label -->
-                        <span class="error-message">Ce champ est requis.</span>
                     </div>
                 </div>
 
-                <h3 class="text-xl font-semibold text-white mb-6">Détails du Véhicule</h3>
-                <div class="mb-8 form-input">
-                    <input type="text" id="car-model-year" name="voiture_modele_annee" required placeholder=" " class="w-full">
-                    <label for="car-model-year">Modèle et Année de votre Porsche</label>
-                    <span class="error-message">Ce champ est requis.</span>
+                <h3 class="form__section-title">D&eacute;tails du V&eacute;hicule</h3>
+                <div class="form__group">
+                    <input type="text" id="car-model-year" name="voiture_modele_annee" required placeholder=" " class="form__input">
+                    <label for="car-model-year" class="form__label">Mod&egrave;le et Ann&eacute;e de votre Porsche</label>
                 </div>
 
-                <h3 class="text-xl font-semibold text-white mb-6">Commentaires</h3>
-                <div class="mb-8 form-input">
-                    <textarea id="message" name="message" rows="4" placeholder=" " class="w-full"></textarea>
-                    <label for="message">Demandes Spéciales / Commentaires</label>
-                    <!-- No error message needed for optional field -->
+                <h3 class="form__section-title">Commentaires</h3>
+                <div class="form__group">
+                    <textarea id="message" name="message" rows="4" placeholder=" " class="form__textarea"></textarea>
+                    <label for="message" class="form__label">Demandes Sp&eacute;ciales / Commentaires</label>
                 </div>
 
-                <div class="mb-8 bg-amber-900 bg-opacity-30 border border-amber-700 p-4 rounded-md text-amber-200">
-                    <p class="font-semibold mb-2"><i class="fas fa-exclamation-triangle mr-2"></i> Information Importante</p>
-                    <p>Un acompte de 1449 € est requis pour confirmer votre engagement. Notre équipe vous contactera après soumission de ce formulaire avec les détails de paiement. Le solde de 1000 € sera dû 30 jours avant l'événement. Aucun engagement ne sera confirmé sans le versement d’un acompte. En cas d’annulation de votre part après le 27 août 2025, l’acompte ne sera pas remboursé. </p>
+                <div class="form__notice">
+                    <p class="form__notice-title"><i class="fas fa-exclamation-triangle"></i> Information Importante</p>
+                    <p>Un acompte de 1 449 &euro; est requis pour confirmer votre engagement. Notre &eacute;quipe vous contactera apr&egrave;s soumission avec les d&eacute;tails de paiement. Le solde de 1 000 &euro; sera d&ucirc; 30 jours avant l'&eacute;v&eacute;nement. En cas d'annulation apr&egrave;s le 27 ao&ucirc;t 2026, l'acompte ne sera pas rembours&eacute;.</p>
                 </div>
 
-                <div class="flex items-center mb-8">
-                    <input id="terms" name="accepte_conditions" type="checkbox" required class="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-600 rounded">
-                    <label for="terms" class="ml-2 block text-sm text-gray-300">
-                        Je confirme avoir lu les détails de l'événement et j'accepte les <a href="#" class="text-amber-500 hover:underline">termes et conditions</a> et la <a href="#" class="text-amber-500 hover:underline">politique de confidentialité</a>.
+                <div class="form__checkbox-wrap">
+                    <input id="terms" name="accepte_conditions" type="checkbox" required class="form__checkbox">
+                    <label for="terms" class="form__checkbox-label">
+                        Je confirme avoir lu les d&eacute;tails de l'&eacute;v&eacute;nement et j'accepte les <a href="#">termes et conditions</a> et la <a href="#">politique de confidentialit&eacute;</a>.
                     </label>
                 </div>
 
-                <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white py-4 rounded-md text-lg font-semibold transition duration-300 transform hover:scale-105">
-                    <i class="fas fa-paper-plane mr-2"></i> Soumettre ma Demande d'Engagement
+                <button type="submit" class="form__submit">
+                    <i class="fas fa-paper-plane"></i> Soumettre ma Demande d'Engagement
                 </button>
             </form>
         </div>
     </section>
 
-    <!-- Partners Section -->
-    <section id="partenaires" class="py-20 bg-gray-800 pop-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-white font-['Racing_Sans_One']">Nos Partenaires</h2>
-            
-            <!-- Main Sponsors Row -->
-            <div class="partners-grid">
+    <!-- Partenaires -->
+    <section id="partenaires" class="section section-cream">
+        <div class="container-wide">
+            <div class="section__header reveal">
+                <span class="section__label">Merci</span>
+                <h2 class="section__title">Nos Partenaires</h2>
+            </div>
+            <div class="partners-grid reveal">
                 <div class="partner-card">
                     <picture>
                         <source srcset="img/optimized/superu.webp" type="image/webp">
-                        <img src="img/superu.png" alt="Super U Logo" class="object-contain h-full w-full superu-logo" loading="lazy">
+                        <img src="img/superu.png" alt="Super U" class="superu-logo" loading="lazy">
                     </picture>
                 </div>
                 <div class="partner-card">
                     <picture>
                         <source srcset="img/optimized/audi.webp" type="image/webp">
-                        <img src="img/audi.png" alt="Audi Logo" class="object-contain h-full w-full audi-logo" loading="lazy">
+                        <img src="img/audi.png" alt="Audi" class="audi-logo" loading="lazy">
                     </picture>
                 </div>
                 <div class="partner-card">
                     <picture>
                         <source srcset="img/optimized/motul.webp" type="image/webp">
-                        <img src="img/motul.png" alt="Motul Logo" class="object-contain h-full w-full motul-logo" loading="lazy">
+                        <img src="img/motul.png" alt="Motul" class="motul-logo" loading="lazy">
                     </picture>
                 </div>
                 <div class="partner-card">
                     <picture>
                         <source srcset="img/optimized/drudaslogo.webp" type="image/webp">
-                        <img src="img/drudaslogo.png" alt="Château de Drudas Logo" class="object-contain h-full w-full drudas-logo" loading="lazy">
+                        <img src="img/drudaslogo.png" alt="Ch&acirc;teau de Drudas" class="drudas-logo" loading="lazy">
                     </picture>
                 </div>
                 <div class="partner-card">
                     <picture>
                         <source srcset="img/optimized/fermelogo.webp" type="image/webp">
-                        <img src="img/fermelogo.png" alt="Ferme aux Grives Logo" class="object-contain h-full w-full ferme-logo" loading="lazy">
+                        <img src="img/fermelogo.png" alt="Ferme aux Grives" class="ferme-logo" loading="lazy">
                     </picture>
                 </div>
                 <div class="partner-card">
                     <picture>
                         <source srcset="img/optimized/parcbeaumont.webp" type="image/webp">
-                        <img src="img/parcbeaumont.png" alt="Hotel Parc Beaumont Logo" class="object-contain h-full w-full parcbeaumont-logo" loading="lazy">
+                        <img src="img/parcbeaumont.png" alt="Hotel Parc Beaumont" class="parcbeaumont-logo" loading="lazy">
                     </picture>
                 </div>
                 <div class="partner-card">
                     <picture>
                         <source srcset="img/optimized/hotelpalaislogo.webp" type="image/webp">
-                        <img src="img/hotelpalaislogo.png" alt="Hotel du Palais Logo" class="object-contain h-full w-full palais-logo" loading="lazy">
+                        <img src="img/hotelpalaislogo.png" alt="Hotel du Palais" class="palais-logo" loading="lazy">
                     </picture>
                 </div>
                 <div class="partner-card">
                     <picture>
                         <source srcset="img/optimized/maisonlogo.webp" type="image/webp">
-                        <img src="img/maisonlogo.png" alt="Maison Ithurria Logo" class="object-contain h-full w-full maison-logo" loading="lazy">
+                        <img src="img/maisonlogo.png" alt="Maison Ithurria" class="maison-logo" loading="lazy">
                     </picture>
                 </div>
                 <div class="partner-card">
                     <picture>
                         <source srcset="img/optimized/RS magazine.webp" type="image/webp">
-                        <img src="img/RS magazine.png" alt="RS magazine Logo" class="object-contain h-full w-full rs-magazine-logo" loading="lazy">
+                        <img src="img/RS magazine.png" alt="RS Magazine" class="rs-magazine-logo" loading="lazy">
                     </picture>
                 </div>
                 <div class="partner-card">
                     <picture>
                         <source srcset="img/optimized/abeille.webp" type="image/webp">
-                        <img src="img/abeille.png" alt="Abeille Assurances Logo" class="object-contain h-full w-full abeille-logo" loading="lazy">
+                        <img src="img/abeille.png" alt="Abeille Assurances" class="abeille-logo" loading="lazy">
                     </picture>
                 </div>
                 <div class="partner-card">
                     <picture>
                         <source srcset="img/optimized/sid.webp" type="image/webp">
-                        <img src="img/sid.png" alt="Sid Logo" class="object-contain h-full w-full sid-logo" loading="lazy">
+                        <img src="img/sid.png" alt="Sid" class="sid-logo" loading="lazy">
                     </picture>
                 </div>
                 <div class="partner-card">
                     <picture>
                         <source srcset="img/optimized/dsilogo.webp" type="image/webp">
-                        <img src="img/dsilogo.png" alt="DSI Logo" class="object-contain h-full w-full dsi-logo" loading="lazy">
+                        <img src="img/dsilogo.png" alt="DSI" class="dsi-logo" loading="lazy">
                     </picture>
                 </div>
             </div>
@@ -787,29 +505,27 @@ prestation encore plus aboutie. Et pour les participants de se réunir autour d�
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black py-12 pop-up">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center justify-items-center">
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__grid">
                 <div>
-                    <h3 class="text-white font-semibold mb-4">Le Carrera Rallye par STEPHANE PLAGNAT EVENTS (SPE)</h3>
-                    <p class="text-gray-400">Une expérience inoubliable pour les propriétaires de Porsche classiques.</p>
+                    <h3 class="footer__title">Le Carrera Rallye par St&eacute;phane Plagnat Events</h3>
+                    <p>Une exp&eacute;rience inoubliable pour les propri&eacute;taires de Porsche classiques.</p>
                 </div>
                 <div>
-                    <h3 class="text-white font-semibold mb-4">Contactez-Nous</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li class="flex items-center justify-center"><i class="fas fa-phone-alt mr-2"></i> 06 11 23 19 48</li>
-                        <li class="flex items-center justify-center"><i class="fas fa-envelope mr-2"></i> plagnat.stephane@orange.fr</li>
-                    </ul>
+                    <h3 class="footer__title">Contactez-Nous</h3>
+                    <div class="footer__contact-item"><i class="fas fa-phone-alt"></i> 06 11 23 19 48</div>
+                    <div class="footer__contact-item"><i class="fas fa-envelope"></i> plagnat.stephane@orange.fr</div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-400 text-sm">© 2025 Carrera Rallye. Tous droits réservés.</p>
-                <div class="flex items-center text-gray-400 text-sm">
-                    Site web créé par
-                    <a href="https://magicstudio.space" target="_blank">
+            <div class="footer__bottom">
+                <p>&copy; 2026 Carrera Rallye. Tous droits r&eacute;serv&eacute;s.</p>
+                <div class="footer__credit">
+                    Site web cr&eacute;&eacute; par
+                    <a href="https://magicstudio.space" target="_blank" rel="noopener">
                         <picture>
                             <source srcset="img/optimized/magicstudiologolight.webp" type="image/webp">
-                            <img src="img/magicstudiologolight.png" alt="Magic Studio Logo" class="h-6 ml-1" style="height: 38px !important;" loading="lazy">
+                            <img src="img/magicstudiologolight.png" alt="Magic Studio">
                         </picture>
                     </a>
                 </div>
@@ -817,9 +533,13 @@ prestation encore plus aboutie. Et pour les participants de se réunir autour d�
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top" aria-label="Retour en haut"><i class="fas fa-chevron-up"></i></a>
 
-    <script src="scripts.js"></script>
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/animations.js"></script>
 </body>
 </html>

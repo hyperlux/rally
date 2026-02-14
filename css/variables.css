@@ -1,0 +1,91 @@
+/* variables.css - Design tokens for Carrera Rallye 2026 Provence Edition */
+
+:root {
+  /* Primary Colors - Provence Theme */
+  --color-lavender: #6B4C9A;
+  --color-lavender-light: #8B6CBB;
+  --color-lavender-dark: #4E3574;
+  --color-terracotta: #C75B39;
+  --color-terracotta-light: #D97B5E;
+  --color-terracotta-dark: #A44828;
+
+  /* Accent */
+  --color-ochre: #D4A843;
+  --color-ochre-light: #E4C06A;
+  --color-ochre-dark: #B48E2F;
+
+  /* Backgrounds */
+  --bg-cream: #FAF7F2;
+  --bg-cream-alt: #F5F0E8;
+  --bg-navy: #1B1F3B;
+  --bg-navy-light: #252A4A;
+  --bg-navy-dark: #12152B;
+
+  /* Text */
+  --text-charcoal: #2D2D2D;
+  --text-charcoal-light: #4A4A4A;
+  --text-cream: #F5F0E8;
+  --text-cream-muted: #D5CDBE;
+  --text-white: #FFFFFF;
+
+  /* Gradients */
+  --gradient-sunset: linear-gradient(135deg, #D4A843 0%, #C75B39 50%, #6B4C9A 100%);
+  --gradient-warm: linear-gradient(135deg, #D4A843 0%, #C75B39 100%);
+  --gradient-hero: linear-gradient(180deg, rgba(27, 31, 59, 0.3) 0%, rgba(27, 31, 59, 0.85) 100%);
+  --gradient-navy: linear-gradient(135deg, #1B1F3B 0%, #252A4A 100%);
+
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-nav: 'Racing Sans One', sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 30px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 30px rgba(212, 168, 67, 0.3);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.5s ease;
+
+  /* Z-index layers */
+  --z-base: 1;
+  --z-nav: 50;
+  --z-overlay: 100;
+  --z-modal: 200;
+  --z-loading: 9999;
+
+  /* Partner logo scales */
+  --superu-scale: 2.6;
+  --rs-magazine-scale: 1.22;
+  --audi-scale: 1.1;
+  --abeille-scale: 1.628;
+  --parcbeaumont-scale: 1.22;
+  --maison-scale: 1.2;
+  --palais-scale: 1.6;
+  --motul-scale: 1.1;
+  --drudas-scale: 1.621;
+  --ferme-scale: 1.22;
+  --sid-scale: 1.2;
+  --dsi-scale: 1.5;
+}
