@@ -111,4 +111,34 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  // Gallery slideshow
+  const gallerySlides = document.querySelectorAll('.gallery__slide');
+  const progressBar = document.querySelector('.gallery__progress-bar');
+  if (gallerySlides.length > 0 && progressBar) {
+    let current = 0;
+    const duration = 6000;
+
+    function nextSlide() {
+      gallerySlides[current].classList.remove('is-active');
+      current = (current + 1) % gallerySlides.length;
+      gallerySlides[current].classList.add('is-active');
+      gallerySlides[current].style.animation = 'none';
+      gallerySlides[current].offsetHeight;
+      gallerySlides[current].style.animation = '';
+      progressBar.style.transition = 'none';
+      progressBar.style.width = '0%';
+      requestAnimationFrame(() => {
+        progressBar.style.transition = `width ${duration}ms linear`;
+        progressBar.style.width = '100%';
+      });
+    }
+
+    requestAnimationFrame(() => {
+      progressBar.style.transition = `width ${duration}ms linear`;
+      progressBar.style.width = '100%';
+    });
+
+    setInterval(nextSlide, duration);
+  }
 })();

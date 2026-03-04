@@ -132,5 +132,12 @@
     transform: none;
   }
 
+  .gallery__slide {
+    animation: none !important;
+  }
+  .gallery__slide.is-active {
+    opacity: 1;
+  }
+
   html { scroll-behavior: auto; }
 }

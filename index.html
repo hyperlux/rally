@@ -7,7 +7,7 @@
     <meta name="description" content="Carrera Rallye 2026 Provence Edition - Une exp&eacute;rience exclusive pour les passionn&eacute;s de Porsche classiques. 26-28 Septembre 2026.">
     <link rel="icon" type="image/png" href="img/car.png">
     <link rel="preload" href="img/optimized/SPELOGO.webp" as="image" type="image/webp">
-    <link rel="preload" href="img/optimized/poster.webp" as="image" type="image/webp">
+    <link rel="preload" href="img/provence/poster-2026.webp" as="image" type="image/webp">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/base.css">
@@ -76,24 +76,6 @@
             <div class="hero__content">
                 <h1 class="hero__headline">Une exp&eacute;rience exclusive pour les passionn&eacute;s de <em>Porsche classiques</em></h1>
                 <p class="hero__date">Le 26, 27 et 28 Septembre 2026</p>
-                <div class="countdown">
-                    <div class="countdown__item countdown__item--primary">
-                        <span class="countdown__number" id="days">00</span>
-                        <span class="countdown__label">Jours</span>
-                    </div>
-                    <div class="countdown__item">
-                        <span class="countdown__number" id="hours">00</span>
-                        <span class="countdown__label">Heures</span>
-                    </div>
-                    <div class="countdown__item">
-                        <span class="countdown__number" id="minutes">00</span>
-                        <span class="countdown__label">Minutes</span>
-                    </div>
-                    <div class="countdown__item">
-                        <span class="countdown__number" id="seconds">00</span>
-                        <span class="countdown__label">Secondes</span>
-                    </div>
-                </div>
                 <div class="hero__buttons">
                     <a href="#register" class="hero__btn-primary">
                         <span><i class="fas fa-flag-checkered"></i> R&eacute;servez Votre Place</span>
@@ -106,7 +88,7 @@
             </div>
             <div class="hero__image">
                 <picture>
-                    <source srcset="img/optimized/poster.webp" type="image/webp">
+                    <source srcset="img/provence/poster-2026.webp" type="image/webp">
                     <img src="img/provence/poster-2026.jpeg" alt="Carrera Rallye 2026 Provence Edition Poster" class="hero__poster">
                 </picture>
             </div>
@@ -115,70 +97,100 @@
     </section>
 
     <!-- Parcours / Itinerary -->
-    <section id="parcours" class="section section-dark">
+    <section id="parcours" class="section section-dark section--bg" style="background-image: url('img/provence/rally/IMG_2200.jpg')">
         <div class="container">
             <div class="section__header reveal">
                 <span class="section__label">Itin&eacute;raire 2026</span>
                 <h2 class="section__title">Trois Jours en Provence</h2>
-                <p class="section__subtitle">Un parcours de 600 km &agrave; travers les plus beaux paysages de Provence, des champs de lavande aux calanques de la c&ocirc;te.</p>
+                <p class="section__subtitle">Un parcours &agrave; travers les plus beaux paysages de Provence, des champs de lavande aux calanques de la c&ocirc;te.</p>
+            </div>
+            <div class="timeline__note reveal">
+                <i class="fas fa-moon"></i>
+                <p><strong>Arriv&eacute;e Vendredi soir (optionnel) :</strong> Les &eacute;quipages souhaitant arriver la veille peuvent s&eacute;journer au <span class="timeline__card-venue">Ch&acirc;teau de Fontanges</span> &agrave; tarif pr&eacute;f&eacute;rentiel. Il suffit de mentionner votre participation au Carrera Rallye.</p>
             </div>
             <div class="timeline">
-                <!-- Vendredi -->
+                <!-- Jour 1 -->
                 <div class="timeline__day reveal reveal--delay-1">
                     <span class="timeline__day-label">Jour 1</span>
-                    <h3 class="timeline__day-title">Vendredi 26 Septembre</h3>
-                    <div class="timeline__card">
+                    <h3 class="timeline__day-title">Samedi 26 Septembre</h3>
+                    <a href="https://www.chateaufontanges.fr/" target="_blank" rel="noopener" class="timeline__card timeline__card--link">
+                        <div class="timeline__card-image">
+                            <img src="img/provence/venues/fontanges.jpg" alt="Ch&acirc;teau de Fontanges" loading="lazy">
+                        </div>
                         <span class="timeline__card-time">Matin</span>
-                        <h4 class="timeline__card-title">D&eacute;part du Ch&acirc;teau</h4>
-                        <p class="timeline__card-text">D&eacute;part depuis un magnifique <span class="timeline__card-venue">domaine proven&ccedil;al</span> apr&egrave;s un petit-d&eacute;jeuner d'exception. Remise des road books et briefing de bienvenue.</p>
-                    </div>
+                        <h4 class="timeline__card-title">D&eacute;part du Ch&acirc;teau de Fontanges</h4>
+                        <p class="timeline__card-text">D&eacute;part depuis le <span class="timeline__card-venue">Ch&acirc;teau de Fontanges</span> apr&egrave;s un petit-d&eacute;jeuner d'exception. Remise des road books et briefing de bienvenue.</p>
+                    </a>
                     <div class="timeline__card">
-                        <span class="timeline__card-time">Soir</span>
-                        <h4 class="timeline__card-title">D&icirc;ner Gastronomique</h4>
-                        <p class="timeline__card-text">Arriv&eacute;e en fin de journ&eacute;e pour un d&icirc;ner dans un <span class="timeline__card-venue">restaurant &eacute;toil&eacute; Michelin</span>. Nuit&eacute;e dans un h&ocirc;tel de charme.</p>
+                        <span class="timeline__card-time">Midi</span>
+                        <h4 class="timeline__card-title">D&eacute;jeuner Gastronomique</h4>
+                        <p class="timeline__card-text">D&eacute;jeuner gastronomique <em>(lieu &agrave; confirmer)</em>.</p>
                     </div>
+                    <a href="https://www.domainedeverchant.com/fr/" target="_blank" rel="noopener" class="timeline__card timeline__card--link">
+                        <div class="timeline__card-image">
+                            <img src="img/provence/venues/verchant.jpg" alt="Domaine du Verchant" loading="lazy">
+                        </div>
+                        <span class="timeline__card-time">Soir</span>
+                        <h4 class="timeline__card-title">Domaine du Verchant</h4>
+                        <p class="timeline__card-text">Arriv&eacute;e en fin de journ&eacute;e au <span class="timeline__card-venue">Domaine du Verchant</span>. D&icirc;ner gastronomique et nuit&eacute;e de prestige.</p>
+                    </a>
                 </div>
-                <!-- Samedi -->
+                <!-- Jour 2 -->
                 <div class="timeline__day reveal reveal--delay-2">
                     <span class="timeline__day-label">Jour 2</span>
-                    <h3 class="timeline__day-title">Samedi 27 Septembre</h3>
+                    <h3 class="timeline__day-title">Dimanche 27 Septembre</h3>
                     <div class="timeline__card">
                         <span class="timeline__card-time">Matin</span>
                         <h4 class="timeline__card-title">Les Routes du Luberon</h4>
-                        <p class="timeline__card-text">Travers&eacute;e des <span class="timeline__card-venue">champs de lavande et villages perch&eacute;s du Luberon</span>. Passage par Gordes, Roussillon et leurs panoramas exceptionnels.</p>
+                        <p class="timeline__card-text">D&eacute;part du <span class="timeline__card-venue">Domaine du Verchant</span>. Travers&eacute;e des champs de lavande et villages perch&eacute;s du Luberon.</p>
+                    </div>
+                    <a href="https://www.hotellabastide.com/" target="_blank" rel="noopener" class="timeline__card timeline__card--link">
+                        <div class="timeline__card-image">
+                            <img src="img/provence/venues/eygalieres.jpg" alt="La Bastide d'Eygali&egrave;res" loading="lazy">
+                        </div>
+                        <span class="timeline__card-time">Midi</span>
+                        <h4 class="timeline__card-title">La Bastide d'Eygali&egrave;res</h4>
+                        <p class="timeline__card-text">Pause gourmande &agrave; <span class="timeline__card-venue">La Bastide d'Eygali&egrave;res</span> au c&oelig;ur de la Provence.</p>
+                    </a>
+                    <a href="https://chateau-la-coste.com/" target="_blank" rel="noopener" class="timeline__card timeline__card--link">
+                        <div class="timeline__card-image">
+                            <img src="img/provence/venues/lacoste.jpg" alt="Ch&acirc;teau La Coste" loading="lazy">
+                        </div>
+                        <span class="timeline__card-time">Soir</span>
+                        <h4 class="timeline__card-title">Ch&acirc;teau La Coste</h4>
+                        <p class="timeline__card-text">Arriv&eacute;e au <span class="timeline__card-venue">Ch&acirc;teau La Coste</span> dans la r&eacute;gion d'Aix-en-Provence. D&icirc;ner et nuit&eacute;e de prestige.</p>
+                    </a>
+                </div>
+                <!-- Jour 3 -->
+                <div class="timeline__day reveal reveal--delay-3">
+                    <span class="timeline__day-label">Jour 3</span>
+                    <h3 class="timeline__day-title">Lundi 28 Septembre</h3>
+                    <div class="timeline__card">
+                        <span class="timeline__card-time">Matin</span>
+                        <h4 class="timeline__card-title">Derni&egrave;re &Eacute;tape</h4>
+                        <p class="timeline__card-text">D&eacute;part du <span class="timeline__card-venue">Ch&acirc;teau La Coste</span>. Derni&egrave;re &eacute;tape sur les routes panoramiques proven&ccedil;ales.</p>
                     </div>
                     <div class="timeline__card">
                         <span class="timeline__card-time">Midi</span>
-                        <h4 class="timeline__card-title">D&eacute;jeuner Proven&ccedil;al</h4>
-                        <p class="timeline__card-text">Pause gourmande dans un <span class="timeline__card-venue">&eacute;tablissement du Guide Michelin</span> au c&oelig;ur de la Provence.</p>
-                    </div>
-                    <div class="timeline__card">
-                        <span class="timeline__card-time">Soir</span>
-                        <h4 class="timeline__card-title">Aix-en-Provence</h4>
-                        <p class="timeline__card-text">Arriv&eacute;e &agrave; un <span class="timeline__card-venue">h&ocirc;tel 5 &eacute;toiles dans la r&eacute;gion d'Aix-en-Provence</span>. D&icirc;ner et nuit&eacute;e de prestige.</p>
-                    </div>
-                </div>
-                <!-- Dimanche -->
-                <div class="timeline__day reveal reveal--delay-3">
-                    <span class="timeline__day-label">Jour 3</span>
-                    <h3 class="timeline__day-title">Dimanche 28 Septembre</h3>
-                    <div class="timeline__card">
-                        <span class="timeline__card-time">Matin</span>
-                        <h4 class="timeline__card-title">Vers la C&ocirc;te</h4>
-                        <p class="timeline__card-text">Derni&egrave;re &eacute;tape sur les <span class="timeline__card-venue">routes panoramiques en direction de la M&eacute;diterran&eacute;e</span>. Cols et virages spectaculaires.</p>
+                        <h4 class="timeline__card-title">D&eacute;jeuner de Cl&ocirc;ture</h4>
+                        <p class="timeline__card-text">D&eacute;jeuner de cl&ocirc;ture <em>(lieu &agrave; confirmer)</em>.</p>
                     </div>
                     <div class="timeline__card">
                         <span class="timeline__card-time">Apr&egrave;s-midi</span>
-                        <h4 class="timeline__card-title">Arriv&eacute;e &amp; Remise des Prix</h4>
-                        <p class="timeline__card-text">Arriv&eacute;e dans un <span class="timeline__card-venue">lieu prestigieux en bord de mer</span>. Cocktail et c&eacute;r&eacute;monie de remise des prix pour cl&ocirc;turer cette &eacute;dition 2026.</p>
+                        <h4 class="timeline__card-title">Remise des Prix</h4>
+                        <p class="timeline__card-text">Cocktail et c&eacute;r&eacute;monie de remise des prix pour cl&ocirc;turer cette &eacute;dition 2026.</p>
                     </div>
                 </div>
+            </div>
+            <div class="timeline__note reveal">
+                <i class="fas fa-sun"></i>
+                <p><strong>Prolonger le Lundi soir (optionnel) :</strong> Possibilit&eacute; de rester une nuit suppl&eacute;mentaire au lieu du d&eacute;jeuner du lundi &agrave; tarif n&eacute;goci&eacute;. Mentionnez votre participation au Rallye.</p>
             </div>
         </div>
     </section>
 
     <!-- Details: Prestations, Tarif, H&eacute;bergement -->
-    <section id="details" class="section section-cream">
+    <section id="details" class="section section-dark section--bg" style="background-image: url('img/provence/rally/IMG_2456.jpg')">
         <div class="container">
             <div class="section__header reveal">
                 <span class="section__label">L'Exp&eacute;rience</span>
@@ -194,7 +206,7 @@
                         <li>Road book d&eacute;taill&eacute;</li>
                         <li>Goodies exclusifs</li>
                         <li>Restauration dans des &eacute;tablissements du Guide Michelin</li>
-                        <li>H&eacute;bergement en h&ocirc;tels 5 &eacute;toiles (2 nuit&eacute;es)</li>
+                        <li>H&eacute;bergement de prestige (2 nuit&eacute;es : Domaine du Verchant &amp; Ch&acirc;teau La Coste)</li>
                         <li>Remise des prix avec cocktail &agrave; l'arriv&eacute;e</li>
                         <li>Assistance m&eacute;canique et d&eacute;pannage</li>
                     </ul>
@@ -211,14 +223,14 @@
                 <div class="card reveal reveal--delay-3">
                     <div class="card__icon"><i class="fas fa-bed"></i></div>
                     <h3 class="card__title">H&eacute;bergement</h3>
-                    <p class="card__text">Les concurrents souhaitant arriver le jeudi soir ou prolonger le dimanche soir b&eacute;n&eacute;ficieront de tarifs n&eacute;goci&eacute;s aupr&egrave;s de nos h&ocirc;tels partenaires. Il leur suffira de mentionner leur participation au Rallye pour en b&eacute;n&eacute;ficier.</p>
+                    <p class="card__text">Les concurrents souhaitant arriver le vendredi soir (Ch&acirc;teau de Fontanges) ou prolonger le lundi soir b&eacute;n&eacute;ficieront de tarifs n&eacute;goci&eacute;s. Il leur suffira de mentionner leur participation au Rallye pour en b&eacute;n&eacute;ficier.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Voitures Admissibles -->
-    <section class="section section-light">
+    <section class="section section-dark section--bg" style="background-image: url('img/provence/rally/IMG_2103.jpg')">
         <div class="container">
             <div class="section__header reveal">
                 <span class="section__label">V&eacute;hicules</span>
@@ -252,7 +264,7 @@
     </section>
 
     <!-- R&egrave;glement (Accordion) -->
-    <section id="reglement" class="section section-dark">
+    <section id="reglement" class="section section-dark section--bg" style="background-image: url('img/provence/rally/IMG_2289.jpg')">
         <div class="container">
             <div class="section__header reveal">
                 <span class="section__label">R&egrave;glement</span>
@@ -300,7 +312,7 @@
     </section>
 
     <!-- &Eacute;quipages -->
-    <section id="equipages" class="section section-dark">
+    <section id="equipages" class="section section-dark section--bg" style="background-image: url('img/provence/rally/IMG_2461.jpg')">
         <div class="container-wide">
             <div class="section__header reveal">
                 <span class="section__label">&Eacute;dition 2026</span>
@@ -314,7 +326,7 @@
     </section>
 
     <!-- Histoire -->
-    <section id="histoire" class="section section-cream">
+    <section id="histoire" class="section section-dark section--bg" style="background-image: url('img/provence/rally/IMG_2131.jpg')">
         <div class="container">
             <div class="section__header reveal">
                 <span class="section__label">Depuis 2003</span>
@@ -333,7 +345,7 @@
     </section>
 
     <!-- Registration -->
-    <section id="register" class="section section-dark">
+    <section id="register" class="section section-dark section--bg" style="background-image: url('img/provence/rally/IMG_2310.jpg')">
         <div class="container">
             <div class="section__header reveal">
                 <span class="section__label">Rejoignez-nous</span>
@@ -395,6 +407,16 @@
                     <label for="car-model-year" class="form__label">Mod&egrave;le et Ann&eacute;e de votre Porsche</label>
                 </div>
 
+                <h3 class="form__section-title">D&eacute;couverte</h3>
+                <div class="form__group">
+                    <select id="discovery" name="decouverte" required class="form__select">
+                        <option value="">Comment avez-vous d&eacute;couvert l'&eacute;v&eacute;nement ?</option>
+                        <option value="RS Magazine">RS Magazine</option>
+                        <option value="SPE Events">SPE Events</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </div>
+
                 <h3 class="form__section-title">Commentaires</h3>
                 <div class="form__group">
                     <textarea id="message" name="message" rows="4" placeholder=" " class="form__textarea"></textarea>
@@ -421,7 +443,7 @@
     </section>
 
     <!-- Partenaires -->
-    <section id="partenaires" class="section section-cream">
+    <section id="partenaires" class="section section-dark section--bg" style="background-image: url('img/provence/rally/IMG_2311.jpg')">
         <div class="container-wide">
             <div class="section__header reveal">
                 <span class="section__label">Merci</span>
@@ -501,6 +523,29 @@
                     </picture>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Rally Gallery -->
+    <section id="gallery" class="gallery">
+        <div class="gallery__slides">
+            <div class="gallery__slide is-active" style="background-image: url('img/provence/rally/IMG_2103.jpg')"></div>
+            <div class="gallery__slide" style="background-image: url('img/provence/rally/IMG_2131.jpg')"></div>
+            <div class="gallery__slide" style="background-image: url('img/provence/rally/IMG_2140.jpg')"></div>
+            <div class="gallery__slide" style="background-image: url('img/provence/rally/IMG_2200.jpg')"></div>
+            <div class="gallery__slide" style="background-image: url('img/provence/rally/IMG_2254.jpg')"></div>
+            <div class="gallery__slide" style="background-image: url('img/provence/rally/IMG_2289.jpg')"></div>
+            <div class="gallery__slide" style="background-image: url('img/provence/rally/IMG_2310.jpg')"></div>
+            <div class="gallery__slide" style="background-image: url('img/provence/rally/IMG_2456.jpg')"></div>
+            <div class="gallery__slide" style="background-image: url('img/provence/rally/IMG_2461.jpg')"></div>
+        </div>
+        <div class="gallery__overlay"></div>
+        <div class="gallery__content">
+            <span class="gallery__label reveal">Édition 2025</span>
+            <h2 class="gallery__title reveal">Souvenirs du Rallye</h2>
+        </div>
+        <div class="gallery__progress">
+            <div class="gallery__progress-bar"></div>
         </div>
     </section>
 
