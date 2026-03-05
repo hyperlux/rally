@@ -39,3 +39,38 @@
   update();
   const timer = setInterval(update, 1000);
 })();
+
+/* Equipages section countdown */
+(function() {
+  const EVENT_DATE = new Date('September 26, 2026 08:00:00').getTime();
+  const container = document.getElementById('equipages-countdown');
+  if (!container) return;
+
+  function render(d, h, m, s) {
+    const items = [
+      { value: d, label: 'Jours', primary: true },
+      { value: h, label: 'Heures' },
+      { value: m, label: 'Min' },
+      { value: s, label: 'Sec' }
+    ];
+    container.innerHTML = items.map(function(item) {
+      return '<div class="countdown__item' + (item.primary ? ' countdown__item--primary' : '') + '">' +
+        '<span class="countdown__number">' + String(item.value).padStart(2, '0') + '</span>' +
+        '<span class="countdown__label">' + item.label + '</span>' +
+      '</div>';
+    }).join('');
+  }
+
+  function update() {
+    var distance = EVENT_DATE - Date.now();
+    if (distance < 0) { render(0, 0, 0, 0); clearInterval(t); return; }
+    var d = Math.floor(distance / 86400000);
+    var h = Math.floor((distance % 86400000) / 3600000);
+    var m = Math.floor((distance % 3600000) / 60000);
+    var s = Math.floor((distance % 60000) / 1000);
+    render(d, h, m, s);
+  }
+
+  update();
+  var t = setInterval(update, 1000);
+})();

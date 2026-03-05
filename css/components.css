@@ -238,6 +238,17 @@ a.timeline__card--link {
   box-shadow: var(--shadow-lg);
 }
 
+/* Cards in grid: vertically center content for equal-height balance */
+.cards-grid > .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cards-grid > .card--price {
+  justify-content: flex-start;
+}
+
 .card__icon {
   font-size: 1.8rem;
   color: var(--color-terracotta);
@@ -255,6 +266,10 @@ a.timeline__card--link {
   line-height: 1.7;
 }
 
+.card__text + .card__text {
+  margin-top: var(--space-md);
+}
+
 .card__list {
   list-style: disc;
   padding-left: var(--space-lg);
@@ -267,21 +282,35 @@ a.timeline__card--link {
 }
 
 /* Dark card variant */
-.card--dark {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.card--dark,
+.section-dark .card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-.card--dark .card__title { color: var(--text-white); }
-.card--dark .card__text { color: var(--text-cream-muted); }
-.card--dark .card__list { color: var(--text-cream-muted); }
+.card--dark .card__title,
+.section-dark .card .card__title { color: var(--text-white); }
+.card--dark .card__text,
+.section-dark .card .card__text { color: var(--text-cream-muted); }
+.card--dark .card__list,
+.section-dark .card .card__list { color: var(--text-cream-muted); }
+.section-dark .card .card__icon { color: var(--color-ochre); }
 
 /* Price card */
 .card--price {
   background: linear-gradient(135deg, rgba(196, 149, 106, 0.08), rgba(107, 143, 173, 0.08));
   border: 2px solid var(--color-ochre);
   text-align: center;
+}
+
+.section-dark .card--price {
+  background: linear-gradient(135deg, rgba(196, 149, 106, 0.12), rgba(107, 143, 173, 0.08));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .card__price {
@@ -297,10 +326,18 @@ a.timeline__card--link {
   color: var(--text-charcoal-light);
 }
 
+.section-dark .card__price-sub {
+  color: var(--text-cream-muted);
+}
+
 .card__price-detail {
   font-size: 0.95rem;
   color: var(--text-charcoal-light);
   margin: var(--space-sm) 0;
+}
+
+.section-dark .card__price-detail {
+  color: var(--text-cream-muted);
 }
 
 .card__price-btn {
@@ -581,11 +618,10 @@ a.timeline__card--link {
 
 /* ==================== PARTNERS ==================== */
 .partners-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: var(--space-lg);
-  justify-items: center;
-  align-items: center;
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -595,9 +631,8 @@ a.timeline__card--link {
   justify-content: center;
   align-items: center;
   height: 120px;
-  width: 100%;
-  max-width: 230px;
-  background: rgba(255, 255, 255, 0.95);
+  width: 200px;
+  background: rgba(255, 255, 255, 1);
   padding: var(--space-md);
   border-radius: var(--radius-md);
   transition: all var(--transition-base);
@@ -636,7 +671,7 @@ a.timeline__card--link {
 
 @media (max-width: 767px) {
   .partner-card img { max-height: 50px; transform: scale(1) !important; }
-  .partner-card { height: 100px; max-width: 170px; }
+  .partner-card { height: 100px; width: 150px; }
 }
 
 /* ==================== LOADING ==================== */
@@ -813,7 +848,7 @@ a.timeline__card--link {
   .countdown__item--primary .countdown__number { font-size: 1.6rem; }
   .countdown__item--primary { transform: scale(1.05); }
   .card { padding: var(--space-lg); }
-  .partners-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--space-md); }
+  .partners-grid { gap: var(--space-md); }
 }
 
 /* ==================== SECTION BACKGROUND IMAGES ==================== */
@@ -827,7 +862,7 @@ a.timeline__card--link {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(21, 29, 43, 0.75);
+  background: rgba(21, 29, 43, 0.88);
   z-index: 0;
 }
 

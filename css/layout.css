@@ -301,6 +301,10 @@
   position: relative;
 }
 
+.section--compact {
+  padding: var(--space-3xl) 0;
+}
+
 .section__header {
   text-align: center;
   margin-bottom: var(--space-3xl);
