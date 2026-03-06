@@ -947,8 +947,8 @@ a.timeline__card--link {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--color-ochre);
-  margin-bottom: var(--space-sm);
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: var(--space-sm);
 }
 
 .gallery__title {
