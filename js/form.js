@@ -32,6 +32,15 @@
       termsCheckbox.setCustomValidity('');
     }
 
+    // Show/hide inline error for discovery select
+    const discoverySelect = document.getElementById('discovery');
+    const discoveryError = document.getElementById('discovery-error');
+    if (discoverySelect && discoveryError) {
+      const missing = !discoverySelect.value;
+      discoveryError.style.display = missing ? 'block' : 'none';
+      discoverySelect.style.borderColor = missing ? '#A85244' : '';
+    }
+
     if (!isValid) {
       const firstInvalid = form.querySelector(':invalid');
       if (firstInvalid) firstInvalid.focus();
@@ -39,6 +48,7 @@
     }
 
     const formData = new FormData(form);
+    const params = new URLSearchParams(formData);
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
     submitBtn.disabled = true;
@@ -49,7 +59,8 @@
         method: 'POST',
         mode: 'no-cors',
         cache: 'no-cache',
-        body: formData
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString()
       });
 
       showNotification('Merci pour votre demande d\'engagement ! Notre \u00e9quipe vous contactera sous peu.', 'success');
@@ -67,6 +78,18 @@
   form.querySelectorAll('input[required], textarea[required], select[required], input[type="checkbox"]').forEach(input => {
     input.addEventListener('input', () => input.setCustomValidity(''));
   });
+
+  // Clear discovery error when a value is selected
+  const discoverySelect = document.getElementById('discovery');
+  const discoveryError = document.getElementById('discovery-error');
+  if (discoverySelect && discoveryError) {
+    discoverySelect.addEventListener('change', () => {
+      if (discoverySelect.value) {
+        discoveryError.style.display = 'none';
+        discoverySelect.style.borderColor = '';
+      }
+    });
+  }
 
   function showNotification(message, type) {
     const notif = document.createElement('div');
