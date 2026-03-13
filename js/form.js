@@ -48,6 +48,11 @@
     }
 
     const formData = new FormData(form);
+    // Ensure surclassement always has a value in the sheet
+    const surclassementCheckbox = document.getElementById('surclassement');
+    if (surclassementCheckbox) {
+      formData.set('surclassement', surclassementCheckbox.checked ? 'Oui' : 'Non');
+    }
     const params = new URLSearchParams(formData);
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;

@@ -197,6 +197,20 @@
   transform: scale(1.03);
 }
 
+.hero__badge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-ochre);
+  border: 1px solid rgba(201, 168, 76, 0.5);
+  border-radius: 20px;
+  padding: 0.3rem 1rem;
+  margin-bottom: var(--space-md);
+}
+
 .hero__headline {
   font-size: clamp(2.2rem, 4vw, 3.2rem);
   color: var(--text-white);

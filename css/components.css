@@ -576,6 +576,36 @@ a.timeline__card--link {
   color: var(--color-ochre);
 }
 
+.form__option-card {
+  border: 1.5px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  padding: 1.1rem 1.3rem;
+  margin-bottom: 1.5rem;
+  background: rgba(255,255,255,0.07);
+}
+.form__option-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.form__option-card-label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 0.2rem;
+}
+.form__option-card-desc {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+}
+.form__option-card-price {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-accent, #C9A84C);
+  white-space: nowrap;
+}
+
 .form__checkbox-wrap {
   display: flex;
   align-items: flex-start;
