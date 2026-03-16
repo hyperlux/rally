@@ -694,10 +694,23 @@ a.timeline__card--link {
   transition: transform var(--transition-fast);
 }
 
+/* RS Magazine fills card edge-to-edge */
+.partner-card:has(.rs-magazine-logo) {
+  padding: 0;
+  overflow: hidden;
+}
+.rs-magazine-logo {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  object-fit: cover;
+}
+
 /* Partner logo scales - desktop only */
 @media (min-width: 768px) {
   .partner-card .superu-logo { transform: scale(var(--superu-scale)); }
-  .partner-card .rs-magazine-logo { transform: scale(var(--rs-magazine-scale)); }
+  .partner-card .rs-magazine-logo { transform: none; }
   .partner-card .audi-logo { transform: scale(var(--audi-scale)); }
   .partner-card .abeille-logo { transform: scale(var(--abeille-scale)); }
   .partner-card .parcbeaumont-logo { transform: scale(var(--parcbeaumont-scale)); }
