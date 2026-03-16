@@ -698,6 +698,8 @@ a.timeline__card--link {
 .partner-card:has(.rs-magazine-logo) {
   padding: 0;
   overflow: hidden;
+  background: #000;
+  align-items: stretch;
 }
 .rs-magazine-logo {
   width: 100% !important;
@@ -724,7 +726,7 @@ a.timeline__card--link {
 }
 
 @media (max-width: 767px) {
-  .partner-card img { max-height: 50px; transform: scale(1) !important; }
+  .partner-card img { max-height: 50px; max-width: 100%; transform: scale(1) !important; }
   .partner-card { height: 100px; width: 150px; }
 }
 
