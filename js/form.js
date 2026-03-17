@@ -6,6 +6,11 @@
 
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw5jkRnZCcTx2SKv_fPC-lwnKZAdwsnAUnCUegs6sp7DCGj8zWyn4Z0zfmGu1je67CKPg/exec';
 
+  // Capture UTM params from URL (e.g. ?utm_source=rsmagazine&utm_medium=referral)
+  const urlParams = new URLSearchParams(window.location.search);
+  const utmSource = urlParams.get('utm_source') || '';
+  const utmMedium = urlParams.get('utm_medium') || '';
+
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -54,6 +59,8 @@
       formData.set('surclassement', surclassementCheckbox.checked ? 'Oui' : 'Non');
     }
     const params = new URLSearchParams(formData);
+    if (utmSource) params.set('utm_source', utmSource);
+    if (utmMedium) params.set('utm_medium', utmMedium);
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalText = submitBtn.innerHTML;
     submitBtn.disabled = true;
