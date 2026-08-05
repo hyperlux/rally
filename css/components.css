@@ -713,7 +713,7 @@ a.timeline__card--link {
 @media (min-width: 768px) {
   .partner-card .superu-logo { transform: scale(var(--superu-scale)); }
   .partner-card .rs-magazine-logo { transform: none; }
-  .partner-card .audi-logo { transform: scale(var(--audi-scale)); }
+  .partner-card .belgom-logo { transform: scale(var(--belgom-scale)); }
   .partner-card .abeille-logo { transform: scale(var(--abeille-scale)); }
   .partner-card .parcbeaumont-logo { transform: scale(var(--parcbeaumont-scale)); }
   .partner-card .maison-logo { transform: scale(var(--maison-scale)); }

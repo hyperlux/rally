@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const logoScales = [
         { id: 'superu-scale', property: '--superu-scale' },
         { id: 'rs-magazine-scale', property: '--rs-magazine-scale' },
-        { id: 'audi-scale', property: '--audi-scale' },
+        { id: 'belgom-scale', property: '--belgom-scale' },
         { id: 'abeille-scale', property: '--abeille-scale' },
         { id: 'parcbeaumont-scale', property: '--parcbeaumont-scale' },
         { id: 'maison-scale', property: '--maison-scale' },
